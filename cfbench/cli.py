@@ -98,6 +98,10 @@ def cmd_run(args: argparse.Namespace) -> int:
             )
             errors = 0
             produced = 0
+            # Counted per variant, not over the accumulated list. Summing the
+            # whole list reported faults cumulatively across chunk widths, so a
+            # two-width sweep claimed more injections than there were claims.
+            injected = 0
             for q in questions:
                 if fault is None:
                     record = variant.answer(q)
@@ -105,17 +109,13 @@ def cmd_run(args: argparse.Namespace) -> int:
                     result = variant.inject(q)
                     record, oracle = result.record, result.oracle
                     oracle_labels.extend(oracle)
+                    injected += len(oracle)
                 if record.error:
                     errors += 1
                     print(f"  ! {q.id}: {record.error}", file=sys.stderr)
                 records.append(record)
                 produced += len(record.claims)
-            note = ""
-            if fault is not None:
-                injected = sum(
-                    1 for lb in oracle_labels if lb.labeler == f"oracle:{fault}"
-                )
-                note = f", {injected} faults injected"
+            note = f", {injected} faults injected" if fault is not None else ""
             print(f"  -> {produced} claims extracted, {errors} errors{note}")
 
     n = write_jsonl(args.out, records)

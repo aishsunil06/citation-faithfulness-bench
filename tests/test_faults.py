@@ -1005,3 +1005,75 @@ def test_polarity_flip_declines_when_only_a_hedged_sentence_negates():
         "The audit may have found no incidents at the Mesa site."
     )
     assert PolarityFlip(neg_engine(snippet=snippet), seed=0).inject(Q).oracle == []
+
+
+# --------------------------------------------------------------------------
+# NumericDrift: the oracle requires a supported base claim
+# --------------------------------------------------------------------------
+#
+# Found on the first real-corpus run. The injector had assumed the claim it
+# was handed was already faithful, which the extractive engine guaranteed by
+# quoting verbatim but the lossy engine does not.
+
+
+def test_drift_declines_when_the_snippet_never_stated_the_figure():
+    # The uncorrupted claim was already UNSUPPORTED, so the corrupted one is
+    # unsupported too, not contradicted. Nothing to contradict.
+    result = NumericDrift(
+        engine(answer="Fab 8 will produce 420 million units [1].",
+               citations=(("u1", "An unrelated passage about wafer capacity."),)),
+        seed=0,
+    ).inject(Q)
+    assert result.oracle == []
+
+
+def test_drift_fires_when_the_snippet_does_state_the_figure():
+    result = NumericDrift(
+        engine(answer="The site produced 420 million units [1].",
+               citations=(("u1", "The site produced 420 million units last year."),)),
+        seed=0,
+    ).inject(Q)
+    assert len(result.oracle) == 1
+    assert result.oracle[0].verdict is Verdict.CONTRADICTED
+
+
+def test_drift_declines_on_a_number_that_is_part_of_a_name():
+    # "Fab 8" -> "Fab 7" changes which facility the claim is about, which is a
+    # different kind of error with an arguable verdict.
+    from cfbench.engines.faulty import _is_identifier
+
+    text = "Fab 8 produced 60000 wafers."
+    assert _is_identifier(text, text.index("8"))
+    assert not _is_identifier(text, text.index("60000"))
+
+
+def test_identifier_guard_covers_vehicle_and_model_names():
+    from cfbench.engines.faulty import _is_identifier
+
+    for text, token in [
+        ("Falcon 9 launched the payload.", "9"),
+        ("The Boeing 787 entered service.", "787"),
+        ("Ariane 6 replaced it.", "6"),
+        ("Voyager 1 left the heliosphere.", "1"),
+    ]:
+        assert _is_identifier(text, text.index(token)), text
+
+
+def test_drift_declines_on_a_suffixed_bound():
+    # "EUR 10+ billion" -> "12+ billion" is a strictly stronger claim the
+    # source does not support: unsupported, not contradicted.
+    from cfbench.engines.faulty import _has_bound_suffix
+
+    text = "committed to a 10+ billion factory"
+    assert _has_bound_suffix(text, text.index("10") + 2)
+    plain = "committed 412 million dollars"
+    assert not _has_bound_suffix(plain, plain.index("412") + 3)
+
+
+def test_states_number_requires_a_whole_token():
+    from cfbench.engines.faulty import _states_number
+
+    assert _states_number("produced 7 nm parts", "7")
+    assert not _states_number("produced 17 nm parts", "7")
+    assert not _states_number("in the year 2007", "7")
+    assert _states_number("revenue of 3.5 billion", "3.5")
