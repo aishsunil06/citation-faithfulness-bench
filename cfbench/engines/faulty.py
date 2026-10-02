@@ -27,6 +27,42 @@ from ..schema import AnswerRecord, Citation, Label, Question, Verdict, stabilize
 _NUMBER = re.compile(r"\b(\d+(?:\.\d+)?)\b")
 
 
+def _looks_like_year(raw: str, value: float) -> bool:
+    """Four-digit values in a calendar range are years, not quantities."""
+    return len(raw) == 4 and value == int(value) and 1800 <= value <= 2200
+
+
+# Cue words that make a following number a BOUND rather than a point value.
+# Shifting a bounded figure does not produce a contradiction, it produces a
+# claim that is logically weaker or stronger than the source:
+#
+#   source: "will reach 3.1 billion by 2030"
+#   claim:  "will reach 3.1 billion by 3248"
+#
+# The later deadline is *entailed* by the earlier one, so the source supports
+# the claim. Calling that CONTRADICTED makes the oracle wrong, and an oracle
+# that is wrong measures nothing: a judge "detecting" it is only agreeing with
+# a mistake. Fault injection is only valid where the correct verdict is
+# indisputable, so these contexts are skipped and left to human labelling.
+_DIRECTIONAL = (
+    "by", "before", "after", "since", "until", "till", "within", "from",
+    "over", "under", "above", "below", "beyond", "exceeds", "exceeding",
+    "least", "most", "minimum", "maximum", "up", "more", "less",
+    "fewer", "greater", "nearly", "almost", "approximately", "around",
+    "roughly", "about", "upto",
+    # The word immediately before the figure in "up to 240", "more than 240",
+    # "fewer than 240". Matching only the head word would miss all of these.
+    "to", "than",
+)
+
+
+def _is_directional(text: str, start: int) -> bool:
+    """True if the number at `start` is preceded by a bound-setting cue."""
+    prefix = text[max(0, start - 24):start].lower()
+    words = re.findall(r"[a-z]+", prefix)
+    return bool(words) and words[-1] in _DIRECTIONAL
+
+
 @dataclass
 class InjectionResult:
     record: AnswerRecord
@@ -97,25 +133,54 @@ class NumericDrift(_Base):
     is CONTRADICTED, not UNSUPPORTED: the source addresses this exact fact and
     states a different number, which is a stronger failure than an irrelevant
     citation.
+
+    Only magnitudes are touched. Years and bounded quantities are skipped,
+    because shifting them yields a verdict that is arguable rather than
+    certain, and an arguable oracle defeats the purpose.
     """
 
     fault = "numeric-drift"
 
     def _corrupt(self, record: AnswerRecord, claim):
-        matches = list(_NUMBER.finditer(claim.text))
-        if not matches:
+        # Only magnitudes are corrupted, never years or bounds.
+        #
+        # A shifted magnitude is an indisputable contradiction: the source says
+        # the quantity is 412 and the claim says 474 about the same thing.
+        #
+        # A shifted year is not. "Capacity was 240 as of 2026" cited to a 2025
+        # source is UNSUPPORTED, because the source is silent on 2026 rather
+        # than denying it. A shifted bound is weaker still: "by 3248" is
+        # entailed by "by 2030". Fault injection is only worth anything while
+        # the oracle verdict is beyond argument, so both are left alone and
+        # resolved by human labelling instead.
+        candidates = [
+            m for m in _NUMBER.finditer(claim.text)
+            if not _is_directional(claim.text, m.start(1))
+            and not _looks_like_year(m.group(1), float(m.group(1)))
+        ]
+        if not candidates:
             return None
-        target = self._rng.choice(matches)
+        target = self._rng.choice(candidates)
         original = target.group(1)
 
-        # Shift by a visible but plausible amount so the corruption is not
-        # detectable from implausibility alone.
         try:
             value = float(original)
         except ValueError:
             return None
-        shifted = value * self._rng.choice([1.35, 1.6, 0.6, 0.45])
-        replacement = str(int(shifted)) if value == int(value) else f"{shifted:.1f}"
+
+        # Corruption must be WRONG but PLAUSIBLE. An earlier version scaled
+        # every figure multiplicatively, which turned the year 2030 into 3248.
+        # That is detectable from implausibility alone, so it measured nothing
+        # about a judge's ability to check a source and inflated detection
+        # rates toward 100%. Years therefore shift by a year or two, and other
+        # figures by a modest proportion.
+        shifted = value * self._rng.choice([1.08, 1.15, 0.88, 0.82])
+        if value == int(value) and abs(shifted - value) >= 1:
+            replacement = str(int(round(shifted)))
+        else:
+            replacement = f"{shifted:.1f}"
+        if replacement == original:
+            return None
 
         claim.text = (
             claim.text[:target.start(1)] + replacement + claim.text[target.end(1):]
