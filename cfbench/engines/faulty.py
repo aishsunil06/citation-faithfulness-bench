@@ -25,11 +25,47 @@ from dataclasses import dataclass, field
 from ..claims import split_sentences
 from ..schema import AnswerRecord, Citation, Label, Question, Verdict, stabilize_ids
 
-_NUMBER = re.compile(r"\b(\d+(?:\.\d+)?)\b")
+# Comma-grouped numerals are matched as ONE token, with that alternative first
+# so it wins over the bare-digit branch.
+#
+# Without it, "3,000" tokenised as "3" and "000", and corrupting the "000"
+# produced "3,0.0" -- a formatting mangle rather than a competing value, whose
+# correct verdict is arguable. Real captures hit this on "69,980,000
+# passengers" and "3,000 MWh". An arguable oracle is the one thing fault
+# injection cannot tolerate.
+_NUMBER = re.compile(r"\b(\d{1,3}(?:,\d{3})+(?:\.\d+)?|\d+(?:\.\d+)?)\b")
+
+
+def _parse_number(raw: str) -> float | None:
+    try:
+        return float(raw.replace(",", ""))
+    except ValueError:
+        return None
+
+
+def _format_like(value: float, original: str) -> str:
+    """Render `value` in the same shape as `original`.
+
+    A corrupted figure must look like the figure it replaced: dropping the
+    thousands separators from "69,980,000" would make the corruption visible
+    from formatting alone, which is the same mistake as turning 2030 into 3248.
+    """
+    grouped = "," in original
+    if float(value) == int(value):
+        out = f"{int(value):,}" if grouped else str(int(value))
+    else:
+        out = f"{value:,.1f}" if grouped else f"{value:.1f}"
+    return out
 
 
 def _looks_like_year(raw: str, value: float) -> bool:
-    """Four-digit values in a calendar range are years, not quantities."""
+    """Four-digit values in a calendar range are years, not quantities.
+
+    A comma-grouped numeral is never a year, so "1,800" is a quantity even
+    though its digits fall in the calendar range.
+    """
+    if "," in raw:
+        return False
     return len(raw) == 4 and value == int(value) and 1800 <= value <= 2200
 
 
@@ -381,19 +417,19 @@ class NumericDrift(_Base):
         candidates = [
             m for m in _NUMBER.finditer(claim.text)
             if not _is_directional(claim.text, m.start(1))
-            and not _looks_like_year(m.group(1), float(m.group(1)))
+            and not _looks_like_year(m.group(1), _parse_number(m.group(1)) or 0.0)
             and not _is_identifier(claim.text, m.start(1))
             and not _has_bound_suffix(claim.text, m.end(1))
             and _states_number(snippets, m.group(1))
+            and _parse_number(m.group(1)) is not None
         ]
         if not candidates:
             return None
         target = self._rng.choice(candidates)
         original = target.group(1)
 
-        try:
-            value = float(original)
-        except ValueError:
+        value = _parse_number(original)
+        if value is None:
             return None
 
         # Corruption must be WRONG but PLAUSIBLE. An earlier version scaled
@@ -404,9 +440,9 @@ class NumericDrift(_Base):
         # figures by a modest proportion.
         shifted = value * self._rng.choice([1.08, 1.15, 0.88, 0.82])
         if value == int(value) and abs(shifted - value) >= 1:
-            replacement = str(int(round(shifted)))
+            replacement = _format_like(round(shifted), original)
         else:
-            replacement = f"{shifted:.1f}"
+            replacement = _format_like(shifted, original)
         if replacement == original:
             return None
 

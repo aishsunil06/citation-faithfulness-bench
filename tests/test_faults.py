@@ -1077,3 +1077,62 @@ def test_states_number_requires_a_whole_token():
     assert not _states_number("produced 17 nm parts", "7")
     assert not _states_number("in the year 2007", "7")
     assert _states_number("revenue of 3.5 billion", "3.5")
+
+
+# --------------------------------------------------------------------------
+# Comma-grouped numerals
+# --------------------------------------------------------------------------
+#
+# Found on the real corpus: "3,000" tokenised as "3" and "000", and corrupting
+# the "000" produced "3,0.0" -- a formatting mangle, not a competing value, so
+# the oracle verdict became arguable. Real hits were "69,980,000 passengers"
+# and "3,000 MWh".
+
+
+def test_comma_grouped_numerals_tokenise_as_one_number():
+    from cfbench.engines.faulty import _NUMBER
+
+    text = "handled 69,980,000 passengers and 3,000 MWh and 412 units"
+    assert [m.group(1) for m in _NUMBER.finditer(text)] == [
+        "69,980,000", "3,000", "412",
+    ]
+
+
+def test_parse_number_handles_separators():
+    from cfbench.engines.faulty import _parse_number
+
+    assert _parse_number("69,980,000") == 69980000.0
+    assert _parse_number("3.5") == 3.5
+    assert _parse_number("not a number") is None
+
+
+def test_corrupted_figures_keep_the_original_formatting():
+    # A corruption visible from formatting alone tests nothing, which is the
+    # same mistake as turning 2030 into 3248.
+    from cfbench.engines.faulty import _format_like
+
+    assert _format_like(75000000, "69,980,000") == "75,000,000"
+    assert _format_like(450, "412") == "450"
+    assert _format_like(3.4, "3.1") == "3.4"
+
+
+def test_a_comma_grouped_figure_drifts_without_mangling():
+    result = NumericDrift(
+        engine(answer="The airport handled 69,980,000 passengers [1].",
+               citations=(("u1", "The airport handled 69,980,000 passengers."),)),
+        seed=0,
+    ).inject(Q)
+
+    assert len(result.oracle) == 1
+    text = result.record.claims[0].text
+    assert "69,980,000" not in text
+    # No mangled hybrid like "69,980,0.0"
+    import re
+    assert not re.search(r"\d,\d*\.\d", text), text
+
+
+def test_a_comma_grouped_numeral_is_not_mistaken_for_a_year():
+    from cfbench.engines.faulty import _looks_like_year
+
+    assert _looks_like_year("2030", 2030.0)
+    assert not _looks_like_year("1,800", 1800.0)

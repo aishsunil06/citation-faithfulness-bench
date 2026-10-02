@@ -52,18 +52,48 @@ class Chunk:
     chunk_index: int = 0
 
 
+def _word_windows(words: list[str], words_per_chunk: int, overlap_words: int):
+    """Fixed-width overlapping word windows.
+
+    The fallback for text with no sentence boundaries to pack on, such as a
+    table, a list, or a single sentence longer than the whole budget.
+    """
+    stride = words_per_chunk - overlap_words
+    for start in range(0, len(words), stride):
+        window = words[start:start + words_per_chunk]
+        if not window:
+            return
+        yield " ".join(window)
+        if start + words_per_chunk >= len(words):
+            return
+
+
 def chunk_document(
     doc: Document,
     doc_index: int,
     words_per_chunk: int = 90,
     overlap_words: int = 20,
 ) -> list[Chunk]:
-    """Split a document into overlapping word windows.
+    """Split a document into overlapping chunks that end on sentence boundaries.
 
     `words_per_chunk` and `overlap_words` are the knobs the benchmark sweeps:
     chunks too small truncate the evidence a claim needs, chunks too large
     dilute retrieval and let an engine cite a passage that only topically
     resembles its claim.
+
+    Chunks are packed from whole sentences rather than cut at an exact word
+    count. Cutting mid-sentence made claims unjudgeable in practice: an engine
+    quoting a chunk emitted fragments like "with Intel's at," which assert
+    nothing, and a chunk that began mid-sentence dropped the subject clause, so
+    a snippet could fail to name the entity its own sentence was about. A
+    grader then cannot say whether the source supports the claim or the text
+    was merely truncated, and an unjudgeable row is worse than no row.
+
+    `words_per_chunk` stays a ceiling, so chunk widths remain comparable across
+    a sweep: a sentence that would overflow starts the next chunk instead.
+    Text with no sentence boundaries, or a single sentence longer than the
+    budget, falls back to fixed word windows so pathological input still
+    chunks.
     """
     if words_per_chunk <= 0:
         raise ValueError("words_per_chunk must be positive")
@@ -74,24 +104,64 @@ def chunk_document(
     if not words:
         return []
 
-    stride = words_per_chunk - overlap_words
-    chunks: list[Chunk] = []
-    for i, start in enumerate(range(0, len(words), stride)):
-        window = words[start:start + words_per_chunk]
-        if not window:
-            break
-        chunks.append(
-            Chunk(
-                url=doc.url,
-                text=" ".join(window),
-                title=doc.title,
-                doc_index=doc_index,
-                chunk_index=i,
-            )
+    from .claims import split_sentences
+
+    sentences = split_sentences(doc.text)
+    usable = [s for s in sentences if s.strip()]
+
+    # No boundaries to pack on, or one sentence that cannot fit: window it.
+    if len(usable) < 2 or max(len(s.split()) for s in usable) > words_per_chunk:
+        texts = list(_word_windows(words, words_per_chunk, overlap_words))
+    else:
+        texts = []
+        current: list[str] = []
+        current_words = 0
+        i = 0
+        while i < len(usable):
+            sentence = usable[i]
+            length = len(sentence.split())
+            if current and current_words + length > words_per_chunk:
+                texts.append(" ".join(current))
+                # Carry trailing sentences back as overlap, so a claim spanning
+                # a boundary still has its evidence in one chunk.
+                #
+                # At least one sentence always carries, even when it alone
+                # exceeds `overlap_words`. A purely budget-driven loop silently
+                # produced zero overlap whenever sentences were longer than the
+                # overlap allowance, which is the common case for prose and
+                # defeats the point of having overlap at all.
+                # Carrying must leave room for the sentence that caused the
+                # flush, or the loop makes no progress: it would flush, carry
+                # the same sentence back, overflow again, and spin forever.
+                # That was a real hang, not a hypothetical.
+                carried: list[str] = []
+                carried_words = 0
+                for prev in reversed(current):
+                    prev_len = len(prev.split())
+                    if carried and carried_words + prev_len > overlap_words:
+                        break
+                    if carried_words + prev_len + length > words_per_chunk:
+                        break
+                    carried.insert(0, prev)
+                    carried_words += prev_len
+                current, current_words = carried, carried_words
+                continue
+            current.append(sentence)
+            current_words += length
+            i += 1
+        if current:
+            texts.append(" ".join(current))
+
+    return [
+        Chunk(
+            url=doc.url,
+            text=text,
+            title=doc.title,
+            doc_index=doc_index,
+            chunk_index=i,
         )
-        if start + words_per_chunk >= len(words):
-            break
-    return chunks
+        for i, text in enumerate(texts)
+    ]
 
 
 @dataclass
