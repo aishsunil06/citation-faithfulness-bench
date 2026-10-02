@@ -514,3 +514,77 @@ def test_citation_ids_are_content_addressed_and_resolve():
     for claim in rec.claims:
         for cid in claim.citation_ids:
             assert rec.citation_by_id(cid) is not None
+
+
+# --------------------------------------------------------------------------
+# Directional quantities must not be corrupted
+# --------------------------------------------------------------------------
+
+
+def test_bounded_quantities_are_never_drifted():
+    """Regression: shifting a bound produces entailment, not contradiction.
+
+    "reach 3.1 billion by 2030" entails "reach 3.1 billion by 3248", because a
+    later deadline is a weaker claim the source already supports. Labelling
+    that CONTRADICTED makes the oracle wrong, and a judge agreeing with a wrong
+    oracle measures nothing.
+    """
+    from cfbench.engines.faulty import _is_directional
+
+    text = "The market will reach 3.1 billion dollars by 2030."
+    idx = text.index("2030")
+    assert _is_directional(text, idx)
+
+    plain = "Revenue was 412 million dollars."
+    assert not _is_directional(plain, plain.index("412"))
+
+
+def test_drift_leaves_the_bound_alone_but_may_hit_the_magnitude():
+    # In "reach 3.1 billion by 2030" only the deadline is a bound. Changing
+    # 3.1 to 3.4 genuinely contradicts the source, so that remains fair game;
+    # changing 2030 would not, so the year must survive untouched.
+    result = NumericDrift(
+        engine(answer="The market will reach 3.1 billion dollars by 2030 [1].",
+               citations=(("u1", "The market will reach 3.1 billion by 2030."),)),
+        seed=0,
+    ).inject(Q)
+
+    assert "2030" in result.record.claims[0].text, "corrupted a bounded quantity"
+
+
+def test_drift_skips_a_claim_whose_only_figure_is_a_bound():
+    result = NumericDrift(
+        engine(answer="The milestone will be met by 2030 [1].",
+               citations=(("u1", "The milestone will be met by 2030."),)),
+        seed=0,
+    ).inject(Q)
+    assert result.oracle == [], "corrupted a bounded quantity"
+
+
+def test_drift_still_fires_on_point_values():
+    result = NumericDrift(engine(), seed=0).inject(Q)
+    assert len(result.oracle) == 1
+    assert result.oracle[0].verdict is Verdict.CONTRADICTED
+
+
+@pytest.mark.parametrize("cue", ["at least", "up to", "more than", "under", "nearly"])
+def test_common_bound_cues_are_all_recognised(cue):
+    from cfbench.engines.faulty import _is_directional
+
+    text = f"The site holds {cue} 240 megawatt-hours."
+    assert _is_directional(text, text.index("240"))
+
+
+def test_years_are_never_drifted_even_outside_a_bound():
+    # "as of the 2025 reporting year" has no bound cue, but shifting it to 2026
+    # makes the claim UNSUPPORTED (source silent on 2026), not CONTRADICTED.
+    # An oracle that cannot be defended is worse than no oracle.
+    result = NumericDrift(
+        engine(answer="Capacity was 240 units as of the 2025 reporting year [1].",
+               citations=(("u1", "Capacity was 240 units as of the 2025 year."),)),
+        seed=0,
+    ).inject(Q)
+
+    assert "2025" in result.record.claims[0].text
+    assert result.oracle, "should still have corrupted the magnitude"
+    assert "240" not in result.record.claims[0].text

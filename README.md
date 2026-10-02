@@ -200,38 +200,66 @@ not to be the published result.
 ## Findings so far
 
 Run: 15 questions, 10-document corpus, BM25 with 90-word chunks, `top_k=3`,
-scored by the rule-based judge. 45 claims per engine variant.
+`LossyEngine`, scored by the rule-based judge.
 
 **Fault detection by the lexical judge:**
 
-| Injected fault | n | detection |
-|---|---|---|
-| `dropped-citation` | 45 | 100.0% |
-| `numeric-drift` | 40 | 100.0% |
-| `padded-claim` | 15 | 100.0% |
-| `wrong-source` | 45 | **77.8%** |
+| Injected fault | n | detection | judge said |
+|---|---|---|---|
+| `dropped-citation` | 45 | 100.0% | uncited x45 |
+| `numeric-drift` | 21 | 100.0% | contradicted x21 |
+| `wrong-source` | 45 | **53.3%** | unsupported x24, contradicted x11, partial x10 |
 
-The informative result is the last row. Token overlap catches a changed number
-every time, because the number is simply absent from the cited snippet. It is
-substantially weaker on **wrong-source attribution**: it marked 10 of 45
-mis-attributed claims as `partial` rather than `unsupported`, because a
-topically adjacent wrong source still shares most of the claim's vocabulary.
+Two results, and the second is the interesting one.
 
-That is a concrete, falsifiable hypothesis for what an LLM judge has to earn
-its cost on: wrong-source attribution, not numeric drift. Numeric checking is
-already solved by ten lines of regex.
+**Exact numeric checking is solved.** Token overlap plus a regex catches every
+swapped magnitude, and it does so whether the corruption is wild or subtle: a
+missing figure is missing either way. An LLM judge has nothing to add here.
 
-**Clean-engine baseline:** `extractive-k3-c90` scores 77.8% strict,
-95% CI [64.4%, 88.9%]. Every fault-injected variant falls outside that
-interval, which is the sanity check that the instrument responds to real
-degradation rather than noise.
+**Wrong-source attribution is where it breaks, in both directions.** Of 45
+mis-attributed claims the judge got 24 right, called 10 `partial` because a
+topically adjacent source still shares most of the claim's vocabulary, and
+called 11 `contradicted` when they were merely unsupported. That last error is
+the diagnostic one. Example:
+
+| | |
+|---|---|
+| claim | Northwind Logistics reported revenue of 412 million dollars in fiscal 2024 |
+| cited | In the first quarter of fiscal 2025 Northwind Logistics reported revenue of 118 million dollars |
+
+Both figures are true. The source is about a different period, so it fails to
+support the claim rather than contradicting it. Distinguishing *same fact,
+different value* from *different scope entirely* needs the reasoning a lexical
+rule cannot do, and is the concrete thing an LLM judge has to earn its cost on.
+
+**The oracle itself needed three corrections**, which is worth recording
+because it is the main hazard of this technique. Fault injection is only worth
+anything while the correct verdict is beyond argument, and the first version
+was not:
+
+- Corruption scaled every figure multiplicatively, turning the year 2030 into
+  3248. Detectable from implausibility alone, so it measured nothing.
+- Bounded quantities were corrupted. "Reaches 3.1 billion **by 2030**" entails
+  "reaches 3.1 billion **by 3248**", because a later deadline is a weaker claim
+  the source already supports. Labelling that `contradicted` made the oracle
+  simply wrong.
+- Years were corrupted. "Capacity was 240 as of 2026" cited to a 2025 source is
+  `unsupported`, since the source is silent on 2026 rather than denying it.
+
+Injection is now restricted to magnitudes on point values, which cut the sample
+from 40 to 21 and is the right trade: 21 indisputable cases beat 40 arguable
+ones.
+
+**Clean-engine baseline:** 95% confidence intervals are reported on every
+leaderboard score, and every fault-injected variant falls outside the clean
+engine's interval.
 
 ## Current status and known limitations
 
 Working: retrieval with chunk sweeps, extractive and generative engines, four
 fault injectors, claim decomposition, two judges, bootstrap confidence
 intervals, failure-mode decomposition, resumable human labelling with
-information-ordered queueing, dataset validation, report rendering. 86 tests,
+information-ordered queueing, dataset validation, report rendering. 96 tests,
 all offline.
 
 Honest limitations:
@@ -281,5 +309,5 @@ cfbench/
     lossy.py       paraphrases lossily, for genuinely borderline claims
     mock.py        scripted engine for tests
 data/              seed corpus and question set
-tests/             86 offline tests
+tests/             96 offline tests
 ```
