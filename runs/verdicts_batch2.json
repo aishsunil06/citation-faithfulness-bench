@@ -1,0 +1,22 @@
+{
+  "cl_646a6d356016": ["supported", "snippet states the 19.4%, 17.7% and 11.9% 2010 utility figures verbatim"],
+  "cl_cd0adb54c668": ["unsupported", "snippet covers HPR revenue and frequency-control share, and is silent on the 150 MW/194 MWh rating and Neoen ownership"],
+  "cl_fd43d0f5c86a": ["contradicted", "source says top 10 brands in Singapore, claim says top 9 for the same ranking"],
+  "cl_e11e614c8ef6": ["unsupported", "snippet is about locomotive repainting and heritage liveries, not the 2023 active roster count"],
+  "cl_c0a9b21e0523": ["supported", "snippet states the 300 mm state-of-the-art fab and 450 mm proposal verbatim"],
+  "cl_d2e9e549b4ae": ["contradicted", "source gives 366.47 m length and 15 m draft, claim says 17 m draft for the same vessel"],
+  "cl_0d04cc028fe8": ["supported", "snippet states 93% for one dose and 97% for two doses verbatim"],
+  "cl_a39d9f087adc": ["supported", "snippet states the 1965 Fairchild role and the Electronics anniversary-issue commission verbatim"],
+  "cl_9ad12ae49095": ["supported", "snippet states the ASTRIS kick-stage origin and November 2025 ESA space-tug approval verbatim"],
+  "cl_67e88fef16c2": ["supported", "snippet states Zhangjiakou's 100 MW grid connection in 2022 verbatim"],
+  "cl_1f5e2583c2e4": ["uncited", "cited_snippets is empty"],
+  "cl_9ce087ecaf67": ["unsupported", "snippet describes the Huai'an plant and diabatic storage generally, saying nothing about Huntorf's 290 MW/580 MWh"],
+  "cl_41e2aab20804": ["supported", "snippet states the 1928 USS Saratoga lamp-post incident at Gatun verbatim"],
+  "cl_7bd4a3d28502": ["supported", "snippet states the 1934 estimate of about 80 million tons per year verbatim"],
+  "cl_21e72d5f16dc": ["supported", "snippet states the HB405 drop and the tier 0 to tier 2 plus Roper Yard electric commitments verbatim"],
+  "cl_f9e1bf57535f": ["supported", "snippet states no protective effect elsewhere and declining efficacy nearer the equator verbatim"],
+  "cl_bf108bf793b8": ["supported", "snippet states the 1981-83 inquiries, 1985 white paper and 1995-99 inquiry approving Terminal 5 verbatim"],
+  "cl_c156829b08bb": ["supported", "snippet states about EUR 3.6 billion invested as of August 2026 verbatim"],
+  "cl_4748b82c096a": ["contradicted", "source says Denmark does not need additional peak-load plants, claim asserts it does"],
+  "cl_5cbf884c28b5": ["partial", "claim rounds the source's 99.9999999% (9N) purity to roughly 100%, keeping the 9N label"]
+}

@@ -1136,3 +1136,41 @@ def test_a_comma_grouped_numeral_is_not_mistaken_for_a_year():
 
     assert _looks_like_year("2030", 2030.0)
     assert not _looks_like_year("1,800", 1800.0)
+
+
+# --------------------------------------------------------------------------
+# LossyEngine must paraphrase, not garble
+# --------------------------------------------------------------------------
+#
+# Graders flagged "7,roughly 180 locomotives" and "The Boeing roughly 790" as
+# unjudgeable. A borderline-case generator that emits garbled strings produces
+# rows nobody can grade, which is worse than producing none.
+
+
+def test_lossy_rounding_keeps_comma_groups_intact():
+    import random
+    from cfbench.engines.lossy import _round_number
+
+    result = _round_number("a roster of 7,175 locomotives", random.Random(0))
+    assert result is not None
+    out, _why = result
+    import re
+    assert not re.search(r"\d,roughly", out), out
+    assert "roughly 7,200" in out or "roughly 7,100" in out, out
+
+
+def test_lossy_rounding_skips_model_numbers():
+    import random
+    from cfbench.engines.lossy import _round_number
+
+    # "The Boeing 787" must not become "The Boeing roughly 790".
+    assert _round_number("The Boeing 787 entered service", random.Random(0)) is None
+
+
+def test_lossy_rounding_still_fires_on_plain_magnitudes():
+    import random
+    from cfbench.engines.lossy import _round_number
+
+    result = _round_number("revenue of 412 million dollars", random.Random(0))
+    assert result is not None
+    assert "roughly 410" in result[0]
