@@ -588,3 +588,378 @@ def test_years_are_never_drifted_even_outside_a_bound():
     assert "2025" in result.record.claims[0].text
     assert result.oracle, "should still have corrupted the magnitude"
     assert "240" not in result.record.claims[0].text
+
+
+# --------------------------------------------------------------------------
+# EntitySwap: substituting a named entity the source contradicts
+# --------------------------------------------------------------------------
+#
+# The oracle bar for this injector is CONTRADICTED, which is only defensible
+# when the cited source itself makes a *competing* statement about the
+# substituted entity. Swapping in an entity the source never discusses yields
+# a claim the source is merely silent about, which is UNSUPPORTED, so the
+# injector must decline instead of guessing.
+
+
+A_AND_B = (
+    "Northwind Energy reported revenue of 412 million dollars in fiscal 2024. "
+    "Helion Grid reported revenue of 98 million dollars in fiscal 2024."
+)
+A_ONLY = "Northwind Energy reported revenue of 412 million dollars in fiscal 2024."
+B_ELSEWHERE = "Helion Grid operates battery storage in Mesa County."
+
+SWAP_ANSWER = "Northwind Energy reported revenue of 412 million dollars [1]."
+
+
+def swap_engine(answer=SWAP_ANSWER, cited=A_AND_B, other=B_ELSEWHERE):
+    cits = [("u1", cited)]
+    if other is not None:
+        cits.append(("u2", other))
+    return MockEngine(script={"q1": (answer, cits)})
+
+
+def test_entity_swap_replaces_a_named_entity_and_flags_contradicted():
+    from cfbench.engines.faulty import EntitySwap
+
+    result = EntitySwap(swap_engine(), seed=1).inject(Q)
+    text = result.record.claims[0].text
+
+    assert "Northwind Energy" not in text
+    assert "Helion Grid" in text
+    assert len(result.oracle) == 1
+    assert result.oracle[0].verdict is Verdict.CONTRADICTED
+    assert "Northwind Energy" in result.oracle[0].rationale
+
+
+def test_entity_swap_rewrites_the_answer_text_too():
+    from cfbench.engines.faulty import EntitySwap
+
+    result = EntitySwap(swap_engine(), seed=1).inject(Q)
+    assert "Helion Grid" in result.record.answer_text
+    assert "Northwind Energy" not in result.record.answer_text
+
+
+def test_entity_swap_oracle_points_at_a_live_claim_id():
+    from cfbench.engines.faulty import EntitySwap
+
+    result = EntitySwap(swap_engine(), seed=1).inject(Q)
+    live = {c.id for c in result.record.claims}
+    assert result.oracle and all(lb.claim_id in live for lb in result.oracle)
+
+
+def test_entity_swap_declines_when_no_alternative_entity_is_available():
+    # A single citation means there is no non-cited source to draw from.
+    from cfbench.engines.faulty import EntitySwap
+
+    assert EntitySwap(swap_engine(cited=A_AND_B, other=None)).inject(Q).oracle == []
+
+
+def test_entity_swap_declines_when_the_cited_source_is_silent_about_the_swap():
+    """The guard that keeps the oracle honest.
+
+    "Helion Grid reported revenue of 412 million" cited to a source that only
+    discusses Northwind is UNSUPPORTED, not CONTRADICTED: both companies could
+    perfectly well have earned 412 million. Declining is the only defensible
+    move.
+    """
+    from cfbench.engines.faulty import EntitySwap
+
+    result = EntitySwap(swap_engine(cited=A_ONLY), seed=1).inject(Q)
+    assert result.oracle == []
+    assert "Northwind Energy" in result.record.claims[0].text
+
+
+def test_entity_swap_declines_when_the_source_states_the_same_figure():
+    # If the source says Helion Grid also reported 412 million, the swapped
+    # claim is SUPPORTED, which is the opposite of the intended fault.
+    from cfbench.engines.faulty import EntitySwap
+
+    cited = (
+        "Northwind Energy reported revenue of 412 million dollars in fiscal 2024. "
+        "Helion Grid reported revenue of 412 million dollars in fiscal 2023."
+    )
+    assert EntitySwap(swap_engine(cited=cited), seed=1).inject(Q).oracle == []
+
+
+def test_entity_swap_declines_a_claim_with_no_multi_word_entity():
+    from cfbench.engines.faulty import EntitySwap
+
+    result = EntitySwap(
+        swap_engine(answer="Revenue reached 412 million dollars [1].")
+    ).inject(Q)
+    assert result.oracle == []
+
+
+def test_entity_swap_declines_a_claim_whose_only_figure_is_a_bound():
+    # "more than 412" is a bound: a competing figure does not contradict it
+    # cleanly, so the number cannot anchor the comparison.
+    from cfbench.engines.faulty import EntitySwap
+
+    answer = "Northwind Energy reported more than 412 million dollars [1]."
+    cited = (
+        "Northwind Energy reported more than 412 million dollars in fiscal 2024. "
+        "Helion Grid reported revenue of 98 million dollars in fiscal 2024."
+    )
+    assert EntitySwap(swap_engine(answer=answer, cited=cited)).inject(Q).oracle == []
+
+
+def test_entity_swap_declines_when_the_competing_figure_is_only_a_year():
+    # A sentence about Helion Grid containing nothing but a year states no
+    # competing quantity, so there is no contradiction to rely on.
+    from cfbench.engines.faulty import EntitySwap
+
+    cited = (
+        "Northwind Energy reported revenue of 412 million dollars in fiscal 2024. "
+        "Helion Grid reported revenue in fiscal 2019."
+    )
+    assert EntitySwap(swap_engine(cited=cited), seed=1).inject(Q).oracle == []
+
+
+def test_entity_swap_declines_when_the_predicate_does_not_match():
+    # The source says something about Helion Grid, but not about revenue, so
+    # it is not a competing statement about the claim's fact.
+    from cfbench.engines.faulty import EntitySwap
+
+    cited = (
+        "Northwind Energy reported revenue of 412 million dollars in fiscal 2024. "
+        "Helion Grid installed 98 battery racks at its depot."
+    )
+    assert EntitySwap(swap_engine(cited=cited), seed=1).inject(Q).oracle == []
+
+
+def test_entity_swap_declines_when_the_entity_already_appears_in_the_claim():
+    from cfbench.engines.faulty import EntitySwap
+
+    answer = (
+        "Northwind Energy outbid Helion Grid for revenue of 412 million dollars [1]."
+    )
+    assert EntitySwap(swap_engine(answer=answer), seed=1).inject(Q).oracle == []
+
+
+def test_entity_swap_declines_an_uncited_claim():
+    from cfbench.engines.faulty import EntitySwap
+
+    answer = "Northwind Energy reported revenue of 412 million dollars."
+    assert EntitySwap(swap_engine(answer=answer), seed=1).inject(Q).oracle == []
+
+
+def test_entity_swap_is_deterministic_for_a_given_seed():
+    from cfbench.engines.faulty import EntitySwap
+
+    a = EntitySwap(swap_engine(), seed=5).inject(Q).record.claims[0].text
+    b = EntitySwap(swap_engine(), seed=5).inject(Q).record.claims[0].text
+    assert a == b
+
+
+# --------------------------------------------------------------------------
+# PolarityFlip: inverting a single unhedged negation
+# --------------------------------------------------------------------------
+
+
+NEG_SNIPPET = (
+    "The audit found no incidents at the Mesa site during the review period."
+)
+NEG_ANSWER = "The audit found no incidents at the Mesa site [1]."
+
+
+def neg_engine(answer=NEG_ANSWER, snippet=NEG_SNIPPET):
+    return MockEngine(script={"q1": (answer, [("u1", snippet)])})
+
+
+def test_polarity_flip_inverts_a_negation_and_flags_contradicted():
+    from cfbench.engines.faulty import PolarityFlip
+
+    result = PolarityFlip(neg_engine(), seed=0).inject(Q)
+    text = result.record.claims[0].text
+
+    assert "no incidents" not in text
+    assert "found incidents" in text
+    assert len(result.oracle) == 1
+    assert result.oracle[0].verdict is Verdict.CONTRADICTED
+
+
+def test_polarity_flip_rewrites_the_answer_text_too():
+    from cfbench.engines.faulty import PolarityFlip
+
+    result = PolarityFlip(neg_engine(), seed=0).inject(Q)
+    assert "no incidents" not in result.record.answer_text
+
+
+def test_polarity_flip_handles_a_leading_negation_and_recapitalises():
+    from cfbench.engines.faulty import PolarityFlip
+
+    result = PolarityFlip(
+        neg_engine(
+            answer="No incidents were recorded at the Mesa site [1].",
+            snippet="No incidents were recorded at the Mesa site last year.",
+        ),
+        seed=0,
+    ).inject(Q)
+
+    assert result.oracle[0].verdict is Verdict.CONTRADICTED
+    assert result.record.claims[0].text.startswith("Incidents were recorded")
+
+
+def test_polarity_flip_turns_without_into_with():
+    from cfbench.engines.faulty import PolarityFlip
+
+    result = PolarityFlip(
+        neg_engine(
+            answer="The plant operated without a permit in 2024 [1].",
+            snippet="The plant operated without a permit in 2024, regulators said.",
+        ),
+        seed=0,
+    ).inject(Q)
+
+    assert "with a permit" in result.record.claims[0].text
+    assert result.oracle[0].verdict is Verdict.CONTRADICTED
+
+
+def test_polarity_flip_removes_never():
+    from cfbench.engines.faulty import PolarityFlip
+
+    result = PolarityFlip(
+        neg_engine(
+            answer="The company never disclosed the agreement [1].",
+            snippet="The company never disclosed the agreement to shareholders.",
+        ),
+        seed=0,
+    ).inject(Q)
+
+    assert result.record.claims[0].text == "The company disclosed the agreement."
+    assert result.oracle[0].verdict is Verdict.CONTRADICTED
+
+
+def test_polarity_flip_declines_a_claim_with_no_polarity_marker():
+    from cfbench.engines.faulty import PolarityFlip
+
+    result = PolarityFlip(
+        neg_engine(
+            answer="The audit found three incidents at the Mesa site [1].",
+            snippet="The audit found three incidents at the Mesa site.",
+        )
+    ).inject(Q)
+    assert result.oracle == []
+
+
+def test_polarity_flip_declines_a_hedged_claim():
+    # "may not have" is modal: inverting it does not produce a clean
+    # contradiction, so the injector must decline rather than guess.
+    from cfbench.engines.faulty import PolarityFlip
+
+    result = PolarityFlip(
+        neg_engine(
+            answer="The audit may not have found incidents at the Mesa site [1].",
+            snippet="The audit may not have found incidents at the Mesa site.",
+        )
+    ).inject(Q)
+    assert result.oracle == []
+    assert "not" in result.record.claims[0].text
+
+
+def test_polarity_flip_declines_two_negation_markers():
+    from cfbench.engines.faulty import PolarityFlip
+
+    result = PolarityFlip(
+        neg_engine(
+            answer="The audit found no incidents and no violations at Mesa [1].",
+            snippet="The audit found no incidents and no violations at Mesa.",
+        )
+    ).inject(Q)
+    assert result.oracle == []
+
+
+def test_polarity_flip_declines_when_the_source_never_states_the_negative():
+    """The guard that keeps the oracle honest.
+
+    If the cited source says nothing about incidents, the original claim was
+    already unsupported, and the flipped claim is equally unsupported rather
+    than contradicted.
+    """
+    from cfbench.engines.faulty import PolarityFlip
+
+    result = PolarityFlip(
+        neg_engine(snippet="The Mesa site has a rated capacity of 240 megawatt-hours.")
+    ).inject(Q)
+    assert result.oracle == []
+
+
+def test_polarity_flip_declines_when_the_source_negates_a_different_fact():
+    from cfbench.engines.faulty import PolarityFlip
+
+    result = PolarityFlip(
+        neg_engine(snippet="No permits were issued for the Clearwater refinery.")
+    ).inject(Q)
+    assert result.oracle == []
+
+
+def test_polarity_flip_declines_when_the_source_itself_hedges():
+    from cfbench.engines.faulty import PolarityFlip
+
+    result = PolarityFlip(
+        neg_engine(
+            snippet=(
+                "The audit found no incidents at the Mesa site, which may "
+                "suggest reporting gaps."
+            )
+        )
+    ).inject(Q)
+    assert result.oracle == []
+
+
+@pytest.mark.parametrize(
+    "claim_text",
+    [
+        "The site is no longer operational",
+        "The site holds no more than 240 megawatt-hours",
+        "The report is not only incomplete but late",
+        "The filing was no later than the deadline",
+    ],
+)
+def test_polarity_flip_declines_idioms_and_bounds(claim_text):
+    # Deleting the marker from these either produces nonsense ("is longer
+    # operational") or silently alters a bound, neither of which is a clean
+    # contradiction.
+    from cfbench.engines.faulty import PolarityFlip
+
+    result = PolarityFlip(
+        neg_engine(answer=f"{claim_text} [1].", snippet=f"{claim_text}.")
+    ).inject(Q)
+    assert result.oracle == []
+
+
+def test_polarity_flip_declines_an_uncited_claim():
+    from cfbench.engines.faulty import PolarityFlip
+
+    result = PolarityFlip(
+        neg_engine(answer="The audit found no incidents at the Mesa site.")
+    ).inject(Q)
+    assert result.oracle == []
+
+
+def test_polarity_flip_oracle_points_at_a_live_claim_id():
+    from cfbench.engines.faulty import PolarityFlip
+
+    result = PolarityFlip(neg_engine(), seed=0).inject(Q)
+    live = {c.id for c in result.record.claims}
+    assert result.oracle and all(lb.claim_id in live for lb in result.oracle)
+
+
+# --------------------------------------------------------------------------
+# Registration
+# --------------------------------------------------------------------------
+
+
+@pytest.mark.parametrize("fault", ["entity-swap", "polarity-flip"])
+def test_new_faults_are_registered_and_resolved_by_wrap(fault):
+    from cfbench.engines.faulty import FAULTS
+
+    assert fault in FAULTS
+    assert wrap(engine(), fault).name.endswith(f"+{fault}")
+
+
+def test_rate_zero_injects_nothing_for_the_new_faults():
+    from cfbench.engines.faulty import EntitySwap, PolarityFlip
+
+    assert EntitySwap(swap_engine(), rate=0.0, seed=3).inject(Q).oracle == []
+    assert PolarityFlip(neg_engine(), rate=0.0, seed=3).inject(Q).oracle == []
