@@ -532,10 +532,16 @@ _MODALS = (
 #                               3248" look like a fault
 #   - "not only late"           a correlative, not a denial
 #   - "No. 3"                   an abbreviation for a number
+#   - "denied that no ..."      a second negative the marker interacts with,
+#                               so flipping one of them does not reliably
+#                               reverse what the sentence asserts
 _NEGATION_IDIOM = re.compile(
     r"\bno(?:t)?\s+(?:longer|more|less|fewer|later|earlier|greater|sooner"
     r"|only|just|doubt|matter|least|other|until|before)\b"
-    r"|\bnone\b|\bwhether\b|\bno\.\s*\d",
+    r"|\bnone\b|\bwhether\b|\bno\.\s*\d"
+    r"|\b(?:deny|denies|denied|refuse[ds]?|reject(?:s|ed)?|fail(?:s|ed)?"
+    r"|lack(?:s|ed|ing)?|absence|neither|nor|unable|unless|except"
+    r"|hardly|scarcely|barely)\b",
     re.IGNORECASE,
 )
 
@@ -603,12 +609,22 @@ class PolarityFlip(_Base):
 
     @staticmethod
     def _source_negates(snippet: str, claim_text: str, word: str) -> bool:
-        """Whether the source itself negates this claim's fact."""
-        if _hedged(snippet) or _NEGATION_IDIOM.search(snippet):
-            return False
-        if not re.search(rf"\b{word}\b", snippet, re.IGNORECASE):
-            return False
-        return _overlaps(_content_words(claim_text), snippet)
+        """Whether the source itself negates this claim's fact.
+
+        Scoped to a single sentence of the snippet, not the snippet as a
+        whole. The sentence carrying the negation is what has to be plain:
+        a hedge four sentences away says nothing about this fact, while a
+        snippet-wide hedge test silently declines every long chunk.
+        """
+        predicate = _content_words(claim_text)
+        for sentence in split_sentences(snippet):
+            if not re.search(rf"\b{word}\b", sentence, re.IGNORECASE):
+                continue
+            if _hedged(sentence) or _NEGATION_IDIOM.search(sentence):
+                continue
+            if _overlaps(predicate, sentence):
+                return True
+        return False
 
     @staticmethod
     def _flip(text: str, marker: re.Match) -> str | None:
