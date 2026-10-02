@@ -1,744 +1,62 @@
 [
   {
-    "claim_id": "cl_103ad3a56f8a",
-    "engine": "lossy-k3-c90+wrong-source",
-    "question": "How effective is one dose of measles vaccine at preventing measles, and how effective are two doses?",
-    "failure_modes": [
-      "simple",
-      "numeric"
-    ],
-    "claim": "The measles vaccine is equally effective for preventing measles in all formulations, but side effects vary for different combinations. the vaccine are about 97% effective at preventing measles.",
-    "cited_snippets": [
-      "children globally had received at least one dose of the vaccine as of 2018. In 2021, at least 183 countries provided two doses in their routine immunization schedule. It is on the World Health Organization's List of Essential Medicines. As outbreaks easily occur in under-vaccinated populations, non-prevalence of disease is seen as a test of sufficient vaccination within a population. One dose is about 93% effective while two doses of the vaccine are about 97% effective at preventing measles. Before the widespread use of the vaccine, measles was so common"
-    ],
-    "has_oracle": true
-  },
-  {
-    "claim_id": "cl_9cd2e19a7d8e",
-    "engine": "lossy-k3-c90+wrong-source",
-    "question": "What was the title of Gordon Moore's 1965 article, and how many components did he speculate a single quarter-square-inch semiconductor could contain by 1975?",
-    "failure_modes": [
-      "simple",
-      "numeric"
-    ],
-    "claim": "In 1965, Gordon Moore, who at the time was working as the director of research and development at Fairchild Semiconductor, was asked to contribute to the thirty-fifth-anniversary issue.",
-    "cited_snippets": [
-      "was working as the director of research and development at Fairchild Semiconductor, was asked to contribute to the thirty-fifth-anniversary issue of Electronics magazine with a prediction on the future of the semiconductor components industry over the next ten years. His response was a brief article entitled \"Cramming more components onto integrated circuits\". Within his editorial, he speculated that by 1975 it would be possible to contain as many as 65000 components on a single quarter-square-inch (~ 1.6 cm2) semiconductor. The complexity for minimum component costs has increased at a rate"
-    ],
-    "has_oracle": true
-  },
-  {
-    "claim_id": "cl_e74795fcc40d",
-    "engine": "lossy-k3-c250+numeric-drift",
-    "question": "What are the dimensions of the new lock chambers built for the Panama Canal expansion?",
-    "failure_modes": [
-      "numeric"
-    ],
-    "claim": "Panama Canal pilots were initially unprepared to handle the flight decks of aircraft carriers, which protrude beyond the hull on either side of the ship. consideration, an enlargement scheme to allow for a greater number of transits and the ability to handle larger ships, similar to the Third Lock Scheme of 1939, was recommended by the Panama's government canal authority.",
-    "cited_snippets": [
-      "allow the passage of large warships. A compromise was made and the locks were built 33.53 m (110.0 ft) wide. Each lock is 320 m (1,050 ft) long, with the walls ranging in thickness from 15 m (49 ft) at the base to 3 m (9.8 ft) at the top. The central wall between the parallel locks at Gatun is 18 m (59 ft) thick and over 24 m (79 ft) high. The steel lock gates measure an average of 2 m (6.6 ft) thick, 19.5 m (64 ft) wide, and 20 m (66 ft) high. Panama Canal pilots were initially unprepared to handle the flight decks of aircraft carriers, which protrude beyond the hull on either side of the ship. When USS Saratoga made her first trip through the Gatun Locks in 1928, the ship knocked over all the concrete lamp posts along the canal. In 2016, a decade-long expansion project created larger locks, allowing bigger ships to transit through deeper and wider channels. The allowed dimensions of ships using these locks increased by 25 percent in length, 51 percent in beam, and 26 percent in draft, as defined by Neopanamax metrics. As with a toll road, vessels transiting the canal must pay tolls. Tolls for the canal are set by the Panama Canal Authority and are based on vessel type, size, and the type of cargo. For container ships, the toll is assessed on the ship's capacity expressed in twenty-foot equivalent units (TEUs), one TEU being the size",
-      "consideration, an enlargement scheme to allow for a greater number of transits and the ability to handle larger ships, similar to the Third Lock Scheme of 1939, was recommended by the Panama's government canal authority. The expansion proposal was estimated to cost US$5.25 billion and expected to double the canal's shipping capacity by allowing both the passage of longer and wider Post-Panamax ships, with an increase in overall traffic. This proposal was approved in a national referendum by about 80% on 22 October 2006. The canal expansion began in 2007. There were numerous engineering aspects to the project, including the excavation of material and construction of the new locks. On 3 September 2007, thousands of Panamanians stood across from Paraíso Hill in Panama to witness a huge initial explosion and launch of the Expansion Program. The first phase of the project was the dry excavations of the 218 meters (715 feet) wide trench connecting the Gaillard Cut with the Pacific coast, removing 47 million cubic meters of earth and rock. It was announced in July 2009 that the Belgian dredging company Jan De Nul, together with a consortium of contractors consisting of the Spanish Sacyr Vallehermoso, the Italian Impregilo, and the Panamanian company Grupo Cusa, had been awarded the contract to build the six new locks for US$3.1 billion. The design of the locks is a carbon copy of the Berendrecht Lock, which is 68 m wide and 500 m long, making it the second largest lock in the world"
-    ],
-    "has_oracle": false
-  },
-  {
-    "claim_id": "cl_9e51ce94815f",
-    "engine": "lossy-k3-c90+wrong-source",
-    "question": "What did Heathrow Terminal 5 cost to build, and when did it open to the public?",
-    "failure_modes": [
-      "simple",
-      "numeric"
-    ],
-    "claim": "Terminal 5 is expected to open in mid-2030s.",
-    "cited_snippets": [
-      "and swerve towards the terminal building. It hit two parked British European Airways Hawker Siddeley Trident aircraft, burst into flames, and came to rest against the ground floor of the terminal building. Six of the eight crew died, as did eight horses on board. Trident G-ARPT was written off, and Trident G-ARPI was badly damaged, but subsequently repaired, only to be lost in the Staines crash in 1972. On 18 June 1972, Trident G-ARPI, operating as BEA548, crashed in a field close to the Crooked Billet Public House, Staines, two"
-    ],
-    "has_oracle": true
-  },
-  {
-    "claim_id": "cl_eee61283a2ae",
-    "engine": "extractive-k3-c250",
-    "question": "Which lithography supplier paused development of 450 mm lithography equipment, in what month and year, and what had Nikon planned for 450 mm equipment?",
-    "failure_modes": [
-      "multi_hop",
-      "recency"
-    ],
-    "claim": "In November 2013, ASML paused development of 450 mm lithography equipment, citing uncertain timing of chipmaker demand.",
-    "cited_snippets": [
-      "$4.1 billion into ASML, made in July 2012, gave it a 15 percent stake in the company; this move was stated to accelerate Intel's transition from 300 mm to 450 mm wafers as well as support further development of EUV lithography. That same month, ASML offered another 10 percent of its shares to other companies. Beyond simply generating additional funds, these new stakeholders were incentivised to participate in ASML's research efforts. TSMC in particular worked closely with ASML to develop and troubleshoot its EUV machines, being keen to use them to manufacture their own products. As part of their EUV strategy, ASML announced the acquisition of DUV and EUV sources manufacturer Cymer in exchange for $2.55 billion in October 2012; this transaction was completed in May 2013. Cymer's technology was viewed as being useful to developing ASML's EUV machines. In November 2013, ASML paused development of 450 mm lithography equipment, citing uncertain timing of chipmaker demand. In early 2015, ASML reported an instance of intellectual property theft; allegedly a number of employees had been found stealing confidential data from its Silicon Valley software subsidiary that develops software for machine optimization. Three years later, ASML was awarded $223 million in damages pertaining to this incident, as well as securing the offending company's own intellectual property. ASML employees have often been viewed as highly desirable recruitment targets for other tech companies. In June 2016, ASML announced their plans to acquire Taiwan-based Hermes Microvision Inc. in exchange for about $3.1 billion; it was"
-    ],
-    "has_oracle": false
-  },
-  {
-    "claim_id": "cl_bf4c97f2f217",
-    "engine": "lossy-k3-c90+dropped-citation",
-    "question": "As of October 2, 2026, how many Falcon 9 full mission successes had been achieved, out of how many attempts, and at what success rate?",
-    "failure_modes": [
-      "numeric",
-      "recency"
-    ],
-    "claim": "The core for the mission, Falcon 9 B1046, was the first Block 5 booster produced, and had flown initially on the Bangabandhu Satellite-1 mission.",
-    "cited_snippets": [],
-    "has_oracle": true
-  },
-  {
-    "claim_id": "cl_d6861c3529ed",
-    "engine": "lossy-k3-c90+numeric-drift",
-    "question": "What did it cost to develop the Airbus A350?",
-    "failure_modes": [
-      "contested",
-      "numeric"
-    ],
-    "claim": "the aircraft, and that previous contracts for the GEnx on the original A350 did not apply to the XWB.",
-    "cited_snippets": [
-      "the aircraft, and that previous contracts for the GEnx on the original A350 did not apply to the XWB. Engine Alliance partner Pratt & Whitney seemed to be unaligned with GE on this, having publicly stated that it was looking at an advanced derivative of the GP7000. In April 2007, former Airbus CEO Louis Gallois held direct talks with GE management over developing a GEnx variant for the A350 XWB. In June 2007, John Leahy indicated that the A350 XWB would not feature the GEnx engine, saying that Airbus wanted"
-    ],
-    "has_oracle": false
-  },
-  {
-    "claim_id": "cl_bbe6a1a8b39b",
-    "engine": "lossy-k3-c250",
-    "question": "What container capacity is reported for the Emma Maersk, and what claim is made about its size?",
-    "failure_modes": [
-      "contested",
-      "multi_hop"
-    ],
-    "claim": "In 2008, it was calculated by the DK Group that the Maersk fleet together released just over one million tonnes of sulfur dioxide SO2 per year from the fleets use of bunker fuel, and at the time until 2014, when China Shipping Lanes took over by one meter and 20 percent less fuel emissions, the world's largest container ship Emma Mærsk emits SO2 equivalent to 50 million cars.",
-    "cited_snippets": [
-      "are not counted, as the responsibility lies with the UN's organizations for aviation (ICAO) and shipping (IMO). However, IMO has committed to halving the industry's greenhouse-gas emissions by 2050, and because 80% of global trade (around 11 billion tonnes) is transported by sea each year, global shipping generated about 1,000 million tonnes (3%) of carbon dioxide emissions in 2018. From territorial based point of view, the Maersk fleet is not obliged to make reductions, but instead pay through slightly higher taxes from the emissions to a fund based on taxes from the fleets use of bunker fuel, which will be able to compensate and finance climate measures, a concept developed by the Ministry of Climate and the Danish Maritime Authority. In 2008, it was calculated by the DK Group that the Maersk fleet together released just over one million tonnes of sulfur dioxide SO2 per year from the fleets use of bunker fuel, and at the time until 2014, when China Shipping Lanes took over by one meter and 20 percent less fuel emissions, the world's largest container ship Emma Mærsk emits SO2 equivalent to 50 million cars. \"These are figures that are publicly available. But they have probably not really come to light because shipping has been totally unregulated. But when the biggest ships sail out, you have to imagine that 50 million cars will follow,\" says Jørn Winkler, founder of DK Group. For example, there are filters that remove virtually all sulfur dioxide and nitrogen, but the price"
-    ],
-    "has_oracle": false
-  },
-  {
-    "claim_id": "cl_ead8a2dfce26",
-    "engine": "lossy-k3-c250+wrong-source",
-    "question": "What is the maximum monthly wafer capacity of GlobalFoundries' Fab 8, and where is it?",
-    "failure_modes": [
-      "numeric"
-    ],
-    "claim": "In 2023, it was announced that GlobalFoundries plans to invest $8 billion in its Dresden facility, doubling the capacity of its largest production site, and Module 2 was originally named \"(AMD) Fab 30\" and was a 200 mm fab brought online in 1999 and later produced up to 30,000 Wafer Outs Per Month.",
-    "cited_snippets": [
-      "are in Singapore. Fabs 8 through 10 are in the northeast United States. These sites are supported by a global network of R&D, design enablement, and customer support in Singapore, China, Taiwan, Japan, India, the United States, Germany, and the United Kingdom. In February 2017, the company announced a new 300 Fab [Fab 11] in China for growing semiconductor market in China. In 2016 GlobalFoundries licensed the 14 nm 14LPP FinFET process from Samsung Electronics. In 2018 GlobalFoundries developed the 12 nm 12LP node based on Samsung's 14 nm 14LPP process. On 27 August 2018 GlobalFoundries announced it had cancelled their 7LP process due to a strategy shift to focus on specialized processes instead of leading edge performance. On 29 January 2019 AMD announced an amended wafer supply agreement with GlobalFoundries. AMD now has full flexibility for wafer purchases from any foundry at 7 nm or beyond. AMD and GlobalFoundries agreed to commitments and pricing at 12 nm for 2019 through 2021. On 20 May 2019 Marvell Technology Group announced it would acquire Avera Semi from GlobalFoundries for $650 million and potentially an additional $90 million. Avera Semi was GlobalFoundries' ASIC Solutions division, which had been a part of IBM's semiconductor manufacturing business. On 1 February 2019 GlobalFoundries announced the $236 million sale of its Fab 3E in Tampines, Singapore, to Vanguard International Semiconductor (VIS) as part of their plan to exit the MEMS business by 31 December 2019. On April 22, 2019, GlobalFoundries announced the $430 million sale of"
-    ],
-    "has_oracle": true
-  },
-  {
-    "claim_id": "cl_e05c9eada11a",
-    "engine": "extractive-k3-c250",
-    "question": "How much mass can the Ariane 62 variant place into low Earth orbit, and how much can the Ariane 64 place into low Earth orbit?",
-    "failure_modes": [
-      "numeric"
-    ],
-    "claim": "The Ariane 62 variant uses two P120C solid rocket boosters, while Ariane 64 uses four.",
-    "cited_snippets": [
-      "Ariane 6 (French: [aʁjan sis]) is a European expendable launch system developed for the European Space Agency (ESA) and French Space Agency (CNES) and manufactured by a consortium of European companies, led by the prime contractor ArianeGroup. As part of the Ariane rocket family, it is operated by Arianespace, replacing the Ariane 5. The project's primary contributors were France (55.3%), Germany (21%) and Italy (7.6%), with the remaining work distributed among ten other participating countries. This two-stage rocket utilizes liquid hydrogen and liquid oxygen (hydrolox) engines. The first stage features an upgraded Vulcain engine from Ariane 5, while the second uses the Vinci engine, designed specifically for this rocket. The Ariane 62 variant uses two P120C solid rocket boosters, while Ariane 64 uses four. The P120C booster is shared with Europe's other launch vehicle Vega C, and is an improved version of the P80 used on the original Vega. Selected in December 2014 over an all-solid-fuel alternative, Ariane 6 was initially planned for a 2020 debut. However, the program faced delays, with the first launch eventually taking place on 9 July 2024. While the rocket successfully launched, the mission experienced a partial failure when the upper stage malfunctioned and was not able to complete its final deorbit burn. The second launch was therefore postponed to 6 March 2025, successfully delivering its first commercial payload to orbit, the CSO-3 reconnaissance satellite. Ariane 6 was designed to reduce launch costs and increase annual launch capacity from seven to eleven missions compared with"
-    ],
-    "has_oracle": false
-  },
-  {
-    "claim_id": "cl_abcd8b8f35c9",
+    "claim_id": "cl_a791a0d57dba",
     "engine": "extractive-k3-c90",
-    "question": "Which region pays no surcharge for electricity from the Three Gorges Dam?",
-    "failure_modes": [
-      "negation"
-    ],
-    "claim": "Funding sources include the Three Gorges Dam Construction Fund, profits from the Gezhouba Dam, loans from the China Development Bank, loans from domestic and foreign commercial banks, corporate bonds, and revenue from both before and after the dam had become fully operational.",
-    "cited_snippets": [
-      "Funding sources include the Three Gorges Dam Construction Fund, profits from the Gezhouba Dam, loans from the China Development Bank, loans from domestic and foreign commercial banks, corporate bonds, and revenue from both before and after the dam had become fully operational. Additional charges were assessed as follows: every province receiving power from the Three Gorges Dam had to pay an extra ¥7.00 per MWh, and the other provinces had to pay an additional charge of ¥4.00 per MWh. No surcharge was imposed on the Tibet Autonomous Region. Power generation"
-    ],
-    "has_oracle": false
-  },
-  {
-    "claim_id": "cl_d35982dc42ea",
-    "engine": "lossy-k3-c250+numeric-drift",
-    "question": "Is BCG vaccination recommended during pregnancy, and what did the WHO decide in 2007 about giving BCG to infants with HIV?",
-    "failure_modes": [
-      "negation"
-    ],
-    "claim": "In 2007, the WHO stopped recommending BCG for infants with HIV, even if the risk of exposure to tuberculosis is high, because of the risk of disseminated BCG infection (which is roughly 400 per 100,0.0 in that higher risk context).",
-    "cited_snippets": [
-      "for nonsuppurative lymphadenitis. If suppuration occurs, it may need needle aspiration. For unresolved suppuration, surgical excision may be required. Evidence for the treatment of these complications is scarce. Uncommonly, breast and gluteal abscesses can occur due to haematogenous (carried by the blood) and lymphangiomatous spread. Regional bone infection (BCG osteomyelitis or osteitis) and disseminated BCG infection are rare complications of BCG vaccination, but potentially life-threatening. Systemic antituberculous therapy may be helpful in severe complications. When BCG is used for bladder cancer, around 2.9% of treated patients discontinue immunotherapy due to a genitourinary or systemic BCG-related infection, however while symptomatic bladder BCG infection is frequent, the involvement of other organs is very uncommon. When systemic involvement occurs, liver and lungs are the first organs to be affected (1 week [median] after the last BCG instillation). If BCG is accidentally given to an immunocompromised patient (e.g., an infant with severe combined immune deficiency), it can cause disseminated or life-threatening infection. The documented incidence of this happening is less than one per million immunizations given. In 2007, the WHO stopped recommending BCG for infants with HIV, even if the risk of exposure to tuberculosis is high, because of the risk of disseminated BCG infection (which is roughly 400 per 100,000 in that higher risk context). The person's age and the frequency with which BCG is given have always varied from country to country. The WHO recommends childhood BCG for all countries with a high incidence of tuberculosis and/or high leprosy burden. This is"
-    ],
-    "has_oracle": true
-  },
-  {
-    "claim_id": "cl_69edac0feee0",
-    "engine": "extractive-k3-c250",
-    "question": "Does Denmark need to install additional peak-load power plants to balance its wind power?",
-    "failure_modes": [
-      "negation"
-    ],
-    "claim": "Pumped storage provides a load at times of high electricity output and low electricity demand, enabling additional system peak capacity.",
-    "cited_snippets": [
-      "reserve, load following, and operating reserve, in addition to bulk energy storage and peak-shaving functions. This operational flexibility has become increasingly important in power systems with larger shares of variable renewable generation. The most important use for pumped storage has traditionally been to balance baseload powerplants, but they may also be used to abate the fluctuating output of intermittent energy sources. Pumped storage provides a load at times of high electricity output and low electricity demand, enabling additional system peak capacity. In certain jurisdictions, electricity prices may be close to zero or occasionally negative on occasions that there is more electrical generation available than there is load available to absorb it. Although at present this is rarely due to wind or solar power alone, increased use of such generation will increase the likelihood of those occurrences. It is particularly likely that pumped storage will become especially important as a balance for very large-scale photovoltaic and wind generation. Increased long-distance transmission capacity combined with significant amounts of energy storage will be a crucial part of regulating any large-scale deployment of intermittent renewable power sources. The high non-firm renewable electricity penetration in some regions supplies 40% of annual output, but 60% may be reached before additional storage is necessary. Smaller pumped storage plants cannot achieve the same economies of scale as larger ones, but some do exist, including a recent 13 MW project in Germany. Shell Energy has proposed a 5 MW project in Washington State. In 2016, proposals were made for"
-    ],
-    "has_oracle": false
-  },
-  {
-    "claim_id": "cl_185441bd56fc",
-    "engine": "lossy-k3-c250+entity-swap",
-    "question": "How far from Earth was Voyager 1, as of what date, making it the most distant human-made object?",
-    "failure_modes": [
-      "recency",
-      "numeric"
-    ],
-    "claim": "Jupiter was in a more favorable position vis-à-vis Earth.",
-    "cited_snippets": [
-      "shut down prematurely, leaving 1,200 pounds (540 kg) of propellant unburned. Recognizing the deficiency, the Centaur stage's on-board computers ordered a burn that was far longer than planned in order to compensate. Centaur extended its own burn and was able to give Voyager 1 the additional velocity it needed. At cutoff, the Centaur was only 3.4 seconds from propellant exhaustion. If the same failure had occurred during Voyager 2's launch a few weeks earlier, the Centaur would have run out of propellant before the probe reached the correct trajectory. Jupiter was in a more favorable position vis-à-vis Earth during the launch of Voyager 1 than during the launch of Voyager 2. Voyager 1's initial orbit had an aphelion of 8.9 AU (830 million mi), just a little short of Saturn's orbit of 9.5 AU (880 million mi). Voyager 2's initial orbit had an aphelion of 6.2 AU (580 million mi), well short of Saturn's orbit. Voyager 1 began photographing Jupiter in January 1979. Its closest approach to Jupiter was on March 5, 1979, at a distance of about 349,000 kilometers (217,000 miles) from the planet's center. Because of the greater photographic resolution allowed by a closer approach, most observations of the moons, rings, magnetic fields, and the radiation belt environment of the Jovian system were made during the 48-hour period that bracketed the closest approach. Voyager 1 finished photographing the Jovian system in April 1979. Information gathered by the Pioneer 10 spacecraft helped engineers design Voyager to better cope with"
-    ],
-    "has_oracle": false
-  },
-  {
-    "claim_id": "cl_3498acb7a945",
-    "engine": "extractive-k3-c90",
-    "question": "What range and typical passenger count does the Boeing 787-9 offer?",
-    "failure_modes": [
-      "numeric"
-    ],
-    "claim": "two versions: the A350-800 with a 8,800 nmi (16,300 km; 10,100 mi) range with a typical passenger capacity of 253 in a three-class configuration, and the A350-900 with 7,500 nmi (13,900 km; 8,600 mi) range and a 300-seat three-class configuration.",
-    "cited_snippets": [
-      "two versions: the A350-800 with a 8,800 nmi (16,300 km; 10,100 mi) range with a typical passenger capacity of 253 in a three-class configuration, and the A350-900 with 7,500 nmi (13,900 km; 8,600 mi) range and a 300-seat three-class configuration. The A350 was designed to be a direct competitor to the Boeing 787-9 and 777-200ER. The original A350 design was publicly criticised by two of Airbus's largest customers, International Lease Finance Corporation (ILFC) and GE Capital Aviation Services (GECAS). On 28 March 2006, ILFC President Steven F. Udvar-Házy urged Airbus"
-    ],
-    "has_oracle": false
-  },
-  {
-    "claim_id": "cl_5551d6d7cc71",
-    "engine": "lossy-k3-c250+entity-swap",
-    "question": "How many people were displaced by the construction of the Three Gorges Dam?",
-    "failure_modes": [
-      "contested",
-      "numeric"
-    ],
-    "claim": "Funding sources include the Three Gorges Dam Construction Fund, profits from the Gezhouba Dam, loans from the China Development Bank, loans from domestic and foreign commercial banks, corporate bonds, and revenue from both before and after the dam had become fully operational.",
-    "cited_snippets": [
-      "(156,000 acres) of land, compared to the 1,350 km2 (330,000 acres) of reservoir created by the Itaipu Dam. The Chinese government estimated that the Three Gorges Dam project would cost 180 billion yuan (US$22.5 billion). By the end of 2008, spending had reached 148.365 billion yuan, of which 64.613 billion yuan was spent on construction, 68.557 billion yuan on relocating affected residents, and 15.195 billion yuan on financing. It was estimated in 2009 that the cost of construction would be fully recouped when the dam had generated 1,000 terawatt-hours (3,600 PJ) of electricity, yielding 250 billion yuan; total cost recovery was thus expected to be completed ten years after the dam became fully operational. In fact, the entire cost of the Three Gorges Dam was recovered by December 20, 2013. Funding sources include the Three Gorges Dam Construction Fund, profits from the Gezhouba Dam, loans from the China Development Bank, loans from domestic and foreign commercial banks, corporate bonds, and revenue from both before and after the dam had become fully operational. Additional charges were assessed as follows: every province receiving power from the Three Gorges Dam had to pay an extra ¥7.00 per MWh, and the other provinces had to pay an additional charge of ¥4.00 per MWh. No surcharge was imposed on the Tibet Autonomous Region. Power generation and distribution Power generation is managed by China Yangtze Power, a listed subsidiary of China Three Gorges Corporation (CTGC), a Central Enterprise administered by SASAC. The Three Gorges Dam is"
-    ],
-    "has_oracle": false
-  },
-  {
-    "claim_id": "cl_29d86f5ddedd",
-    "engine": "lossy-k3-c250+dropped-citation",
-    "question": "What did Heathrow Terminal 5 cost to build, and when did it open to the public?",
-    "failure_modes": [
-      "simple",
-      "numeric"
-    ],
-    "claim": "Terminal 5 lies between the northern and southern runways at the western end of the Heathrow site and was opened by Queen Elizabeth II on 14 March 2008, 19 years after its inception; then it opened to the public on 27 March 2008.",
-    "cited_snippets": [],
-    "has_oracle": true
-  },
-  {
-    "claim_id": "cl_731bf4dbc17a",
-    "engine": "lossy-k3-c250",
-    "question": "By how much was Hubble's proposed primary mirror diameter reduced during the funding crisis of the 1970s, and for what reasons?",
-    "failure_modes": [
-      "simple",
-      "numeric"
-    ],
-    "claim": "This is over six times larger than the collecting area of Hubble's 2.4 m (7.9 ft) diameter mirror, which has a collecting area of 4.0 m2 (43 ft2), and Webb has a 6.5-meter-diameter (21-foot) gold-coated beryllium primary mirror made up of 18 separate hexagonal mirrors.",
-    "cited_snippets": [
-      "delays. A significant redesign was carried out in 2005, with construction completed in 2016, followed by years of exhaustive testing, at a total cost of US$10 billion. The mass of the James Webb Space Telescope (JWST) is about half that of the Hubble Space Telescope. Webb has a 6.5-meter-diameter (21-foot) gold-coated beryllium primary mirror made up of 18 separate hexagonal mirrors. The mirror has a polished area of 26.3 m2 (283 ft2), of which 0.9 m2 (9.7 ft2) is obscured by the secondary support struts, giving a total collecting area of 25.4 m2 (273 ft2). This is over six times larger than the collecting area of Hubble's 2.4 m (7.9 ft) diameter mirror, which has a collecting area of 4.0 m2 (43 ft2). The mirror has a gold coating to provide infrared reflectivity, covered by a thin layer of glass for durability. Webb is designed primarily for near-infrared astronomy, but can also detect orange and red visible light and the mid-infrared region, depending on the instrument used. It can detect objects up to 100 times fainter than Hubble can, and objects much earlier in the history of the universe, back to redshift z≈20 (about 180 million years cosmic time after the Big Bang). For comparison, the earliest stars are thought to have formed between z≈30 and z≈20 (100–180 million years cosmic time), and the first galaxies may have formed around redshift z≈15 (about 270 million years cosmic time). Hubble is unable to see further back than very early reionization at"
-    ],
-    "has_oracle": false
-  },
-  {
-    "claim_id": "cl_72afd41667ff",
-    "engine": "lossy-k3-c90",
-    "question": "How effective is one dose of measles vaccine at preventing measles, and how effective are two doses?",
-    "failure_modes": [
-      "simple",
-      "numeric"
-    ],
-    "claim": "The measles vaccine is equally effective for preventing measles in all formulations, but side effects vary for different combinations. the vaccine are about 97% effective at preventing measles.",
-    "cited_snippets": [
-      "measles vaccination. The vaccine is available both by itself and in combinations such as the MMR vaccine (a combination with the rubella vaccine and mumps vaccine) or the MMRV vaccine (a combination of MMR with the chickenpox vaccine). The measles vaccine is equally effective for preventing measles in all formulations, but side effects vary for different combinations. The World Health Organization (WHO) recommends measles vaccine be given at nine months of age in areas of the world where the disease is common, or at twelve months where the disease is",
-      "the vaccine are about 97% effective at preventing measles. Before the widespread use of the vaccine, measles was so common that infection was considered \"as inevitable as death and taxes.\" In the United States, reported cases of measles fell from 3 to 4 million with 400 to 500 deaths to tens of thousands of cases per year following introduction of two measles vaccines in 1963 (both an inactivated and a live attenuated vaccine (Edmonston B strain) were licensed for use, see chart at right). Increasing uptake of the vaccine following"
-    ],
-    "has_oracle": false
-  },
-  {
-    "claim_id": "cl_44f872cded5e",
-    "engine": "lossy-k3-c90+entity-swap",
-    "question": "Is the Hornsdale Power Reserve still the largest lithium-ion battery in the world?",
-    "failure_modes": [
-      "negation",
-      "recency"
-    ],
-    "claim": "The original installation in 2017 was the largest lithium-ion battery in the world at 100 MW / 129 MWh.",
-    "cited_snippets": [
-      "Hornsdale Power Reserve, colloquially known as the Tesla Big Battery, is a 150 MW (194 MWh) grid-connected energy storage system. The Hornsdale Power Reserve is owned by Neoen and is co-located with the Hornsdale Wind Farm in the Mid North region of South Australia, also owned by Neoen. The original installation in 2017 was the largest lithium-ion battery in the world at 100 MW / 129 MWh. It was expanded in 2020 to 194 MWh at 150 MW. Despite the expansion, it inevitably lost that title in August 2020 to"
-    ],
-    "has_oracle": false
-  },
-  {
-    "claim_id": "cl_611508607f1a",
-    "engine": "lossy-k3-c250",
-    "question": "On what date, and aboard which launch vehicle, was Voyager 1 launched?",
-    "failure_modes": [
-      "simple"
-    ],
-    "claim": "The Voyager 1 probe was launched on September 5, 1977, from Launch Complex 41 at the Cape Canaveral Air Force Station, aboard a Titan IIIE launch vehicle, and Despite being launched later, Voyager 1 reached both Jupiter and Saturn sooner, following a shorter trajectory.",
-    "cited_snippets": [
-      "over time due to the 87.7-year half-life of the fuel and degradation of the thermocouples. According to current plans, they may continue operating with at least one science instrument into the 2030s. Unlike Voyager's other instruments, the operation of the cameras for visible light is not autonomous, but is controlled by an imaging parameter table contained in one of the digital computers, the Flight Data Subsystem (FDS). Since the 1990s, most space probes have been equipped with completely autonomous cameras. The computer command subsystem (CCS) controls the cameras. The CCS contains fixed computer programs, such as command decoding, fault-detection and fault-correction routines, antenna pointing routines, and spacecraft sequencing routines. This computer is an improved version of the one that was used in the 1970s Viking orbiters. The Attitude and Articulation Control Subsystem (AACS) controls the spacecraft orientation. It keeps the high-gain antenna pointing towards Earth, controls attitude changes, and points the scan platform. The custom-built AACS systems on both Voyagers are the same. The Voyager 1 probe was launched on September 5, 1977, from Launch Complex 41 at the Cape Canaveral Air Force Station, aboard a Titan IIIE launch vehicle. The Voyager 2 probe had been launched two weeks earlier, on August 20, 1977. Despite being launched later, Voyager 1 reached both Jupiter and Saturn sooner, following a shorter trajectory. Voyager 1's launch almost failed because Titan's LR-91 second stage shut down prematurely, leaving 1,200 pounds (540 kg) of propellant unburned. Recognizing the deficiency, the Centaur stage's on-board computers ordered"
-    ],
-    "has_oracle": false
-  },
-  {
-    "claim_id": "cl_d4d5e6c580c5",
-    "engine": "lossy-k3-c250+wrong-source",
-    "question": "Does the Airbus A350 use the lithium-ion main battery design that caused the Boeing 787 to be grounded?",
-    "failure_modes": [
-      "negation",
-      "multi_hop"
-    ],
-    "claim": "On January 16, 2013, the FAA issued an emergency airworthiness directive ordering all American-based airlines to ground their Boeing 787s until yet-to-be-determined modifications were made to the electrical system to reduce the risk of the battery overheating or catching fire.",
-    "cited_snippets": [
-      "review of the 787's critical systems. The focus of the review was on the safety of the lithium-ion batteries made of lithium cobalt oxide (LiCoO2). The 787 battery contract was signed in 2005, when this was the only type of lithium aerospace battery available, but since then newer and safer types (such as LiFePO4), which provide less reaction energy with virtually no cobalt content to avoid cobalt's thermal runaway characteristic, have become available. FAA approved a 787 battery in 2007 with nine \"special conditions\". A battery approved by FAA (through Mobile Power Solutions) was made by Rose Electronics using Kokam cells; the batteries installed in the 787 are made by Yuasa. The first big hurdle for Boeing was that the ranks of commercial aircraft engineers lacked lithium-ion battery expertise in that lithium-ion batteries had never before been used on a Boeing commercial jet. Boeing chief technology officer John Tracy began canvassing the entire organization for lithium-ion battery experts. He also began calling his contacts outside the aerospace industry. Within a day, about a dozen Boeing engineers from across the United States assembled at Boeing's Everett, Washington engineering center. The collaborators began ongoing collaborative group sessions—not just a series of meetings—that lasted weeks with breaks only for meals and sleep. Evan Rosen writes in The Culture of Collaboration (2024, expanded and updated edition) that for the Boeing 787 battery effort, hierarchy was out the window, because the collaborators were working outside of their usual reporting structure. There was no chain of"
-    ],
-    "has_oracle": true
-  },
-  {
-    "claim_id": "cl_0af8b2973c3e",
-    "engine": "extractive-k3-c250",
-    "question": "Did GlobalFoundries bring a 7 nm process into production, and what reason did it give?",
-    "failure_modes": [
-      "negation"
-    ],
-    "claim": "However, in August 2018, GlobalFoundries made the decision to suspend 7 nm development and planned production, citing the unaffordable costs to outfit Fab 8 for 7 nm production.",
-    "cited_snippets": [
-      "to 70–80kpcs/M. Fab 8, located in Luther Forest Technology Campus, Saratoga County, New York, United States is a 300 mm fab. This fabrication plant was constructed by GF as a green field fab for advanced technologies. It is capable of manufacturing 14 nm node technology. The plant's construction began in July 2009 and the company started mass production in 2012. It has a maximum manufacturing capacity of 60,000 of 300 mm wafers/month, or the equivalent of over 135,000 of 200 mm wafers/month. In September 2016, GlobalFoundries announced it would make a multibillion-dollar investment to refit Fab 8 to produce 7 nm FinFET parts starting in the second half of 2018. The process was planned to initially use deep ultraviolet lithography, and eventually transition to extreme ultraviolet lithography. However, in August 2018, GlobalFoundries made the decision to suspend 7 nm development and planned production, citing the unaffordable costs to outfit Fab 8 for 7 nm production. GlobalFoundries held open the possibility of resuming 7 nm operations in the future if additional resources could be secured. From this decision GlobalFoundries executed a shift in company strategy to focus more effort on FD-SOI manufacturing and R&D. Fab 8 serves a crucial function to supply AMD (Advanced Micro Devices) with CPU wafers for its Zen-based Ryzen, Threadripper and Epyc lines of CPUs. The original Zen and the Zen+ CPUs are of a monolithic design which were produced at GlobalFoundries facilities in Malta, NY. Going forward, AMD pursued a chiplet design with the Zen 2"
-    ],
-    "has_oracle": false
-  },
-  {
-    "claim_id": "cl_ea21b948fb24",
-    "engine": "lossy-k3-c250+numeric-drift",
-    "question": "As of 2025, how large is the battery energy storage facility at the Moss Landing Power Plant site?",
-    "failure_modes": [
-      "recency",
-      "numeric"
-    ],
-    "claim": "The Moss Landing Power Plant site has since been chosen as California's primary location to provide battery based energy storage in order to better utilize renewable energy sources such as solar and wind on a grid-wide commercial scale.",
-    "cited_snippets": [
-      "heat exchanger and transferred to water that feeds a steam turbine, similar to units 6 and 7. On a smaller scale than the supercritical units, units 1 and 2 are also more flexible, with a start-up time of only an hour, against 24 hours for units 6 and 7. Battery energy storage facilities Utilities in California are required by a 2013 law to provide significant battery storage by 2024. The Moss Landing Power Plant site has since been chosen as California's primary location to provide battery based energy storage in order to better utilize renewable energy sources such as solar and wind on a grid-wide commercial scale. On June 29, 2018 Vistra Corp announced that it planned on building at the Moss Landing Power Station site, what became the world's largest commercial electric battery energy storage site. The batteries use around 100 GWh/year as energy lost during the round-trip. Planning and construction On June 29, 2018, Vistra Energy announced that it will develop a 300 MW / 1,200 MWh energy storage system to be located at Moss Landing, using the existing turbine building and existing interconnection from units 6 and 7, connecting to the 500 kV grid. Vistra Energy expected the energy storage system to begin commercial operation by the end of 2020, pending receipt of approval from California Public Utilities Commission (CPUC). This would be the largest lithium-ion battery energy storage system in the world. The project began construction in December 2019, and Phase 1 began operating at the"
-    ],
-    "has_oracle": false
-  },
-  {
-    "claim_id": "cl_0d4dedebbe08",
-    "engine": "lossy-k3-c90+numeric-drift",
-    "question": "Which countries remain polio-endemic with wild poliovirus, and at what age does the WHO recommend the first measles vaccine dose where measles is common?",
-    "failure_modes": [
-      "multi_hop"
-    ],
-    "claim": "The measles vaccine was first introduced in 1963, and of age in areas of the world where the disease is common, or at twelve months where the disease is not common. and Pakistan are the only polio-endemic countries in the world (where wild polio has not yet been eradicated), and As of 2015, the Global Alliance for Vaccines and Immunization supplies the inactivated vaccine to developing countries for as little as €0.9 (about US$0.89) per dose in 10-dose vials.",
-    "cited_snippets": [
-      "of age in areas of the world where the disease is common, or at twelve months where the disease is not common. Measles vaccine is based on a live but weakened strain of measles. It comes as a dried powder that is mixed with a specific liquid before being injected either just under the skin or into a muscle. Verification that the vaccine was effective can be determined by blood tests. The measles vaccine was first introduced in 1963. In that year, the Edmonston-B strain of measles virus was turned",
-      "and Pakistan are the only polio-endemic countries in the world (where wild polio has not yet been eradicated). Several countries have additional precautionary polio vaccination travel requirements, for example to and from 'key at-risk countries', which as of December 2020 include China, Indonesia, Mozambique, Myanmar, and Papua New Guinea. As of 2015, the Global Alliance for Vaccines and Immunization supplies the inactivated vaccine to developing countries for as little as €0.75 (about US$0.89) per dose in 10-dose vials. A misconception has been present in Pakistan that the polio vaccine contains"
-    ],
-    "has_oracle": true
-  },
-  {
-    "claim_id": "cl_acb43589e9f8",
-    "engine": "extractive-k3-c90",
-    "question": "How many orders and deliveries has the Boeing 787 programme recorded?",
-    "failure_modes": [
-      "recency",
-      "numeric"
-    ],
-    "claim": "Boeing 787 orders and deliveries (cumulative, by year): Orders Deliveries — as of August 2026 The Boeing 787 has been involved in eight accidents and incidents as of June 2025, including one hull loss, which was also the only accident involving fatalities.",
-    "cited_snippets": [
-      "was delivered to AerCap and leased to China Southern Airlines. By then the 787 had flown 300 million passengers on 1.5 million flights and opened 210 new nonstop routes. The 1000th Dreamliner, a 787-10 for Singapore Airlines, made its maiden flight on April 3, 2020. Boeing 787 orders and deliveries (cumulative, by year): Orders Deliveries — as of August 2026 The Boeing 787 has been involved in eight accidents and incidents as of June 2025, including one hull loss, which was also the only accident involving fatalities. Fatal and hull"
-    ],
-    "has_oracle": false
-  },
-  {
-    "claim_id": "cl_4bacbaaaaef4",
-    "engine": "extractive-k3-c250",
-    "question": "What did Heathrow Terminal 5 cost to build, and when did it open to the public?",
-    "failure_modes": [
-      "simple",
-      "numeric"
-    ],
-    "claim": "However, the Airports Inquiries of 1981–83 and the 1985 Airports Policy White Paper considered further expansion and, following a four-year-long public inquiry in 1995–99, Terminal 5 was approved.",
-    "cited_snippets": [
-      "aircraft. On 12 July 2013, the emergency locator transmitter (ELT) on an Ethiopian Airlines Boeing 787 Dreamliner parked at Heathrow airport caught fire due to a short circuit. There were no passengers aboard and no injuries. From 12 September 2019, the climate change campaign group, Heathrow Pause, attempted to disrupt flights into and out of Heathrow Airport in London by flying drones in the airport's exclusion zone. The action was unsuccessful in disrupting the flights and nineteen people were arrested. Future expansion and plans Third runway and terminal expansion There is a long history of expansion proposals for Heathrow since it was first designated as a civil airport. Following the cancellation of the Maplin project in 1974, a fourth terminal was proposed, but expansion beyond this was ruled out. However, the Airports Inquiries of 1981–83 and the 1985 Airports Policy White Paper considered further expansion and, following a four-year-long public inquiry in 1995–99, Terminal 5 was approved. In 2003, after many studies and consultations, the Future of Air Transport White Paper was published, which proposed a third runway at Heathrow, as well as a second runway at Stansted Airport. In January 2009, the Transport Secretary at the time, Geoff Hoon announced that the British government supported the expansion of Heathrow by building a third 2,200-metre (7,200 ft) runway and a sixth terminal building. This decision followed the 2003 white paper on the future of air transport in the UK, and a public consultation in November 2007. This was a controversial"
-    ],
-    "has_oracle": false
-  },
-  {
-    "claim_id": "cl_0c669c4d371c",
-    "engine": "lossy-k3-c90",
-    "question": "Have rates of autism, Guillain-Barre syndrome or inflammatory bowel disease been found to increase after measles vaccination, and what became of the Wakefield paper?",
-    "failure_modes": [
-      "negation",
-      "simple"
-    ],
-    "claim": "The controversy surrounding Wakefield's publication led to decreased MMR vaccination rates and a subsequent increase in measles cases in the UK.",
-    "cited_snippets": [
-      "the MMR vaccine and autism. The controversy surrounding Wakefield's publication led to decreased MMR vaccination rates and a subsequent increase in measles cases in the UK. In Japan, where the MMR vaccine is not used as a combined vaccine, autism rates have remained unaffected, further disproving Wakefield's hypothesis. According to a 2019 Los Angeles Times article, concerns were raised about unvaccinated students contributing to the large number of measles outbreaks. While Robert F. Kennedy Jr—United States Secretary of Health and Human Services— publicly supported Wakefield's disproven theory that vaccines cause"
-    ],
-    "has_oracle": false
-  },
-  {
-    "claim_id": "cl_ad5fa6311880",
-    "engine": "lossy-k3-c90",
-    "question": "What net income and consolidated revenue did TSMC report for 2020?",
-    "failure_modes": [
-      "numeric",
-      "simple"
-    ],
-    "claim": "In July 2022, TSMC announced the company had posted a record profit in the second quarter, with net income up 76.4 percent year-over-year.",
-    "cited_snippets": [
-      "chains. The fab is expected to directly create about 1,700 high-tech professional jobs. In July 2022, TSMC announced the company had posted a record profit in the second quarter, with net income up 76.4 percent year-over-year. The company saw steady growth in the automotive and data centre sectors with some weakness in the consumer market. Some of the capital expenditures are projected to be pushed up to 2023. In the third quarter of 2022, Berkshire Hathaway disclosed purchase of 60 million shares in TSMC, acquiring a $4.1 billion stake, making"
-    ],
-    "has_oracle": false
-  },
-  {
-    "claim_id": "cl_ed93fc553826",
-    "engine": "lossy-k3-c90",
-    "question": "What share of the global semiconductor foundry market does TSMC hold, and as of what date was it the world's largest non-US company by market capitalisation?",
-    "failure_modes": [
-      "recency",
-      "numeric"
-    ],
-    "claim": "In March 2017, TSMC's market capitalisation surpassed that of semiconductor giant Intel for the first time, hitting NT$5.14 trillion (US$168.4 billion), with Intel's at, and TSMC's revenue in the first quarter of 2020 reached US$10 billion, while its market capitalisation was US$254 billion.",
-    "cited_snippets": [
-      "in April 2021. TSMC's revenue in the first quarter of 2020 reached US$10 billion, while its market capitalisation was US$254 billion. TSMC's market capitalisation reached a value of NT$1.9 trillion (US$63.4 billion) in December 2010. It was ranked 70th in the FT Global 500 2013 list of the world's most highly valued companies with a capitalisation of US$86.7 billion, while reaching US$110 billion in May 2014. In March 2017, TSMC's market capitalisation surpassed that of semiconductor giant Intel for the first time, hitting NT$5.14 trillion (US$168.4 billion), with Intel's at"
-    ],
-    "has_oracle": false
-  },
-  {
-    "claim_id": "cl_d2336569f820",
-    "engine": "lossy-k3-c250+entity-swap",
-    "question": "Which Maersk business unit operates container terminals at Rotterdam, and what kind of area is Maasvlakte?",
-    "failure_modes": [
-      "multi_hop"
-    ],
-    "claim": "A. P. Moller–Maersk's independent APM Terminals business unit with its separate headquarters in The Hague, Netherlands, operates a Global Port, Terminal and Inland Services Network with interests in 57 ports and container terminals in 36 countries on five continents, as well as 155 Inland Services operations in 48 countries.",
-    "cited_snippets": [
-      "sanctions regime led by those countries. On 15 March 2022, Robert M. Uggla was appointed Chair of the Board at A.P. Moller – Maersk, succeeding Jim Hagemann Snabe. The appointment marks a generational change in the company. Robert M. Uggla represents the founding family and remains as CEO of A.P. Moller Holding. On 12 December 2022, Vincent Clerc was appointed CEO of Maersk effective 1 January 2023. A. P. Moller–Maersk's independent APM Terminals business unit with its separate headquarters in The Hague, Netherlands, operates a Global Port, Terminal and Inland Services Network with interests in 57 ports and container terminals in 36 countries on five continents, as well as 155 Inland Services operations in 48 countries. Port and Terminal Operations include: New projects under construction: Savona, and Tema. Africa: Abidjan, Apapa, Cotonou, Douala, Luanda, Monrovia, Onne, Pointe Noire, Port Elizabeth, Tangier, and Tema. Europe: Algeciras, Aarhus, Barcelona, Bremerhaven, Gothenburg, Port of Poti, Rotterdam-Maasvlakte, Rotterdam-Maasvlakte 2, Wilhelmshaven-JadeWeserPort, Valencia, Gijón, Zeebrugge, Vado Ligure Reefer Terminal and Vado Gateway. North America: Los Angeles, Miami, Mobile, Port Elizabeth, and Tacoma. Latin America: Buenos Aires, Buenaventura (Colombia), Cartagena, Itajaí, Pecém, Callao, Santos, Lázaro Cárdenas, Puerto Quetzal, Yucatan, and Limon (Costa Rica). Middle East: Aqaba, Haifa, Bahrain, Salalah, Port Said and Jebel Ali. Asia: Cai Mep, Colombo, Dalian, Guangzhou, Kobe, Laem Chabang, Karachi, Pipavav, Qingdao, Tanjung Pelepas, Tianjin, Shanghai, Xiamen, Yokohama, India, and Singapore. Maersk Container Industry Maersk Container Industry A/S: Container manufacturing with factories in China (Dongguan and Qingdao) and headquarters in Denmark (Tinglev). Container"
-    ],
-    "has_oracle": false
-  },
-  {
-    "claim_id": "cl_ee89bd20cf79",
-    "engine": "extractive-k3-c90",
-    "question": "What was the total cost of the James Webb Space Telescope, and what were the earlier life-cycle cost estimates over the project's history?",
-    "failure_modes": [
-      "contested",
-      "numeric"
-    ],
-    "claim": "On 6 July 2011, the United States House of Representatives' appropriations committee on Commerce, Justice, and Science moved to cancel the James Webb project by proposing an FY2012 budget that removed US$1.9 billion from NASA's overall budget, of which roughly one quarter was for Webb.",
-    "cited_snippets": [
-      "US$1.5 billion (bringing the total to US$6.5 billion). They also noted that this would have required additional funding in FY2011 and FY2012, and that a later launch date would result in a higher total cost. On 6 July 2011, the United States House of Representatives' appropriations committee on Commerce, Justice, and Science moved to cancel the James Webb project by proposing an FY2012 budget that removed US$1.9 billion from NASA's overall budget, of which roughly one quarter was for Webb. US$3 billion had been spent and 75% of its hardware"
-    ],
-    "has_oracle": false
-  },
-  {
-    "claim_id": "cl_7c6b977026e7",
-    "engine": "lossy-k3-c90",
-    "question": "Does the Suez Canal use locks to raise and lower ships?",
-    "failure_modes": [
-      "negation"
-    ],
-    "claim": "He argued in favor of a canal using a lock system to raise and lower ships from a large reservoir 85 feet (26 m) above sea level.",
-    "cited_snippets": [
-      "seen the Chagres in full flood, was summoned to Washington; he declared a sea-level approach to be \"an entirely untenable proposition\". He argued in favor of a canal using a lock system to raise and lower ships from a large reservoir 85 feet (26 m) above sea level. This would create both the largest dam (Gatun Dam) and the largest human-made lake (Gatun Lake) in the world at that time. The water to refill the locks would be taken from Gatun Lake by opening and closing enormous gates and valves"
-    ],
-    "has_oracle": false
-  },
-  {
-    "claim_id": "cl_8e3da1806bde",
-    "engine": "lossy-k3-c90+polarity-flip",
-    "question": "Did California meet its target of 20% renewables by 2010?",
-    "failure_modes": [
-      "negation",
-      "numeric"
-    ],
-    "claim": "According to a report by the California Public Utilities Commission (CPUC), California failed to meet the 20% renewables by 2010 target, and In 2010, Southern California Edison produced 19.4% of its electricity from renewable sources, Pacific Gas and Electric Company generated 17.7% of the electricity it sold from renewable sources, and San Diego Gas & Electric generated 11.9% of its electricity from renewable sources.",
-    "cited_snippets": [
-      "resources by 2030, and 100% will be generated by carbon-free sources by 2045. Much of this is expected to come from solar power. According to a report by the California Public Utilities Commission (CPUC), California failed to meet the 20% renewables by 2010 target. In 2010, Southern California Edison produced 19.4% of its electricity from renewable sources, Pacific Gas and Electric Company generated 17.7% of the electricity it sold from renewable sources, and San Diego Gas & Electric generated 11.9% of its electricity from renewable sources. As of October 2020,"
-    ],
-    "has_oracle": false
-  },
-  {
-    "claim_id": "cl_f6cc7c8adaf6",
-    "engine": "lossy-k3-c250+dropped-citation",
-    "question": "When did Maersk vessels resume trans-Suez crossings after the Houthi attacks, and what monthly losses did Egypt attribute to those attacks?",
-    "failure_modes": [
-      "multi_hop",
-      "recency"
-    ],
-    "claim": "Frequent attacks by Houthi rebels in the Suez Canal, only returning in January 2026, with successive successful trans-Suez crossings by Maersk Sebarok and Maersk Denver.",
-    "cited_snippets": [],
-    "has_oracle": true
-  },
-  {
-    "claim_id": "cl_53e37715d694",
-    "engine": "lossy-k3-c90+polarity-flip",
-    "question": "What was Maersk's annual revenue in its 2025 financial year, and how many people worked for the group that year?",
-    "failure_modes": [
-      "numeric",
-      "recency"
-    ],
-    "claim": "In the 2025 financial year, Maersk generated revenue of US$roughly 54 billion. activities\" accounted for 8.8% of Maersk's revenue in 2008 and posted 25% of the group's profit for this period.",
-    "cited_snippets": [
-      "As of 2008, Damco had 10,800 employees in offices in more than 93 countries. and was involved in supply chain management and freight forwarding all over the world. In September 2019, Maersk announced that they would dissolve the Damco brand and integrate their remaining activities after initially merging Maersk Line and Damco at the beginning of 2019, when the freight forwarding business of Damco stayed separate. The dissolving of the Damco brand was completed by the end of 2020. In the 2025 financial year, Maersk generated revenue of US$53.9 billion.",
-      "activities\" accounted for 8.8% of Maersk's revenue in 2008 and posted 25% of the group's profit for this period. The business segment comprises Maersk Tankers (its technical management business sold to Synergy Marine Group in 2021), Maersk Supply Service, Maersk Drilling, Maersk FPSOs, Maersk LNG and Svitzer. South American ex Aliança Brazilian coaster container ship subsidiary with eight ships. In January 2024, it was announced that Hapag-Lloyd, together with Maersk, would launch a long-term operational cooperation under the name Gemini Cooperation in February 2025. The new cooperation is expected to"
-    ],
-    "has_oracle": false
-  },
-  {
-    "claim_id": "cl_6d2292d301bb",
-    "engine": "lossy-k3-c90",
     "question": "Which Ariane rocket variant launched the James Webb Space Telescope, and when did the Ariane 6 make its first flight?",
     "failure_modes": [
       "multi_hop",
       "negation"
     ],
-    "claim": "The Webb was launched on 25 December 2021 on an Ariane 5 rocket from Kourou, French Guiana, and the telescope's first image was released to the public on 11 July 2022.",
+    "claim": "The Webb was launched on 25 December 2021 on an Ariane 5 rocket from Kourou, French Guiana.",
     "cited_snippets": [
-      "and radio ranges) required to achieve the desired resolution. The Webb was launched on 25 December 2021 on an Ariane 5 rocket from Kourou, French Guiana. In January 2022, it arrived at its destination, a solar orbit near the Sun–Earth L2 Lagrange point, about 1.5 million kilometers (930,000 mi) from Earth. The telescope's first image was released to the public on 11 July 2022. The U.S. National Aeronautics and Space Administration (NASA) led Webb's design and development and partnered with two central agencies: the European Space Agency (ESA) and the"
+      "The Webb was launched on 25 December 2021 on an Ariane 5 rocket from Kourou, French Guiana. In January 2022, it arrived at its destination, a solar orbit near the Sun–Earth L2 Lagrange point, about 1.5 million kilometers (930,000 mi) from Earth. The telescope's first image was released to the public on 11 July 2022. The U.S. National Aeronautics and Space Administration (NASA) led Webb's design and development and partnered with two central agencies: the European Space Agency (ESA) and the Canadian Space Agency (CSA)."
     ],
     "has_oracle": false
   },
   {
-    "claim_id": "cl_77969475cb9f",
-    "engine": "lossy-k3-c250+entity-swap",
-    "question": "Which Airbus A350 variant flew the record-setting flight out of Singapore Changi in October 2018, where did it land, and how long did it take?",
+    "claim_id": "cl_646a6d356016",
+    "engine": "extractive-k3-c90",
+    "question": "When was electrical demand in California first met 100% by renewable energy sources, and for how long was it maintained?",
     "failure_modes": [
-      "multi_hop",
+      "simple",
       "numeric"
     ],
-    "claim": "This variant would be similar to the capacity of the Boeing roughly 780-200 and the Airbus A350-900, although with a shorter range.",
+    "claim": "In 2010, Southern California Edison produced 19.4% of its electricity from renewable sources, Pacific Gas and Electric Company generated 17.7% of the electricity it sold from renewable sources, and San Diego Gas & Electric generated 11.9% of its electricity from renewable sources.",
     "cited_snippets": [
-      "was achieved by adding 10-foot (3.0 m) (five-frame) extensions forward and aft of the wing The 787-8 and 787-9 have 50% commonality: the wing, fuselage and systems of the 787-8 had required radical revision to achieve the payload-range goals of the 787-9. Following a major revamp of the original 787-8 wing, the latest configuration for the 787-9 and -10 is the fourth design evolution. On March 25, 2018, a Qantas 787-9 completed the first scheduled non-stop flight between Australia and the UK flying seventeen hours from Perth to London Heathrow. On October 20, 2019, a Qantas 787-9 was flight tested from New York to Sydney with a restricted payload. A team of researchers monitored passengers and crew to investigate wellness and performance on long flights. On March 16, 2020, an Air Tahiti Nui 787-9 achieved the longest commercial flight of 8,485 nmi (15,714 km; 9,764 mi). In December 2005, pushed by the interest of Emirates and Qantas, Boeing was studying the possibility of stretching the 787-9 further to seat 290 to 310 passengers. This variant would be similar to the capacity of the Boeing 777-200 and the Airbus A350-900, although with a shorter range. Customer discussions were continuing in early 2006. Mike Bair, Boeing's vice president and general manager for the 787 development program at the time, said it was easier to proceed with the 787-10 development after other customers followed Emirates' request. This variant is targeted to replace the Boeing 767-400ER and Airbus A330-300. On May 30, 2013, Singapore"
+      "According to a report by the California Public Utilities Commission (CPUC), California failed to meet the 20% renewables by 2010 target. In 2010, Southern California Edison produced 19.4% of its electricity from renewable sources, Pacific Gas and Electric Company generated 17.7% of the electricity it sold from renewable sources, and San Diego Gas & Electric generated 11.9% of its electricity from renewable sources. As of October 2020, California had 31,288 MW of solar and 5,830 MW of wind farms."
     ],
     "has_oracle": false
   },
   {
-    "claim_id": "cl_b0b0f5922d31",
-    "engine": "lossy-k3-c250",
-    "question": "Which company is the only producer of EUV systems for chip production, and how does the dominant commercial EUV light source generate its light?",
-    "failure_modes": [
-      "multi_hop",
-      "simple"
-    ],
-    "claim": "Laser-produced plasma (LPP) Laser-produced plasma, or LPP, is the dominant light-source architecture used in commercial high-volume manufacturing (HVM) EUV lithography.",
-    "cited_snippets": [
-      "SMEE also filed patents for their alternative proposals relevant to EUV technologies. In December 2025, Reuters reported that China had secretly completed a prototype EUV machine in Shenzhen, which was expected to produce working chips between 2028 and 2030. Types of EUV Light Sources Extreme ultraviolet (EUV) lithography requires radiation at 13.5 nm(≈92 eV) to match the peak reflectivity band of molybdenum/silicon (Mo/Si) multilayers mirrors. In plasma-based EUV sources, ionization precedes much of the EUV emission. The thermal production of multicharged positive ions requires a hot, dense plasma, which can itself strongly absorb EUV radiation. Laser-produced plasma (LPP) Laser-produced plasma, or LPP, is the dominant light-source architecture used in commercial high-volume manufacturing (HVM) EUV lithography. The source architecture centers on a droplet generator that ejects ~25 μm diameter molten tin droplets at ~70 m/s through a vacuum chamber. A dual-pulse carbon dioxide(CO2) laser system (operating at a wavelength of 10.6 μm, pulse duration ~15–25 ns, intensity ~10¹¹ W/cm²) then targets each droplet. A low-energy \"pre-pulse\" strikes the droplet first, expanding it into a low-density pancake-like cloud of tin vapor. A high-energy \"main pulse\" then strikes this vapor, ionizing it into a high-temperature plasma with electron temperatures of 20–50 eV and electron densities of 10²⁰–10²¹ cm⁻³. Within this plasma, tin ions in charge states Sn IX through Sn XIV undergo 4p⁶4dⁿ → 4p⁵4dⁿ⁺¹ + 4dⁿ⁻¹4f transitions, producing strong emission lines clustered around 13.5 nm with a 2% full-width at half-maximum (FWHM) bandwidth. The source operates at a repetition rate of ~50"
-    ],
-    "has_oracle": false
-  },
-  {
-    "claim_id": "cl_3e511154346a",
-    "engine": "extractive-k3-c250",
-    "question": "How many passengers did Changi Airport handle in 2025, and how did that compare with the previous year?",
+    "claim_id": "cl_e4eb34e61117",
+    "engine": "lossy-k3-c250+dropped-citation",
+    "question": "What is TSMC's capital expenditure forecast for 2026, and what was the previous guidance?",
     "failure_modes": [
       "recency",
       "numeric"
     ],
-    "claim": "Part of this project was planned to help expand Terminal 1 to handle 24 million passengers per year by 2018 with stand-alone check-in facilities and lounges.",
-    "cited_snippets": [
-      "Airport, which opened on 17 April 2019, is a nature-themed entertainment and retail complex interconnecting Terminals 1, 2 and 3. Announced in 2013, it is a new terminal-like structure that is intended to simultaneously be a mixed-use complex. It is situated on a 3.5-hectare site where the Terminal 1 car park used to reside, which has since been moved underground. Jewel was developed by Jewel Changi Airport Trustee Pte Ltd, a joint venture between Changi Airport Group and CapitaLand, through its wholly owned shopping mall business, CapitaLand Mall Asia. The project cost S$1.7 billion. Part of this project was planned to help expand Terminal 1 to handle 24 million passengers per year by 2018 with stand-alone check-in facilities and lounges. The indoor waterfall (named \"Rain Vortex\") in the structure holds the World Record for the tallest indoor waterfall in the world at 40m high, cascading down 7 storeys. The Air Hub & Cargo Development department of the Changi Airport Group (CAG) manages the Changi Airfreight Centre, which is located to the north of the airport premises. In 2025, Changi Airport handled 2,080,000 tonnes of air freight, achieving one of its strongest cargo performance on record. The top five air cargo markets in 2025 were China, the United States, Australia, Hong Kong, and India. Recent cargo volumes at Changi Airport have been heavily driven by global demand for semiconductors, artificial intelligence (AI) technology, electric vehicles, and cleantech. Changi Airport has been honored frequently at the Asian Freight Logistics and Supply Chain"
-    ],
-    "has_oracle": false
+    "claim": "Reuters reported that the company raised its 2026 capital expenditure forecast to between US$60 billion and US$64 billion, compared with previous guidance of US$52billion to US$56 billion, citing continued strong demand for artificial intelligence chips.",
+    "cited_snippets": [],
+    "has_oracle": true
   },
   {
-    "claim_id": "cl_cc079f5505c0",
+    "claim_id": "cl_e68ac37922a8",
     "engine": "extractive-k3-c250",
-    "question": "Do insulin analogues provide a clinical advantage over conventional human insulin, and is there any setting in which they are preferred?",
+    "question": "What round-trip efficiency does the corpus give for pumped-storage hydroelectricity?",
     "failure_modes": [
       "contested",
-      "negation"
-    ],
-    "claim": "by Cochrane in 2005, Germany's Institute for Quality and Cost Effectiveness in the Health Care Sector [IQWiG] in 2007, and Canadian Agency for Drugs and Technology in Health (CADTH) also in 2007 have consistently shown that insulin analogues provide no clinical advantage over conventional insulin.",
-    "cited_snippets": [
-      "by Cochrane in 2005, Germany's Institute for Quality and Cost Effectiveness in the Health Care Sector [IQWiG] in 2007, and Canadian Agency for Drugs and Technology in Health (CADTH) also in 2007 have consistently shown that insulin analogues provide no clinical advantage over conventional insulin. However, insulin analogues are more temperature-resistant than human insulin, so they are preferred for clinical use in regions with limited refrigeration and extreme heat. Commonly used types of insulin are differentiated by the speed of their biochemical activity. Fast/rapid-acting insulin includes insulin analogues aspart, lispro, and glulisine. These begin to work within 5 to 15 minutes and are active for 3 to 4 hours. Most insulins form hexamers, which delay entry into the blood in active form; these analog insulins do not but have normal insulin activity. Newer varieties are now pending regulatory approval in the US which are designed to work rapidly, but retain the same genetic structure as regular human insulin. Short-acting insulin includes regular insulin, which begins working within 30 minutes and is active about 5 to 8 hours. Intermediate-acting insulin includes NPH insulin, which begins working in 1 to 3 hours and is active for 16 to 24 hours. Long-acting insulin includes the analogues glargine U100 and detemir, each of which begins working within 1 to 2 hours and continues to be active, without major peaks or dips, for about 24 hours, although this varies in many individuals. Ultra-long acting insulin includes the analogues insulin glargine U300 and degludec, which begin"
-    ],
-    "has_oracle": false
-  },
-  {
-    "claim_id": "cl_7be8a14b4889",
-    "engine": "lossy-k3-c250",
-    "question": "What is the largest adiabatic compressed-air energy storage plant described in the corpus, and what conversion efficiency does it achieve?",
-    "failure_modes": [
-      "recency",
-      "numeric"
-    ],
-    "claim": "Compressed-air-energy storage (CAES) is a way to store energy for later use using compressed air.",
-    "cited_snippets": [
-      "Compressed-air-energy storage (CAES) is a way to store energy for later use using compressed air. At a utility scale, energy generated during periods of low demand can be released during peak load periods. The first utility-scale CAES project was in the Huntorf power plant in Elsfleth, Germany, and is still operational as of 2024. The Huntorf plant was initially developed as a load balancer for fossil-fuel-generated electricity, but the global shift towards renewable energy renewed interest in CAES systems, to help highly intermittent energy sources like photovoltaics and wind satisfy fluctuating electricity demands. One ongoing challenge in large-scale design is the management of thermal energy, since the compression of air leads to an unwanted temperature increase that not only reduces operational efficiency but can also lead to damage. The main difference between various architectures lies in thermal engineering. On the other hand, small-scale systems have long been used for propulsion of mine locomotives. Contrasted with traditional batteries, compressed-air systems can store energy for longer periods of time and have less upkeep. Compression of air creates heat; the air is warmer after compression. Expansion removes heat. If no extra heat is added, the air will be much colder after expansion. If the heat generated during compression can be stored and used during expansion, then the efficiency of the storage improves considerably. There are several ways in which a CAES system can deal with heat. Air storage can be adiabatic, diabatic, isothermal, or near-isothermal. Adiabatic storage continues to store the heat energy"
-    ],
-    "has_oracle": false
-  },
-  {
-    "claim_id": "cl_986bc2bec48b",
-    "engine": "lossy-k3-c90+polarity-flip",
-    "question": "What is the largest adiabatic compressed-air energy storage plant described in the corpus, and what conversion efficiency does it achieve?",
-    "failure_modes": [
-      "recency",
-      "numeric"
-    ],
-    "claim": "Upon removal from storage, the temperature of this compressed air is the one indicator of the amount of stored energy that remains in this air.",
-    "cited_snippets": [
-      "plant, the largest in the world at the time, was switched on in Huai'an, China. It consists of two 300 MW units with a 71% conversion efficiency rate. Diabatic storage dissipates much of the heat of compression with intercoolers (thus approaching isothermal compression) into the atmosphere as waste, essentially wasting the energy used to perform the work of compression. Upon removal from storage, the temperature of this compressed air is the one indicator of the amount of stored energy that remains in this air. Consequently, if the air temperature is"
-    ],
-    "has_oracle": false
-  },
-  {
-    "claim_id": "cl_2f3ee9d837fe",
-    "engine": "lossy-k3-c250+numeric-drift",
-    "question": "What is the maximum monthly wafer capacity of GlobalFoundries' Fab 8, and where is it?",
-    "failure_modes": [
-      "numeric"
-    ],
-    "claim": "In September 2016, GlobalFoundries announced it would make a multibillion-dollar investment to refit Fab 8 to produce 6.2 nm FinFET parts starting in the second half of 2018.",
-    "cited_snippets": [
-      "to 70–80kpcs/M. Fab 8, located in Luther Forest Technology Campus, Saratoga County, New York, United States is a 300 mm fab. This fabrication plant was constructed by GF as a green field fab for advanced technologies. It is capable of manufacturing 14 nm node technology. The plant's construction began in July 2009 and the company started mass production in 2012. It has a maximum manufacturing capacity of 60,000 of 300 mm wafers/month, or the equivalent of over 135,000 of 200 mm wafers/month. In September 2016, GlobalFoundries announced it would make a multibillion-dollar investment to refit Fab 8 to produce 7 nm FinFET parts starting in the second half of 2018. The process was planned to initially use deep ultraviolet lithography, and eventually transition to extreme ultraviolet lithography. However, in August 2018, GlobalFoundries made the decision to suspend 7 nm development and planned production, citing the unaffordable costs to outfit Fab 8 for 7 nm production. GlobalFoundries held open the possibility of resuming 7 nm operations in the future if additional resources could be secured. From this decision GlobalFoundries executed a shift in company strategy to focus more effort on FD-SOI manufacturing and R&D. Fab 8 serves a crucial function to supply AMD (Advanced Micro Devices) with CPU wafers for its Zen-based Ryzen, Threadripper and Epyc lines of CPUs. The original Zen and the Zen+ CPUs are of a monolithic design which were produced at GlobalFoundries facilities in Malta, NY. Going forward, AMD pursued a chiplet design with the Zen 2"
-    ],
-    "has_oracle": true
-  },
-  {
-    "claim_id": "cl_87771d5b7e5e",
-    "engine": "lossy-k3-c250",
-    "question": "At what altitude does the International Space Station orbit, and how long has it been continuously inhabited?",
-    "failure_modes": [
-      "recency",
-      "numeric"
-    ],
-    "claim": "The station orbits in Low Earth Orbit (LEO) at a minimum mean altitude of 370 km (230 mi) and a maximum of 460 km (290 mi), in the center of the thermosphere.",
-    "cited_snippets": [
-      "of the ISS are operated and monitored by their respective space agencies at mission control centers across the globe, primarily the Christopher C. Kraft Jr. Mission Control Center in Houston and the RKA Mission Control Center (TsUP) in Moscow, with support from Tsukuba Space Center in Japan, Payload Operations and Integration Center in Huntsville, Alabama, U.S., Columbus Control Center in Munich, Germany and Mobile Servicing System Control at the Canadian Space Agency's headquarters in Saint-Hubert, Quebec. Orbit, debris and visibility Altitude and orbital inclination The ISS is currently maintained in a nearly circular orbit with an eccentricity of 0.0002267 and at an inclination of 51.6 degrees to Earth's equator. This orbit was selected because it is the lowest inclination that can be directly reached by Russian Soyuz and Progress spacecraft launched from Baikonur Cosmodrome at 46° N latitude without overflying China or dropping spent rocket stages in inhabited areas. As a result, it makes more polar latitudes accessible and observable, for example the Chinese Space Station orbits more equatorial with an inclination of 41.47°. The ISS travels prograde (with Earth's rotation, west to east) at an average speed of 28,000 kilometres per hour (17,000 mph), and completes 15.5 orbits per day (93 minutes per orbit). The station orbits in Low Earth Orbit (LEO) at a minimum mean altitude of 370 km (230 mi) and a maximum of 460 km (290 mi), in the center of the thermosphere. The altitude was in the past allowed to fall around the time of"
-    ],
-    "has_oracle": false
-  },
-  {
-    "claim_id": "cl_8717a9d48cc5",
-    "engine": "extractive-k3-c250",
-    "question": "What net income and consolidated revenue did TSMC report for 2020?",
-    "failure_modes": [
-      "numeric",
-      "simple"
-    ],
-    "claim": "In July 2022, TSMC announced the company had posted a record profit in the second quarter, with net income up 76.4 percent year-over-year.",
-    "cited_snippets": [
-      "12/16 nanometre FinFET process technology in addition to the previously announced 22/28 nanometre process and increase monthly production capacity from 45,000 to 55,000 12-inch wafers. The total capital expenditure for JASM's Kumamoto fab is estimated to be approximately US$8.6 billion. The Japanese government wants JASM to supply essential chips to Japan's electronic device makers and auto companies as trade friction between the United States and China threatens to disrupt supply chains. The fab is expected to directly create about 1,700 high-tech professional jobs. In July 2022, TSMC announced the company had posted a record profit in the second quarter, with net income up 76.4 percent year-over-year. The company saw steady growth in the automotive and data centre sectors with some weakness in the consumer market. Some of the capital expenditures are projected to be pushed up to 2023. In the third quarter of 2022, Berkshire Hathaway disclosed purchase of 60 million shares in TSMC, acquiring a $4.1 billion stake, making it one of its largest holdings in a technology company. However, Berkshire sold off 86.2 percent of its stake by the next quarter citing geopolitical tensions as a factor. In February 2024, TSMC shares hit a record high, with the high on the trading day reaching NT$709 and closing at NT$697 (+8%). This was influenced by the increase in the price target on chip designer Nvidia. TSMC currently manufactures 3-nanometre chips and plans to start 2-nanometre mass production in 2025. It is included in the FTSE4Good Index, being the only"
-    ],
-    "has_oracle": false
-  },
-  {
-    "claim_id": "cl_1f2cfee65918",
-    "engine": "extractive-k3-c250",
-    "question": "What is the maximum beam of a ship allowed through the Suez Canal, and how does that compare with the beam allowed by the Panama Canal's new locks?",
-    "failure_modes": [
       "multi_hop",
       "numeric"
     ],
-    "claim": "By 2011, it was estimated that 37 percent of the world's container ships had become too large for the earlier canal and locks.",
+    "claim": "The theoretical efficiency of adiabatic storage approaches 100% with perfect insulation, but in practice, round trip efficiency is expected to be 70%.",
     "cited_snippets": [
-      "ships per day were allowed to transit. In 2025, the canal authorities begun plans to improve water levels in the canal by building a new dam to feed Lake Gatun, the fresh water source for canal operations. In 2026, the Panama Canal Authority reduced the number of ships per day because of low rainfall amid an intensifying El Nino event. From 3 September 2026, the waterway allowed 34 ships to pass through it, instead of 36. From 15 September 2026, the number of ships allowed to pass through it dropped to 32. Third set of locks project (expansion) An enlargement scheme of the canal was completed and officially opened in June 2017. The project came out because changes in shipping patterns – particularly the increasing numbers of larger-than-Panamax ships – necessitated changes to the canal for it to retain a significant market share of transit between the Pacific and Atlantic Oceans. By 2011, it was estimated that 37 percent of the world's container ships had become too large for the earlier canal and locks. The maximum sustainable capacity of the original canal, given some relatively minor improvement work, was estimated at 340 million PC/UMS tons per year; it was anticipated that this capacity would have been reached by 2012 as close to 50% of transiting vessels were already using the full width of the locks. After a long period of consideration, an enlargement scheme to allow for a greater number of transits and the ability to handle larger ships, similar"
+      "Air storage can be adiabatic, diabatic, isothermal, or near-isothermal. Adiabatic storage continues to store the heat energy produced by compression and returns it to the air as it is expanded to generate power. The theoretical efficiency of adiabatic storage approaches 100% with perfect insulation, but in practice, round trip efficiency is expected to be 70%. Heat can be stored in a solid such as concrete or stone, or in a fluid such as hot oil (up to 300 °C) or molten salt solutions (600 °C). Storing the heat in hot water may yield an efficiency around 65%. Packed beds have been proposed as thermal storage units for adiabatic systems. A study numerically simulated an adiabatic compressed air energy storage system using packed bed thermal energy storage. The efficiency of the simulated system under continuous operation was calculated to be between 70.5% and 71%. Advancements in adiabatic CAES involve the development of high-efficiency thermal energy storage systems that capture and reuse the heat generated during compression. This innovation has led to system efficiencies exceeding 70%, significantly higher than traditional Diabatic systems. In 2026, a 2.4 GWh adiabatic CAES plant, the largest in the world at the time, was switched on in Huai'an, China. It consists of two 300 MW units with a 71% conversion efficiency rate. Diabatic storage dissipates much of the heat of compression with intercoolers (thus approaching isothermal compression) into the atmosphere as waste, essentially wasting the energy used to perform the work of compression."
     ],
     "has_oracle": false
   },
   {
-    "claim_id": "cl_7e5d815829ae",
-    "engine": "extractive-k3-c90",
-    "question": "What gain in low Earth orbit payload does the Ariane 64 Block 2 provide, and what is the increased thrust of its enhanced Vinci upper stage engine?",
-    "failure_modes": [
-      "numeric"
-    ],
-    "claim": "The second (upper) stage of Ariane 6 is called the Upper Liquid Propulsion Module (ULPM).",
-    "cited_snippets": [
-      "(1,050,000 lbf) of thrust. The P120C and P160C are also used as the first stage of the upgraded Vega C launcher, allowing increased production volumes and reduced unit costs through commonality. They are improved versions of the P80 motor used on the original Vega. The second (upper) stage of Ariane 6 is called the Upper Liquid Propulsion Module (ULPM). It shares the same 5.4 m (18 ft) diameter as the LLPM and is also fuelled by LH2 and LOX. It is powered by the Vinci engine, which delivers 180 kN"
-    ],
-    "has_oracle": false
-  },
-  {
-    "claim_id": "cl_08321bcc811f",
-    "engine": "lossy-k3-c250+entity-swap",
-    "question": "What was ASML's market capitalization, as of when, and what share of worldwide lithography machine sales did it have?",
-    "failure_modes": [
-      "recency",
-      "numeric"
-    ],
-    "claim": "As of 2025, ASML had 83% percent of the worldwide sales of lithography machines.",
-    "cited_snippets": [
-      "placed further restrictions on the shipment of some advanced chip-making equipment to China. On 6 September 2024, the Dutch government tightened export controls on certain ASML chipmaking equipment, aligning its policy with U.S. restrictions to limit China's access to advanced technology amid safety and geopolitical concerns. These restrictions were expanded for tighter export controls in January 2025, with ASML required to apply for export licenses with the Dutch government instead of the U.S. In December 2025, Reuters reported that China had secretly built a prototype EUV machine in Shenzhen with the assistance of former ASML engineers, with the machine expected to produce working chips between 2028 and 2030. ASML produces the photolithography machines used in the production of integrated circuits, called \"scanners\". In these machines, patterns are optically imaged onto a silicon wafer that is covered with a film of light-sensitive material (photoresist). This procedure is repeated dozens of times on a single wafer. The photoresist is then further processed to create the actual electronic circuits on the silicon. The optical imaging that ASML's machines deal with is used in the fabrication of nearly all integrated circuits. As of 2025, ASML had 83% percent of the worldwide sales of lithography machines. ASML's earlier competition consisted of Ultratech, Canon, Nikon, MKS Instruments, Lam Research and Cadence Design Systems. Since immersion lithography was first proposed by Burn-Jeng Lin in the 1970s, ASML cooperated with TSMC. In 2004, TSMC began commercial production of 90 nanometer semiconductor nodes using ASML immersion lithography. By 2011,"
-    ],
-    "has_oracle": false
-  },
-  {
-    "claim_id": "cl_08b309a406d5",
-    "engine": "lossy-k3-c90+numeric-drift",
-    "question": "How much grid battery capacity does California have, according to the most recent figures in the corpus?",
-    "failure_modes": [
-      "recency",
-      "numeric"
-    ],
-    "claim": "California also has aggressive goals when it comes to zero emissions vehicles (ZEVs), and the most prominent type is the electric car, which relies on grid power to charge its battery.",
-    "cited_snippets": [
-      "TWh of surplus solar power was kept from the grid. California's solar production was so vast that by 2017, California had to pay Arizona and other states in the region to accept some of its electricity during peak solar production hours to provide relief to its grid. California also has aggressive goals when it comes to zero emissions vehicles (ZEVs), and the most prominent type is the electric car, which relies on grid power to charge its battery. Plug-in hybrid cars are also very popular in the state. These types"
-    ],
-    "has_oracle": false
-  },
-  {
-    "claim_id": "cl_0c9029026456",
-    "engine": "lossy-k3-c250+numeric-drift",
-    "question": "Who founded TSMC, in what year was the company established, and what was it the world's first of?",
-    "failure_modes": [
-      "simple"
-    ],
-    "claim": "Morris Chang founded the company to commercialise semiconductor research originally developed at ITRI, becoming the world’s first dedicated semiconductor foundry.",
-    "cited_snippets": [
-      "Taiwan Semiconductor Manufacturing Company Limited (Chinese: 台灣積體電路製造股份有限公司; Taiwan Semiconductor or TSMC, stylised in all lowercase) is a Taiwanese multinational semiconductor contract manufacturing and design company. Headquartered in Hsinchu Science Park, it was the world's largest non-US company by market capitalisation as of June 30, 2026. It holds a commanding majority in the semiconductor foundry market, accounting for approximately 70% of the global market share. As the leading dedicated contract chipmaker, it serves as the main supplier for Nvidia, Apple, Broadcom, and Qualcomm. The company has grown rapidly due to the artificial intelligence (AI) boom and its importance in the creation of advanced chips needed for AI. Its role as a supply chain bottleneck raises concerns that a disruption could cause another worldwide chip shortage. Although the government of Taiwan is the largest individual shareholder, the majority of TSMC is owned by foreign investors. In 2026, the company was ranked 31st in the Forbes Global 2000. Taiwan's exports of integrated circuits amounted to $184 billion in 2022, nearly 25 percent of Taiwan's GDP. TSMC constitutes about 30 percent of the Taiwan Stock Exchange's main index. TSMC was established in 1987 as a joint venture between Taiwan’s government, the Industrial Technology Research Institute (ITRI), and private investors. Morris Chang founded the company to commercialise semiconductor research originally developed at ITRI, becoming the world’s first dedicated semiconductor foundry. When Chang retired in 2018, after 31 years of TSMC leadership, Mark Liu became chairman and C. C. Wei became Chief Executive. It has been"
-    ],
-    "has_oracle": false
-  },
-  {
-    "claim_id": "cl_e4d1d818caa2",
-    "engine": "lossy-k3-c90",
-    "question": "Who founded TSMC, in what year was the company established, and what was it the world's first of?",
-    "failure_modes": [
-      "simple"
-    ],
-    "claim": "4.1% capital came from Taiwan's then ruling party’s investment arm: Kuomintang Central Investment Co. From the company's onset, TSMC operated primarily as a project of the Taiwanese state, as opposed to a completely private company.",
-    "cited_snippets": [
-      "4.1% capital came from Taiwan's then ruling party’s investment arm: Kuomintang Central Investment Co. From the company's onset, TSMC operated primarily as a project of the Taiwanese state, as opposed to a completely private company. Its first CEO was James E. Dykes, who left after a year and Morris Chang became the CEO. Although Philips initially held a 27.5% stake in TSMC, its influence extended beyond financial investment. In addition to capital, Philips played a crucial role by transferring semiconductor manufacturing technology, intellectual property, and patents to TSMC, enabling the"
-    ],
-    "has_oracle": false
-  },
-  {
-    "claim_id": "cl_e8717b4f2285",
-    "engine": "lossy-k3-c250+wrong-source",
-    "question": "Does the Suez Canal use locks to raise and lower ships?",
-    "failure_modes": [
-      "negation"
-    ],
-    "claim": "Locks at each end lift ships up to Gatun Lake, an artificial fresh water lake 26 meters (85 ft) above sea level, created by damming the Chagres River and Lake Alajuela to reduce the amount of excavation work required for the canal.",
-    "cited_snippets": [
-      "of improvements have been made to maximize the use of the locking system: Implementation of an enhanced locks lighting system; Construction of two tie-up stations in Culebra Cut; Widening Culebra Cut from 192 to 218 m (630 to 715 ft); Improvements to the tugboat fleet; Implementation of the carousel lockage system in Gatun locks; Development of an improved vessel scheduling system; Deepening of Gatun Lake navigational channels from 10.4 to 11.3 m (34 to 37 ft) PLD; Modification of all locks structures to allow an additional draft of about 0.30 m (1 ft); Deepening of the Pacific and Atlantic entrances; Construction of a new spillway in Gatun, for flood control. These improvements enlarged the capacity from 300 million PCUMS in 2008, to 340 PCUMS in 2012. These improvements were started before the new locks project, and are complementary to it. The canal faces increasing competition from other quarters. Because canal tolls have risen as ships have become larger, some critics have suggested that the Suez Canal is now a viable alternative for cargo between Asia and the US East Coast. The Panama Canal, however, continues to serve more than 144 of the world's trade routes and the majority of canal traffic comes from the \"all-water route\" from Asia to the US East and Gulf Coasts. An alternative route through Nicaragua and Lake Nicaragua has been proposed. On 15 June 2013, Nicaragua awarded the Hong Kong-based HKND Group a 50-year concession to develop a canal through the country. In February 2018,"
-    ],
-    "has_oracle": true
-  },
-  {
-    "claim_id": "cl_5809f17e3594",
-    "engine": "lossy-k3-c90",
-    "question": "The corpus describes two separate 100 MW storage systems with 400 MWh of storage brought online in China in 2022; which technologies are they and what efficiency is reported?",
-    "failure_modes": [
-      "multi_hop",
-      "numeric"
-    ],
-    "claim": "As of 2022, the Gem project at Rosamond in Kern County, California, was planned to provide 500 MW / 4,000 MWh of storage.",
-    "cited_snippets": [
-      "in 2016. This project has been delayed until at least 2020. Canadian company Hydrostor planned to build four Advance plants in Toronto, Goderich, Angas, and Rosamond (2020). Some included partial heat storage in water, improving efficiency to 65%. As of 2022, the Gem project at Rosamond in Kern County, California, was planned to provide 500 MW / 4,000 MWh of storage. The Pecho project in San Luis Obispo, California, was planned to be 400 MW / 3,200 MWh. The Broken Hill project in New South Wales, Australia was 200 MW"
-    ],
-    "has_oracle": false
-  },
-  {
-    "claim_id": "cl_e68f2b4c7552",
-    "engine": "lossy-k3-c250",
+    "claim_id": "cl_cd0adb54c668",
+    "engine": "lossy-k3-c90+wrong-source",
     "question": "What power rating do the corpus documents give for the Hornsdale Power Reserve, and do they agree?",
     "failure_modes": [
       "contested",
@@ -746,75 +64,759 @@
     ],
     "claim": "Hornsdale Power Reserve, colloquially known as the Tesla Big Battery, is a 150 MW (194 MWh) grid-connected energy storage system, and the Hornsdale Power Reserve is owned by Neoen and is co-located with the Hornsdale Wind Farm in the Mid North region of South Australia, also owned by Neoen.",
     "cited_snippets": [
-      "Hornsdale Power Reserve, colloquially known as the Tesla Big Battery, is a 150 MW (194 MWh) grid-connected energy storage system. The Hornsdale Power Reserve is owned by Neoen and is co-located with the Hornsdale Wind Farm in the Mid North region of South Australia, also owned by Neoen. The original installation in 2017 was the largest lithium-ion battery in the world at 100 MW / 129 MWh. It was expanded in 2020 to 194 MWh at 150 MW. Despite the expansion, it inevitably lost that title in August 2020 to the Gateway Energy Storage in California, USA. In Australia the large Victorian Big Battery (300 MW / 450 MWh) began operations in December 2021. Those have since been leapfrogged by many other batteries. In 2016, South Australia suffered grid damages and blackout during storms, as well as high electricity prices. Grid batteries were among the solutions discussed. South Australia received 90 proposals and considered five projects to build a grid-connected battery to increase grid stability under adverse weather events. This has resulted in less use of gas-fired generators to provide grid stability. During 2017 Tesla, Inc. won the contract and built the Hornsdale Power Reserve, for a capital cost of A$90 million, leading to the colloquial Tesla Big Battery name. Elon Musk placed a wager that the battery would be completed within \"100 days from contract signature\", otherwise the battery would be free. Tesla had already begun construction, and some units were already operational by 29 September 2017, the time"
-    ],
-    "has_oracle": false
-  },
-  {
-    "claim_id": "cl_0c99868847f7",
-    "engine": "lossy-k3-c250+numeric-drift",
-    "question": "Where does the Port of Rotterdam rank among the world's ports, and when was it last the world's busiest?",
-    "failure_modes": [
-      "contested"
-    ],
-    "claim": "In 2025, Heathrow was the busiest airport in Europe, the fifth-busiest airport in the world by passenger traffic and the second-busiest airport in the world by international passenger traffic, and Heathrow was the airport with the most international connections in the world in 2024.",
-    "cited_snippets": [
-      "London Heathrow Airport (IATA: LHR, ICAO: EGLL) – named London Airport until 1966 – is the primary and largest international airport serving London, the capital of England and the United Kingdom. It is the largest of the six international airports in the London airport system (the others being Gatwick, Stansted, Luton, City, and Southend). The airport is owned and operated by Heathrow Airport Holdings. In 2025, Heathrow was the busiest airport in Europe, the fifth-busiest airport in the world by passenger traffic and the second-busiest airport in the world by international passenger traffic. Heathrow was the airport with the most international connections in the world in 2024. Heathrow was founded as a small airfield in 1930 but was developed into a much larger airport after World War II. It lies 14 miles (23 km) west of Central London on a site that covers 4.74 square miles (12.3 km2). It was gradually expanded over 75 years and now has two parallel east–west runways, four operational passenger terminals and one cargo terminal. The airport is the primary hub for British Airways and Virgin Atlantic. The airport was opened on 25 March 1946 as London Airport; it was renamed Heathrow Airport in the last week of September 1966, to avoid confusion with the other two main airports which serve London: Gatwick and Stansted. The airport's Central Terminal Area (CTA) was designed by Sir Frederick Gibberd, who set out the terminals and central-area buildings, including the control tower and the multi-faith St George's Chapel."
-    ],
-    "has_oracle": false
-  },
-  {
-    "claim_id": "cl_52bce279c9f5",
-    "engine": "lossy-k3-c90+polarity-flip",
-    "question": "Which battery chemistry burned in the January 2025 Moss Landing fire, and how does the corpus compare that chemistry for safety with lithium iron phosphate?",
-    "failure_modes": [
-      "multi_hop"
-    ],
-    "claim": "Newer battery designs such as those based on lithium iron phosphate chemistry suffer from neither of these problems, and pressure vessel from full to empty.",
-    "cited_snippets": [
-      "pressure vessel from full to empty. It is technically challenging to design air engines to maintain high efficiency and sufficient power over a wide range of pressures. Compressed air can transfer power at very high flux rates, which meets the principal acceleration and deceleration objectives of transportation systems, particularly for hybrid vehicles. Compressed air systems have advantages over conventional batteries, including longer lifetimes of pressure vessels and lower material toxicity. Newer battery designs such as those based on lithium iron phosphate chemistry suffer from neither of these problems. Compressed air"
-    ],
-    "has_oracle": false
-  },
-  {
-    "claim_id": "cl_5d7694c64377",
-    "engine": "extractive-k3-c90",
-    "question": "What are Hubble's cumulative costs, and how much had NASA spent on the project by the time of launch?",
-    "failure_modes": [
-      "contested",
-      "numeric"
-    ],
-    "claim": "In 1977, then NASA Administrator James C. Fletcher proposed a token $5 million for Hubble in NASA's budget.",
-    "cited_snippets": [
-      "of the proposed budget for the telescope and forced cuts in the budget for the planning stages, which at the time consisted of very detailed studies of potential instruments and hardware for the telescope. In 1974, public spending cuts led to Congress deleting all funding for the telescope project. In 1977, then NASA Administrator James C. Fletcher proposed a token $5 million for Hubble in NASA's budget. Then NASA Associate Administrator for Space Science, Noel Hinners, instead cut all funding for Hubble, gambling that this would galvanize the scientific community"
-    ],
-    "has_oracle": false
-  },
-  {
-    "claim_id": "cl_4040abe1d0cb",
-    "engine": "lossy-k3-c90+entity-swap",
-    "question": "Where does the Port of Rotterdam rank among the world's ports, and when was it last the world's busiest?",
-    "failure_modes": [
-      "contested"
-    ],
-    "claim": "The Port of Rotterdam is the largest seaport in Europe, and the world's largest seaport outside of Asia, located in and near the city of Rotterdam, in the province of South Holland in the Netherlands.",
-    "cited_snippets": [
-      "The Port of Rotterdam is the largest seaport in Europe, and the world's largest seaport outside of Asia, located in and near the city of Rotterdam, in the province of South Holland in the Netherlands. From 1962 until 2004, it was the world's busiest port by annual cargo tonnage. It was overtaken first in 2004 by the port of Singapore, and since then by Shanghai and other very large Chinese seaports. In 2020, Rotterdam was the world's tenth-largest container port in terms of twenty-foot equivalent units (TEU) handled. In 2017,"
-    ],
-    "has_oracle": false
-  },
-  {
-    "claim_id": "cl_be2cf7b6876e",
-    "engine": "lossy-k3-c90+wrong-source",
-    "question": "How much does a High-NA EUV lithography system cost, and what numerical aperture does it reach?",
-    "failure_modes": [
-      "contested",
-      "numeric"
-    ],
-    "claim": "Depth of focus being reduced by increasing NA is also a concern, especially in comparison with multi-patterning exposures using roughly 190 nm immersion lithography: High-NA EUV tools focus horizontal and vertical lines differently from low-NA systems, due to the different demagnification for.",
-    "cited_snippets": [
-      "of EUV systems, with the first shipments for R&D shipped to Intel in December 2023, and TSMC in late 2024. The platform is designated High-NA as it increases the numerical aperture (NA) from 0.33 to 0.55. each system costs approximately $370 million. ASML became a sponsor of the PSV football club in 2019 together with Philips, VDL Groep, Royal Swinkels Family Brewers and Jumbo Supermarkets from the Brainport region. Together they run various initiatives like soccer training camps for school children, the development of interactive programs for teaching, assisting community"
+      "Based on the first six months of operation, the reserve is estimated to earn about A$18 million per year. (This is a third-party estimate, based on spot energy prices; it is possible that the HPR has contracted to provide power at a lower price, in exchange for a more certain income stream.) After six months of operation, the Hornsdale Power Reserve was responsible for 55% of frequency control and ancillary services in South Australia."
     ],
     "has_oracle": true
+  },
+  {
+    "claim_id": "cl_4dbc36e4276f",
+    "engine": "extractive-k3-c250",
+    "question": "What share of total electricity generation in Denmark did wind power make up in 2024?",
+    "failure_modes": [
+      "numeric",
+      "recency"
+    ],
+    "claim": "Installed capacities and production As of 2023, the total installed wind power capacity in Denmark was 7,510 MW, of which 4,860 MW were onshore and 2,650 MW were offshore.",
+    "cited_snippets": [
+      "In 2010 the plan was to reach 50% of consumption in 2020 (which was almost met), and up to 84% in 2035. Analysts expect the cost of wind power to be 30 øre/kWh and its handling cost to be 15 øre/kWh, being lower than coal and natural gas at 55 øre/kWh minimum. Due to their inability to follow load wind power gets a lower price. Consumption related to wind power Danish district heating plants use 100 petajoule/year, but little of this consumption is from 180 MW of electrode boilers installed in powerplants or 374 MW of large heat pumps. The boilers are only used to soak up the powerplant's own electricity when prices are negative, to avoid paying tax. Expansion of wind powered district heating is calculated to be economically efficient without taxes. The number of household heat pumps has stalled at 70,000 in 2015 due to tax-free wood pellets, and the goal of 300,000 small heat pumps in 2035 is unlikely to be reached, reducing the value of more wind power unless electricity tax is reduced. Installed capacities and production As of 2023, the total installed wind power capacity in Denmark was 7,510 MW, of which 4,860 MW were onshore and 2,650 MW were offshore. At the end of 2015, Denmark's total installed capacity for wind power stood at 5,070 MW. Denmark has the highest proportion of wind power in the world."
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_8f9701748ed1",
+    "engine": "lossy-k3-c250+numeric-drift",
+    "question": "By how much was Hubble's proposed primary mirror diameter reduced during the funding crisis of the 1970s, and for what reasons?",
+    "failure_modes": [
+      "simple",
+      "numeric"
+    ],
+    "claim": "The funding issues led to a reduction in the scale of the project, with the proposed mirror diameter reduced from 3 m to 2.4 m, both to cut costs and to allow a more compact and effective configuration for the telescope hardware, and a proposed precursor 1.5 m (4 ft 10 in) space telescope to test the systems to be used on the main satellite was dropped, and budgetary concerns also prompted collaboration with the European Space Agency (ESA).",
+    "cited_snippets": [
+      "The National Academy of Sciences published a report emphasizing the need for a space telescope, and eventually, the Senate agreed to half the budget that had originally been approved by Congress. The funding issues led to a reduction in the scale of the project, with the proposed mirror diameter reduced from 3 m to 2.4 m, both to cut costs and to allow a more compact and effective configuration for the telescope hardware. A proposed precursor 1.5 m (4 ft 11 in) space telescope to test the systems to be used on the main satellite was dropped, and budgetary concerns also prompted collaboration with the European Space Agency (ESA). ESA agreed to provide funding and supply one of the first generation instruments for the telescope, as well as the solar cells that would power it, and staff to work on the telescope in the United States, in return for European astronomers being guaranteed at least 15% of the observing time on the telescope. Congress eventually approved funding of $36 million for 1978, and the design of the LST began in earnest, aiming for a launch date of 1983. In 1983, the telescope was named after Edwin Hubble, who confirmed one of the greatest scientific discoveries of the 20th century, made by Georges Lemaître, that the universe is expanding. Construction and engineering Once the Space Telescope project had been given the go-ahead, work on the program was divided among many institutions."
+    ],
+    "has_oracle": true
+  },
+  {
+    "claim_id": "cl_fd43d0f5c86a",
+    "engine": "lossy-k3-c90+numeric-drift",
+    "question": "How busy is Changi Airport in global rankings, according to its 2025 figures?",
+    "failure_modes": [
+      "contested"
+    ],
+    "claim": "In 2026, Changi Airport also ranked fourth as one of the top 9 brands in Singapore in YouGov's Best Brands Rankings 2026 report.",
+    "cited_snippets": [
+      "In 2026, Changi Airport also ranked fourth as one of the top 10 brands in Singapore in YouGov's Best Brands Rankings 2026 report. Prior to Changi, Singapore's main international airport was located at Paya Lebar. It had opened in 1955 with a single runway and a small passenger terminal, having itself replaced the previous Kallang Airport that began operations in 1937. The decision to move the airport from Paya Lebar to Changi was based on a number of factors."
+    ],
+    "has_oracle": true
+  },
+  {
+    "claim_id": "cl_ca592884c34c",
+    "engine": "lossy-k3-c250+polarity-flip",
+    "question": "Which ship carried Malcom McLean's first container voyage in 1956, how many trailer vans did it carry, and where did it sail to?",
+    "failure_modes": [
+      "simple",
+      "numeric"
+    ],
+    "claim": "In 1955, former trucking company owner Malcom McLean worked with engineer Keith Tantlinger to develop the modern intermodal container, and In 1952 the U.S. Army developed the Transporter into the CONtainer EXpress or CONEX box system.",
+    "cited_snippets": [
+      "In 1952 the U.S. Army developed the Transporter into the CONtainer EXpress or CONEX box system. The size and capacity of the CONEXes were about the same as the Transporter, but the system was made modular, by the addition of a smaller, half-size unit of 6 ft 3 in (1.91 m) long, 4 ft 3 in (1.30 m) wide and 6 ft 10+1⁄2 in (2.10 m) high. CONEXes could be stacked three high, and protected their contents from the elements. The first major shipment of CONEXes, containing engineering supplies and spare parts, was made by rail from the Columbus General Depot in Georgia to the Port of San Francisco, then by ship to Yokohama, Japan, and then to Korea, in late 1952. Transit times were almost halved. By the time of the Vietnam War the majority of supplies and materials were shipped by CONEX. By 1965 the U.S. military used some 100,000 CONEX boxes, and more than 200,000 in 1967. making this the first worldwide application of intermodal containers. After the US Department of Defense standardized an 8-by-8-foot (2.44 by 2.44 m) cross section container in multiples of 10-foot (3.05 m) lengths for military use, it was rapidly adopted for shipping purposes. In 1955, former trucking company owner Malcom McLean worked with engineer Keith Tantlinger to develop the modern intermodal container. All the containerization pioneers who came before McLean had thought in terms of optimizing particular modes of transport."
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_bea268a1e97d",
+    "engine": "lossy-k3-c90+polarity-flip",
+    "question": "What power rating do the corpus documents give for the Hornsdale Power Reserve, and do they agree?",
+    "failure_modes": [
+      "contested",
+      "numeric"
+    ],
+    "claim": "On September 23, 2021, the Australian Energy Regulator sued Neoen SA, saying the Hornsdale Power Reserve did provide backup power.",
+    "cited_snippets": [
+      "As of 2024, HPR was the largest battery in Australia with grid-forming abilities. On September 23, 2021, the Australian Energy Regulator sued Neoen SA, saying the Hornsdale Power Reserve did not provide backup power during four months in 2019 for which it had received payment. The company was ultimately fined $900,000. The missing ability was later added."
+    ],
+    "has_oracle": true
+  },
+  {
+    "claim_id": "cl_e11e614c8ef6",
+    "engine": "lossy-k3-c90+wrong-source",
+    "question": "How many locomotives does Union Pacific have on its roster?",
+    "failure_modes": [
+      "recency",
+      "contested"
+    ],
+    "claim": "As of December 2023, the Union Pacific had 7,roughly 180 locomotives on its active roster consisting of 42 different models.",
+    "cited_snippets": [
+      "In 2017, Union Pacific decided to repaint all locomotives which were not in the current corporate colors. As of March 2018, only 41 locomotives remained unpainted. Commemorative color schemes From the second half of 2005 to the summer of 2006, UP unveiled a new set of six EMD SD70ACe locomotives in \"Heritage Colors\", painted in schemes reminiscent of railroads acquired by the Union Pacific Corporation since the 1980s. The engine numbers match the year that the predecessor railroad became part of the Union Pacific system. The locomotives commemorate the Missouri"
+    ],
+    "has_oracle": true
+  },
+  {
+    "claim_id": "cl_6323fad7aeed",
+    "engine": "extractive-k3-c90",
+    "question": "What gain in low Earth orbit payload does the Ariane 64 Block 2 provide, and what is the increased thrust of its enhanced Vinci upper stage engine?",
+    "failure_modes": [
+      "numeric"
+    ],
+    "claim": "While both would use a cryogenic main stage powered by a Vulcain 2 engine and two P145 solid boosters, Ariane 6.1 would feature a cryogenic upper stage powered by the Vinci engine and boost up to 8,500 kg (18,700 lb) to GTO, while Ariane 6.2 would use a lower-cost hypergolic upper stage powered by the Aestus engine.",
+    "cited_snippets": [
+      "This proposed launch system would come in two variants, Ariane 6.1 and Ariane 6.2. While both would use a cryogenic main stage powered by a Vulcain 2 engine and two P145 solid boosters, Ariane 6.1 would feature a cryogenic upper stage powered by the Vinci engine and boost up to 8,500 kg (18,700 lb) to GTO, while Ariane 6.2 would use a lower-cost hypergolic upper stage powered by the Aestus engine."
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_2182583f1ee4",
+    "engine": "extractive-k3-c90",
+    "question": "As of October 2, 2026, how many Falcon 9 full mission successes had been achieved, out of how many attempts, and at what success rate?",
+    "failure_modes": [
+      "numeric",
+      "recency"
+    ],
+    "claim": "As of October 2, 2026, SpaceX has successfully landed Falcon 9 boosters 598 times.",
+    "cited_snippets": [
+      "The first (booster) stage carries the second stage and payload to a predetermined speed and altitude, after which the second stage accelerates the payload to its target orbit. The booster is capable of landing vertically to facilitate reuse, a feat which was first achieved on flight 20 in December 2015. Additionally, the fairing halves are scooped out of water after a parachute-assisted landing and can be reflown multiple times. As of October 2, 2026, SpaceX has successfully landed Falcon 9 boosters 598 times."
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_c0a9b21e0523",
+    "engine": "lossy-k3-c250+polarity-flip",
+    "question": "How much would a move to 450 mm wafers reduce the price per die, and how does the cost of a 450 mm wafer compare with a 300 mm wafer?",
+    "failure_modes": [
+      "contested",
+      "numeric"
+    ],
+    "claim": "The diameter has gradually increased to improve throughput and reduce cost with the current state-of-the-art fab using 300 mm, with a proposal to adopt 450 mm.",
+    "cited_snippets": [
+      "Silicon wafers are available in a variety of diameters from 25.4 mm (1 inch) to 300 mm (11.8 inches). Semiconductor fabrication plants, colloquially known as fabs, are defined by the diameter of wafers that they are tooled to produce. The diameter has gradually increased to improve throughput and reduce cost with the current state-of-the-art fab using 300 mm, with a proposal to adopt 450 mm. Intel, TSMC, and Samsung were separately conducting research to the advent of 450 mm \"prototype\" (research) fabs, though serious hurdles remain. Wafers grown using materials other than silicon will have different thicknesses than a silicon wafer of the same diameter. Wafer thickness is determined by the mechanical strength of the material used; the wafer must be thick enough to support its own weight without cracking during handling. The tabulated thicknesses relate to when that process was introduced, and are not necessarily correct currently, for example the IBM BiCMOS7WL process is on 8-inch wafers, but these are only 200 μm thick. The weight of the wafer increases with its thickness and the square of its diameter. Date of introduction does not indicate that factories will convert their equipment immediately, in fact, many factories do not bother upgrading. Instead, companies tend to expand and build whole new lines with newer technologies, leaving a large spectrum of technologies in use at the same time. Gallium Nitride substrate GaN substrate wafers typically have had their own independent timelines, parallel but far lagging silicon substrate, but ahead of other substrates."
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_d24bce5e8247",
+    "engine": "lossy-k3-c90+wrong-source",
+    "question": "The union group that challenged the environmental review for the Moss Landing battery project had used similar arguments against a California solar project; which project was it and how large is it?",
+    "failure_modes": [
+      "multi_hop",
+      "numeric"
+    ],
+    "claim": "This same union group, with the same legal representation, used similar arguments against the California Flats solar project in order for organized labor to get concessions from the developer.",
+    "cited_snippets": [
+      "To remedy this, different sorts of power storage solutions have been proposed such as batteries, compressed air, and ice generation. By 2024, California had 11 GW of grid batteries. In April 2018, The San Diego Union-Tribune reported that Recurrent Energy (a subsidiary of Canadian Solar) had proposed a large battery, a 350 MW system, to be installed alongside the proposed Crimson Solar Project."
+    ],
+    "has_oracle": true
+  },
+  {
+    "claim_id": "cl_45853245ee1f",
+    "engine": "lossy-k3-c250+wrong-source",
+    "question": "Does the James Webb Space Telescope measure ultraviolet light, and what wavelength range is it sensitive to?",
+    "failure_modes": [
+      "negation"
+    ],
+    "claim": "The James Webb Space Telescope has four key goals: to search for light from the first stars and galaxies that formed in the universe after the Big Bang to study galaxy formation and evolution to understand star formation and planet formation to study planetary systems and the origins of life These goals can be achieved more effectively through near-infrared observation rather than in the visible spectrum.",
+    "cited_snippets": [
+      "The U.S. National Aeronautics and Space Administration (NASA) led Webb's design and development and partnered with two central agencies: the European Space Agency (ESA) and the Canadian Space Agency (CSA). The NASA Goddard Space Flight Center in Maryland managed telescope development, while the Space Telescope Science Institute in Baltimore on the Homewood Campus of Johns Hopkins University operates Webb. The primary contractor for the project was Northrop Grumman. The telescope is named after James E. Webb, who was the administrator of NASA from 1961 to 1968 during the Mercury, Gemini, and Apollo programs. Webb's primary mirror consists of 18 hexagonal mirror segments made of gold-plated beryllium, which together create a 6.5-meter-diameter (21 ft) mirror, compared with Hubble's 2.4 m (7 ft 10 in). This gives Webb a light-collecting area of about 25 m2 (270 sq ft), about six times that of Hubble. Unlike Hubble, which observes in the near ultraviolet, visible, and near infrared spectra (0.1–2.5 μm), Webb observes a lower frequency range, from long-wavelength visible light (red) through mid-infrared (0.6–28.5 μm). The telescope must be kept extremely cold, below 50 K (−223 °C; −370 °F), so that the infrared radiation emitted by the telescope itself does not interfere with the collected light. Its five-layer sunshield protects it from warming by the Sun, Earth, and Moon. Initial designs for the telescope, then named the Next Generation Space Telescope, began in 1996. Two concept studies were commissioned in 1999, for a potential launch in 2007 and a US$1 billion budget."
+    ],
+    "has_oracle": true
+  },
+  {
+    "claim_id": "cl_d2e9e549b4ae",
+    "engine": "lossy-k3-c250+numeric-drift",
+    "question": "What are the dimensions of the new lock chambers built for the Panama Canal expansion?",
+    "failure_modes": [
+      "numeric"
+    ],
+    "claim": "After the construction of the new locks, in addition to the already existing ones, to date the ship with the largest dimensions transiting the \"Panama Canal new sideway\", had the following dimensions: roughly 370 meters in length, 48.23 meters in width and 17 meters draft.",
+    "cited_snippets": [
+      "There was a delay of less than two months however, with work by the consortium members reaching goals by June 2014. In June 2015, flooding of the new locks began: first on the Atlantic side, then on the Pacific; by then, the canal's re-inauguration was slated for April 2016. On 23 March 2016, the expansion inauguration was set for 26 June 2016. The expansion was completed in substance in 2016. The expanded canal has a maximum sustainable capacity of about 600 million PC/UMS tons per year. Tolls continue to be calculated based on vessel tonnage, and in some cases depend on the locks used. The new locks began commercial traffic on 26 June 2016, and the first ship to cross the canal using the third set of locks was a modern Neopanamax vessel, the Chinese-owned container ship Cosco Shipping Panama, with an official formal opening in 2017. The original locks, now over 100 years old, allow engineers greater access for maintenance, and are projected to continue operating indefinitely. After the construction of the new locks, in addition to the already existing ones, to date the ship with the largest dimensions transiting the \"Panama Canal new sideway\", had the following dimensions: 366.47 meters in length, 48.23 meters in width and 15 meters draft. The total cost is unknown since the expansion's contractors are seeking at least an additional US$3.4 billion from the canal authority due to excess expenses."
+    ],
+    "has_oracle": true
+  },
+  {
+    "claim_id": "cl_3bfa295390c7",
+    "engine": "lossy-k3-c250+wrong-source",
+    "question": "Did California meet its target of 20% renewables by 2010?",
+    "failure_modes": [
+      "negation",
+      "numeric"
+    ],
+    "claim": "Systems with under 40% variable renewables need only short-term storage, and Industry and commercial consumers can also change their demand to meet supply.",
+    "cited_snippets": [
+      "The ESA agreed in 2004 to contributing about €300 million, including the launch. The CSA pledged CA$39 million in 2007 and in 2012 delivered its contributions in equipment to point the telescope and detect atmospheric conditions on distant planets. Detailed design and construction (2007–2021) In January 2007, nine of the ten technology development items in the project successfully passed a Non-Advocate Review. These technologies were deemed sufficiently mature to mitigate significant risks in the project. The remaining technology development item (the MIRI cryocooler) completed its technology maturation milestone in April 2007. This technology review represented the beginning step in the process that ultimately moved the project into its detailed design phase (Phase C). By May 2007, costs were still on target. In March 2008, the project completed its Preliminary Design Review (PDR). In April 2008, the project passed the Non-Advocate Review. Other past reviews include the Integrated Science Instrument Module review in March 2009, the Optical Telescope Element review completed in October 2009, and the Sunshield review completed in January 2010. In April 2010, the telescope passed the technical portion of its Mission Critical Design Review (MCDR). Passing the MCDR signified that the integrated observatory could meet all science and engineering requirements for its mission. The MCDR encompassed all previous design reviews. The project schedule underwent review during the months following the MCDR through the Independent Comprehensive Review Panel, which led to a re-plan of the mission aiming for a 2015 launch, but it was not until 2018."
+    ],
+    "has_oracle": true
+  },
+  {
+    "claim_id": "cl_8ef80ed7cecc",
+    "engine": "lossy-k3-c250",
+    "question": "How many runways does Heathrow Airport operate, and how many does Changi Airport operate?",
+    "failure_modes": [
+      "negation",
+      "multi_hop"
+    ],
+    "claim": "Heathrow Airport is used by over 89 airlines flying to 214 destinations in 84 countries.",
+    "cited_snippets": [
+      "The airport's Central Terminal Area (CTA) was designed by Sir Frederick Gibberd, who set out the terminals and central-area buildings, including the control tower and the multi-faith St George's Chapel. Heathrow Airport is used by over 89 airlines flying to 214 destinations in 84 countries. The airport is the primary hub for British Airways and Virgin Atlantic. It has four passenger terminals (numbered 2 to 5) and a cargo terminal. In 2021, Heathrow served 19.4 million passengers, of which 17 million were international and 2.4 million domestic. The busiest year ever recorded was 2024, when 83.9 million passengers travelled through the airport. Heathrow is the UK's largest airport by value, with a network of over 218 destinations worldwide. The busiest single destination in passenger numbers is New York, with over three million passengers flying between Heathrow and JFK Airport in 2021. In the 1950s, Heathrow had six runways, arranged in three pairs at different angles in the shape of a hexagram with the permanent passenger terminal in the middle and the older terminal along the north edge of the field; two of its runways would always be within 30° of the wind direction. As the required length for runways has grown, Heathrow now has only two parallel runways running east–west. These are extended versions of the two east–west runways from the original hexagram. From the air, almost all of the original runways can still be seen, incorporated into the present taxiway system."
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_0d04cc028fe8",
+    "engine": "lossy-k3-c250+numeric-drift",
+    "question": "How effective is one dose of measles vaccine at preventing measles, and how effective are two doses?",
+    "failure_modes": [
+      "simple",
+      "numeric"
+    ],
+    "claim": "One dose is about 93% effective while two doses of the vaccine are about 97% effective at preventing measles.",
+    "cited_snippets": [
+      "It is on the World Health Organization's List of Essential Medicines. As outbreaks easily occur in under-vaccinated populations, non-prevalence of disease is seen as a test of sufficient vaccination within a population. One dose is about 93% effective while two doses of the vaccine are about 97% effective at preventing measles. Before the widespread use of the vaccine, measles was so common that infection was considered \"as inevitable as death and taxes.\" In the United States, reported cases of measles fell from 3 to 4 million with 400 to 500 deaths to tens of thousands of cases per year following introduction of two measles vaccines in 1963 (both an inactivated and a live attenuated vaccine (Edmonston B strain) were licensed for use, see chart at right). Increasing uptake of the vaccine following outbreaks in 1971 and 1977 brought this down to thousands of cases per year in the 1980s. An outbreak of almost 30,000 cases in 1990 led to a renewed push for vaccination and the addition of a second vaccine to the recommended schedule. No more than 220 cases were reported in any year from 1997 to 2013, and the disease was believed no longer endemic in the United States. In 2014, 667 cases were reported. The benefits of measles vaccination in preventing illness, disability, and death have been well documented."
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_202c2c43fa80",
+    "engine": "lossy-k3-c90+numeric-drift",
+    "question": "What is the installed capacity of the Three Gorges Dam power station and how is that total capacity made up?",
+    "failure_modes": [
+      "numeric"
+    ],
+    "claim": "It is also the world's largest power station by installed capacity (22,500 MW); it generates 103±20 TWh of electricity per year on average, depending on the amount of precipitation in the river basin.",
+    "cited_snippets": [
+      "The Three Gorges Dam, officially known as Yangtze River Three Gorges Water Conservancy Project is a hydroelectric gravity dam that spans the Yangtze River near Sandouping in Yiling District, Yichang, Hubei province, central China, downstream of the Three Gorges. It is also the world's largest power station by installed capacity (22,500 MW); it generates 95±20 TWh of electricity per year on average, depending on the amount of precipitation in the river basin. After the monsoons of 2020, the dam produced nearly 112 TWh in a year, breaking the record of"
+    ],
+    "has_oracle": true
+  },
+  {
+    "claim_id": "cl_4a2f25e543c0",
+    "engine": "lossy-k3-c250",
+    "question": "How far from Earth was Voyager 1, as of what date, making it the most distant human-made object?",
+    "failure_modes": [
+      "recency",
+      "numeric"
+    ],
+    "claim": "As of 2026, Voyager 1 is more than 160 astronomical units from the Sun, the most distant human-made object, moving at about 61,000 km/h relative to the Sun.",
+    "cited_snippets": [
+      "Traveling at about 17 km/s (11 mi/s), it has the fastest heliocentric recession speed of any spacecraft. As Voyager 1 headed for interstellar space, its instruments continued to study the Solar System. Jet Propulsion Laboratory scientists used the plasma wave experiments aboard Voyager 1 and 2 to look for the heliopause, the boundary at which the solar wind transitions into the interstellar medium. As of 2013, the probe was moving with a relative velocity to the Sun of about 61,197 kilometers per hour (38,026 mph).With the velocity the probe is currently maintaining, Voyager 1 is traveling about 523 million km (325 million mi) per year, or about one light-year per 18,000 years. As of 2026, Voyager 1 is more than 160 astronomical units from the Sun, the most distant human-made object, moving at about 61,000 km/h relative to the Sun. Scientists at the Johns Hopkins University Applied Physics Laboratory believe that Voyager 1 entered the termination shock in February 2003. This marks the point where the solar wind slows to subsonic speeds. Some other scientists expressed doubt and discussed this in the journal Nature of November 6, 2003. The issue would not be resolved until other data became available, since Voyager 1's solar-wind detector ceased functioning in 1990. This failure meant that termination shock detection would have to be inferred from the data from the other instruments on board. In May 2005, a NASA press release said that the consensus was that Voyager 1 was then in the heliosheath."
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_a39d9f087adc",
+    "engine": "lossy-k3-c90+numeric-drift",
+    "question": "What was the title of Gordon Moore's 1965 article, and how many components did he speculate a single quarter-square-inch semiconductor could contain by 1975?",
+    "failure_modes": [
+      "simple",
+      "numeric"
+    ],
+    "claim": "In 1965, Gordon Moore, who at the time was working as the director of research and development at Fairchild Semiconductor, was asked to contribute to the thirty-fifth-anniversary issue of Electronics magazine with a prediction on the future of the semiconductor components industry over the next ten years.",
+    "cited_snippets": [
+      "Engelbart presented his findings at the 1960 International Solid-State Circuits Conference, where Moore was present in the audience. In 1965, Gordon Moore, who at the time was working as the director of research and development at Fairchild Semiconductor, was asked to contribute to the thirty-fifth-anniversary issue of Electronics magazine with a prediction on the future of the semiconductor components industry over the next ten years. His response was a brief article entitled \"Cramming more components onto integrated circuits\"."
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_47f1484bcd3c",
+    "engine": "lossy-k3-c90",
+    "question": "Was Sea-Land's 35-foot container adopted as one of the ISO standard container sizes?",
+    "failure_modes": [
+      "negation"
+    ],
+    "claim": "A full container load (FCL) is an ISO standard container that is loaded and unloaded under the risk and account of one shipper and one consignee.",
+    "cited_snippets": [
+      "of practice for the plant quarantine of exit freight containers as of November 1, 2021. A full container load (FCL) is an ISO standard container that is loaded and unloaded under the risk and account of one shipper and one consignee. In practice, it means that the whole container is intended for one consignee. FCL container shipment tends to have lower freight rates than an equivalent weight of cargo in bulk. FCL is intended to designate a container loaded to its allowable maximum weight or volume, but FCL in practice"
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_27770437677f",
+    "engine": "lossy-k3-c90+wrong-source",
+    "question": "When did Maersk vessels resume trans-Suez crossings after the Houthi attacks, and what monthly losses did Egypt attribute to those attacks?",
+    "failure_modes": [
+      "multi_hop",
+      "recency"
+    ],
+    "claim": "Attacks by Houthi rebels on shipping vessels off the coast of Yemen caused monthly losses of $800 million, according to Egypt's President Sisi, and the Suez Canal set a new record with annual revenue of $9.4 billion in USD for the fiscal year that ended 30 June 2023.",
+    "cited_snippets": [
+      "of Africa instead of going through the Suez Canal, although Mærsk Mc-Kinney Møller, the first of the Triple E-class vessels, successfully navigated the Suez during her maiden voyage. Frequent attacks by Houthi rebels in the Suez Canal during the 2020s also kept Maersk vessels from shipping through the Red Sea, only returning in January 2026, with successive successful trans-Suez crossings by Maersk Sebarok and Maersk Denver. Labor practices in El Salvador and China Trade unions and labor rights organizations have criticized Maersk's labor practices in different parts of the world."
+    ],
+    "has_oracle": true
+  },
+  {
+    "claim_id": "cl_9ad12ae49095",
+    "engine": "extractive-k3-c90",
+    "question": "How much mass can the Ariane 62 variant place into low Earth orbit, and how much can the Ariane 64 place into low Earth orbit?",
+    "failure_modes": [
+      "numeric"
+    ],
+    "claim": "The Ariane Smart Transfer and Release In-orbit Ship (ASTRIS) was originally conceived as a kick stage for Ariane 6 to place payloads into higher or otherwise different orbits, but in November 2025 the European Space Agency approved its evolution into a space tug.",
+    "cited_snippets": [
+      "As of August 2026, only Amazon Leo launches have used the long fairing in the A64L configuration. The Ariane Smart Transfer and Release In-orbit Ship (ASTRIS) was originally conceived as a kick stage for Ariane 6 to place payloads into higher or otherwise different orbits, but in November 2025 the European Space Agency approved its evolution into a space tug."
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_ad600145a2a1",
+    "engine": "extractive-k3-c90",
+    "question": "How is one international unit of insulin defined by mass, and who set the first definition of an insulin unit and in what year?",
+    "failure_modes": [
+      "simple",
+      "numeric"
+    ],
+    "claim": "One international unit of insulin (1 IU) is defined as the \"biological equivalent\" of 34.7 μg pure crystalline insulin.",
+    "cited_snippets": [
+      "with the appropriate pump. Indwelling catheters pose the risk of infection and ulceration, and some peoples may also develop lipodystrophy due to the infusion sets. These risks can often be minimized by keeping infusion sites clean. Insulin pumps require care and effort to use correctly. One international unit of insulin (1 IU) is defined as the \"biological equivalent\" of 34.7 μg pure crystalline insulin. The first definition of a unit of insulin was the amount required to induce hypoglycemia in a rabbit. This was set by James Collip at the"
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_a4b47e5a31ea",
+    "engine": "lossy-k3-c250",
+    "question": "What round-trip efficiency does the corpus give for pumped-storage hydroelectricity?",
+    "failure_modes": [
+      "contested",
+      "multi_hop",
+      "numeric"
+    ],
+    "claim": "Pumped-storage hydroelectricity (PSH), or pumped hydroelectric energy storage (PHES), is a type of hydroelectric energy storage used by electric power systems for load balancing.",
+    "cited_snippets": [
+      "Pumped-storage hydroelectricity (PSH), or pumped hydroelectric energy storage (PHES), is a type of hydroelectric energy storage used by electric power systems for load balancing. A PSH system stores energy in the form of gravitational potential energy of water, pumped from a lower elevation reservoir to a higher elevation. Low-cost surplus off-peak electric power is typically used to run the pumps. During periods of high electrical demand, the stored water is released through turbines to produce electric power. Pumped-storage hydroelectricity allows energy from intermittent sources (such as solar, wind, and other renewables) or excess electricity from continuous base-load sources (such as coal or nuclear) to be saved for periods of higher demand. The reservoirs used with pumped storage can be quite small, when contrasted with the lakes of conventional hydroelectric plants of similar power capacity, and generating periods are often less than half a day. The round-trip efficiency of PSH varies between 70% and 80%. Although the losses of the pumping process make the plant a net consumer of energy overall, the system increases revenue by selling more electricity during periods of peak demand, when electricity prices are highest. If the upper lake collects significant rainfall, or is fed by a river, then the plant may be a net energy producer in the manner of a traditional hydroelectric plant."
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_67e88fef16c2",
+    "engine": "lossy-k3-c250",
+    "question": "The corpus describes two separate 100 MW storage systems with 400 MWh of storage brought online in China in 2022; which technologies are they and what efficiency is reported?",
+    "failure_modes": [
+      "multi_hop",
+      "numeric"
+    ],
+    "claim": "In 2022, Zhangjiakou connected a 100 MW storage system to the grid in north China.",
+    "cited_snippets": [
+      "The prototype was a 300W and 530Wh small scale test operating at 11.5bar which achieved more than 96% thermal efficiency. Currently there are ongoing projects to set up these systems for offshore wind energy storage in the Netherlands, and a \"one stop shop\" for renewable energy and storage designed for small islands to be trialed on Oinousses in Greece. A 60 MW, 300 MW⋅h facility with 60% efficiency opened in Jiangsu, China, using a salt cavern (2022). A 2.5 MW, 4 MW⋅h compressed CO2 closed-cycle facility started operating in Ottana (Sardinia, Italy) in 2022, and a 20 MW (multi-hour) started operating there in July 2025. In 2022, Zhangjiakou connected a 100 MW storage system to the grid in north China. It uses supercritical thermal storage, supercritical heat exchange, and high-load compression and expansion technologies. The plant can store 400 MW⋅h with 70.4% efficiency. Construction of a 350 MW, 1.4 GW⋅h salt cave project started in Shandong at a cost of $208 million, operating in 2024 with 64% efficiency. and construction of a four-hour, 700 MW, 2.8 GW⋅h facility started in China in 2024, and a 700 MW / 4,200 MWh cave project in Shanzhou, Sanmenxia (Henan, China) was approved in 2025 for construction in 2026. In 2009, the US Department of Energy awarded $24.9 million in matching funds for phase one of a 300 MW, $356 million Pacific Gas and Electric Company installation using a saline porous rock formation being developed near Bakersfield in Kern County, California."
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_859e7c33bd2c",
+    "engine": "lossy-k3-c90",
+    "question": "What is TSMC's capital expenditure forecast for 2026, and what was the previous guidance?",
+    "failure_modes": [
+      "recency",
+      "numeric"
+    ],
+    "claim": "Reuters reported that the company raised its 2026 capital expenditure forecast to between US$60 billion and US$64 billion, compared with previous guidance of US$52billion to US$56 billion, citing continued strong demand.",
+    "cited_snippets": [
+      "to sell additional VIS shares in the near future. The company also stated that the sale would not affect its strategic collaborations with VIS, including outsourcing interposer production and licensing gallium nitride (GaN) technology. In July 2026, Reuters reported that TSMC posted a 77% year-on-year increase in second-quarter profit to a record NT$706.6 billion (US$22 billion), exceeding analysts' expectations. Reuters reported that the company raised its 2026 capital expenditure forecast to between US$60 billion and US$64 billion, compared with previous guidance of US$52billion to US$56 billion, citing continued strong demand"
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_99ce05af43a4",
+    "engine": "lossy-k3-c90",
+    "question": "What is the maximum beam of a ship allowed through the Suez Canal, and how does that compare with the beam allowed by the Panama Canal's new locks?",
+    "failure_modes": [
+      "multi_hop",
+      "numeric"
+    ],
+    "claim": "Created in 1913 by damming the Chagres River, the Gatun Lake is a key part of the Panama Canal, providing the millions of liters of water necessary to operate its locks each time a ship passes through, and Because of the importance of the canal to international trade, many ships are built to the maximum size allowed.",
+    "cited_snippets": [
+      "outer locks. Created in 1913 by damming the Chagres River, the Gatun Lake is a key part of the Panama Canal, providing the millions of liters of water necessary to operate its locks each time a ship passes through. At time of formation, Gatun Lake was the largest human-made lake in the world. Because of the importance of the canal to international trade, many ships are built to the maximum size allowed. For its first century, the width and length of ships that may transit the canal was limited by"
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_1f5e2583c2e4",
+    "engine": "lossy-k3-c90+dropped-citation",
+    "question": "How many individuals, from how many countries, have visited the International Space Station, and as of what date?",
+    "failure_modes": [
+      "recency",
+      "contested"
+    ],
+    "claim": "As of August 2025, 290 individuals from 26 countries had visited the station.",
+    "cited_snippets": [],
+    "has_oracle": true
+  },
+  {
+    "claim_id": "cl_fc16d8b836ea",
+    "engine": "lossy-k3-c90+dropped-citation",
+    "question": "Which TSMC process was the first commercially available EUV lithographic process in the industry, and how many wafers per hour could an EUV scanner produce as of 2022?",
+    "failure_modes": [
+      "multi_hop",
+      "recency",
+      "numeric"
+    ],
+    "claim": "As of 2022, a scanner produces up to 200 wafers per hour.",
+    "cited_snippets": [],
+    "has_oracle": true
+  },
+  {
+    "claim_id": "cl_97663b8fdc0d",
+    "engine": "extractive-k3-c250",
+    "question": "The union group that challenged the environmental review for the Moss Landing battery project had used similar arguments against a California solar project; which project was it and how large is it?",
+    "failure_modes": [
+      "multi_hop",
+      "numeric"
+    ],
+    "claim": "The Moss Landing Power Plant site has since been chosen as California's primary location to provide battery based energy storage in order to better utilize renewable energy sources such as solar and wind on a grid-wide commercial scale.",
+    "cited_snippets": [
+      "First, air is drawn from the air intake to the compressor (driven by the turbine axle), then it is burned with natural gas in the combustion chamber. The hot combustion gasses then go through the actual turbine (driving the axle). From a thermodynamic standpoint, this is the standard Brayton cycle. At the output of the gas turbines, some of the remaining energy (heat) in the exhaust gas is recovered through a heat exchanger and transferred to water that feeds a steam turbine, similar to units 6 and 7. On a smaller scale than the supercritical units, units 1 and 2 are also more flexible, with a start-up time of only an hour, against 24 hours for units 6 and 7. Battery energy storage facilities Utilities in California are required by a 2013 law to provide significant battery storage by 2024. The Moss Landing Power Plant site has since been chosen as California's primary location to provide battery based energy storage in order to better utilize renewable energy sources such as solar and wind on a grid-wide commercial scale. On June 29, 2018 Vistra Corp announced that it planned on building at the Moss Landing Power Station site, what became the world's largest commercial electric battery energy storage site. The batteries use around 100 GWh/year as energy lost during the round-trip."
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_9ce087ecaf67",
+    "engine": "lossy-k3-c90+wrong-source",
+    "question": "What were the capacity and efficiency of the first utility-scale diabatic compressed-air energy storage plant?",
+    "failure_modes": [
+      "numeric",
+      "simple"
+    ],
+    "claim": "The first utility-scale diabatic compressed-air energy storage project was the 290-megawatt Huntorf plant opened in 1978 in Germany using a salt dome cavern with a capacity of 580 megawatt-hours (2,100.",
+    "cited_snippets": [
+      "plant, the largest in the world at the time, was switched on in Huai'an, China. It consists of two 300 MW units with a 71% conversion efficiency rate. Diabatic storage dissipates much of the heat of compression with intercoolers (thus approaching isothermal compression) into the atmosphere as waste, essentially wasting the energy used to perform the work of compression. Upon removal from storage, the temperature of this compressed air is the one indicator of the amount of stored energy that remains in this air. Consequently, if the air temperature is"
+    ],
+    "has_oracle": true
+  },
+  {
+    "claim_id": "cl_f400b8beb7ca",
+    "engine": "lossy-k3-c90+wrong-source",
+    "question": "What is the advertised price of a Falcon 9 Block 5 launch, and what are SpaceX's estimated internal costs per launch?",
+    "failure_modes": [
+      "contested",
+      "numeric"
+    ],
+    "claim": "As of 2024, SpaceX's internal costs for a Falcon 9 launch are estimated between $15 million and $28 million, factoring in workforce expenses, refurbishment, assembly, operations, and facility depreciation.",
+    "cited_snippets": [
+      "On April 21, 2023, the United States Space Force granted SpaceX permission to lease Vandenberg Space Launch Complex 6 (SLC-6). This will become SpaceX's fourth orbital launch site, providing a second pad for highly inclined polar orbit launches and enabling Falcon Heavy launches from the West Coast. At the time of the Falcon 9's maiden flight in 2010, the advertised price for commercial satellite launches using the v1.0 version was $49.9–56 million. Over the years, the price increased, keeping pace with inflation."
+    ],
+    "has_oracle": true
+  },
+  {
+    "claim_id": "cl_b430969f3076",
+    "engine": "extractive-k3-c250",
+    "question": "Does Denmark need to install additional peak-load power plants to balance its wind power?",
+    "failure_modes": [
+      "negation"
+    ],
+    "claim": "Due to their inability to follow load wind power gets a lower price.",
+    "cited_snippets": [
+      "In 2010 the plan was to reach 50% of consumption in 2020 (which was almost met), and up to 84% in 2035. Analysts expect the cost of wind power to be 30 øre/kWh and its handling cost to be 15 øre/kWh, being lower than coal and natural gas at 55 øre/kWh minimum. Due to their inability to follow load wind power gets a lower price. Consumption related to wind power Danish district heating plants use 100 petajoule/year, but little of this consumption is from 180 MW of electrode boilers installed in powerplants or 374 MW of large heat pumps. The boilers are only used to soak up the powerplant's own electricity when prices are negative, to avoid paying tax. Expansion of wind powered district heating is calculated to be economically efficient without taxes. The number of household heat pumps has stalled at 70,000 in 2015 due to tax-free wood pellets, and the goal of 300,000 small heat pumps in 2035 is unlikely to be reached, reducing the value of more wind power unless electricity tax is reduced. Installed capacities and production As of 2023, the total installed wind power capacity in Denmark was 7,510 MW, of which 4,860 MW were onshore and 2,650 MW were offshore. At the end of 2015, Denmark's total installed capacity for wind power stood at 5,070 MW. Denmark has the highest proportion of wind power in the world."
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_41e2aab20804",
+    "engine": "extractive-k3-c250",
+    "question": "What is the maximum beam of a ship allowed through the Suez Canal, and how does that compare with the beam allowed by the Panama Canal's new locks?",
+    "failure_modes": [
+      "multi_hop",
+      "numeric"
+    ],
+    "claim": "When USS Saratoga made her first trip through the Gatun Locks in 1928, the ship knocked over all the concrete lamp posts along the canal.",
+    "cited_snippets": [
+      "The central wall between the parallel locks at Gatun is 18 m (59 ft) thick and over 24 m (79 ft) high. The steel lock gates measure an average of 2 m (6.6 ft) thick, 19.5 m (64 ft) wide, and 20 m (66 ft) high. Panama Canal pilots were initially unprepared to handle the flight decks of aircraft carriers, which protrude beyond the hull on either side of the ship. When USS Saratoga made her first trip through the Gatun Locks in 1928, the ship knocked over all the concrete lamp posts along the canal. In 2016, a decade-long expansion project created larger locks, allowing bigger ships to transit through deeper and wider channels. The allowed dimensions of ships using these locks increased by 25 percent in length, 51 percent in beam, and 26 percent in draft, as defined by Neopanamax metrics. As with a toll road, vessels transiting the canal must pay tolls. Tolls for the canal are set by the Panama Canal Authority and are based on vessel type, size, and the type of cargo. For container ships, the toll is assessed on the ship's capacity expressed in twenty-foot equivalent units (TEUs), one TEU being the size of a standard intermodal shipping container. Effective 1 April 2016, this toll went from US$74 per loaded container to $60 per TEU capacity plus $30 per loaded container for a potential $90 per TEU when the ship is full. A Panamax container ship may carry up to 4,400 TEU."
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_58d0e85732f7",
+    "engine": "lossy-k3-c250+wrong-source",
+    "question": "As of October 2, 2026, how many Falcon 9 full mission successes had been achieved, out of how many attempts, and at what success rate?",
+    "failure_modes": [
+      "numeric",
+      "recency"
+    ],
+    "claim": "As of October 2, 2026, Falcon 9 had achieved 689 out of 692 full mission successes (roughly 100%).",
+    "cited_snippets": [
+      "Block 5 has a success rate of 99.8% (635/636). For comparison, the industry benchmark Soyuz series has performed 1880 launches with a success rate of 95.1% (the latest Soyuz-2's success rate is 94%), the Russian Proton series has performed 425 launches with a success rate of 88.7% (the latest Proton-M's success rate is 90.1%), the European Ariane 5 has performed 117 launches with a success rate of 95.7%, and Chinese Long March 3B has performed 85 launches with a success rate of 95.3%. F9's launch sequence includes a hold-down feature that allows full engine ignition and systems check before liftoff. After the first-stage engine starts, the launcher is held down and not released for flight until all propulsion and vehicle systems are confirmed to be operating normally. Similar hold-down systems have been used on launch vehicles such as Saturn V and Space Shuttle. An automatic safe shut-down and unloading of propellant occur if any abnormal conditions are detected. Prior to the launch date, SpaceX sometimes completes a test cycle, culminating in a three-and-a-half second first stage engine static firing. F9 has triple-redundant flight computers and inertial navigation, with a GPS overlay for additional accuracy. Since mid-2024, the Falcon 9 has been involved in a number of mission anomalies, which have raised reliability concerns about the rocket."
+    ],
+    "has_oracle": true
+  },
+  {
+    "claim_id": "cl_7f785843b03c",
+    "engine": "lossy-k3-c250+wrong-source",
+    "question": "Which Ariane rocket variant launched the James Webb Space Telescope, and when did the Ariane 6 make its first flight?",
+    "failure_modes": [
+      "multi_hop",
+      "negation"
+    ],
+    "claim": "The launch (designated Ariane flight VA256) took place as scheduled at 12:20 UTC on 25 December 2021 on an Ariane 5 rocket that lifted off from the Guiana Space Centre in French Guiana, and the telescope was launched with slightly less speed than needed to reach its final orbit, and slowed as it travelled away from Earth, so it reached L2 with only the velocity needed to enter its orbit there.",
+    "cited_snippets": [
+      "The James Webb Space Telescope (JWST) is a space telescope designed to conduct infrared astronomy. It is the largest telescope in space, and is equipped with high-resolution and high-sensitivity instruments, allowing it to view objects too old, distant, or faint for the Hubble Space Telescope. This enables investigations across many fields of astronomy and cosmology, such as observation of the first stars and the formation of the first galaxies, and detailed atmospheric characterization of potentially habitable exoplanets. Despite Webb's mirror diameter being 2.7 times larger than that of the Hubble Space Telescope, it produces images of comparable resolution because it observes in the infrared spectrum, which has longer wavelengths than the Hubble's visible spectrum. The longer the wavelength the telescope is designed to observe, the larger the information-gathering surface (mirrors in the infrared spectrum or antenna area in the millimeter and radio ranges) required to achieve the desired resolution. The Webb was launched on 25 December 2021 on an Ariane 5 rocket from Kourou, French Guiana. In January 2022, it arrived at its destination, a solar orbit near the Sun–Earth L2 Lagrange point, about 1.5 million kilometers (930,000 mi) from Earth. The telescope's first image was released to the public on 11 July 2022. The U.S. National Aeronautics and Space Administration (NASA) led Webb's design and development and partnered with two central agencies: the European Space Agency (ESA) and the Canadian Space Agency (CSA)."
+    ],
+    "has_oracle": true
+  },
+  {
+    "claim_id": "cl_7bd4a3d28502",
+    "engine": "extractive-k3-c90",
+    "question": "By how much did the Panama Canal expansion increase the canal's shipping capacity?",
+    "failure_modes": [
+      "contested"
+    ],
+    "claim": "In 1934, it was estimated that the maximum capacity of the canal would be around 80 million tons per year.",
+    "cited_snippets": [
+      "the US invasion of Panama in 1989. The rains also caused an access road to the Centenario Bridge to collapse. The canal now handles more vessel traffic than had ever been envisioned by its builders. In 1934, it was estimated that the maximum capacity of the canal would be around 80 million tons per year. In 2015, canal traffic reached 340.8 million tons of shipping. To increase capacity, a number of improvements have been made to maximize the use of the locking system: Implementation of an enhanced locks lighting system;"
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_14a40cf6a785",
+    "engine": "lossy-k3-c250",
+    "question": "How many orders and deliveries has the Boeing 787 programme recorded?",
+    "failure_modes": [
+      "recency",
+      "numeric"
+    ],
+    "claim": "Boeing 787 orders and deliveries (cumulative, by year): Orders Deliveries — as of August 2026 The Boeing roughly 790 has been involved in eight accidents and incidents as of June 2025, including one hull loss, which was also the only accident involving fatalities.",
+    "cited_snippets": [
+      "In September 2011, the 787 was first officially delivered to launch customer All Nippon Airways. As of December 2018, the top five identified 787 customers are American Airlines with 89 orders (37 -8s and 52 -9s), All Nippon Airways with 83 orders (36 -8s, 44 -9s and three -10s), ILFC (an aircraft leasing company) with 74 orders (23 -8s and 51 -9s), and United Airlines (12 -8s, 38 -9s and 21 -10s) and Etihad Airways (41 -9s and 30 -10s), both with 71 orders. On December 13, 2018, the 787th Boeing 787 was delivered to AerCap and leased to China Southern Airlines. By then the 787 had flown 300 million passengers on 1.5 million flights and opened 210 new nonstop routes. The 1000th Dreamliner, a 787-10 for Singapore Airlines, made its maiden flight on April 3, 2020. Boeing 787 orders and deliveries (cumulative, by year): Orders Deliveries — as of August 2026 The Boeing 787 has been involved in eight accidents and incidents as of June 2025, including one hull loss, which was also the only accident involving fatalities. Fatal and hull loss accidents On June 12, 2025, Air India Flight 171, an 11-year-old Boeing 787-8 registered as VT-ANB operating from Ahmedabad Airport to London Gatwick Airport, crashed into the hostel building of B. J. Medical College shortly after takeoff."
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_2dc1b98b1d56",
+    "engine": "lossy-k3-c90+dropped-citation",
+    "question": "Did the January 2025 fire at the Moss Landing battery storage facility release hydrogen fluoride into the air?",
+    "failure_modes": [
+      "negation"
+    ],
+    "claim": "As per lithium battery fire protocols, firefighters did not try to extinguish the blaze, but let it burn, and Local authorities expressed concerns regarding the release of hydrogen fluoride and other hazardous materials, however none were found.",
+    "cited_snippets": [],
+    "has_oracle": true
+  },
+  {
+    "claim_id": "cl_21e72d5f16dc",
+    "engine": "extractive-k3-c250",
+    "question": "How many locomotives does Union Pacific have on its roster?",
+    "failure_modes": [
+      "recency",
+      "contested"
+    ],
+    "claim": "HB405 was dropped after Union Pacific made voluntary commitments to replace several tier 0 switching locomotives with less polluting tier 2 locomotives, as well as to test some all electric ones in the Utah Roper Rail Yard.",
+    "cited_snippets": [
+      "Schultz, Union Pacific was uncooperative on the switching locomotive bill if Utah did not drop the railroad crossings bill. HB405 was dropped after Union Pacific made voluntary commitments to replace several tier 0 switching locomotives with less polluting tier 2 locomotives, as well as to test some all electric ones in the Utah Roper Rail Yard. Wabtec is modernizing 600 older Union Pacific locomotives over a three-year period through 2025. The modernizations will improve fuel efficiency and reliability of these locomotives while also reducing emissions. Equipment Management Pool Union Pacific and Norfolk Southern are the largest owner-partners of Equipment Management Pool, a domestic freight interline intermodal freight transport service that rents and moves more than 35,000 53-foot containers and chassis throughout North America. Other partners in the freight company include Canadian National Railway, I&M Rail Link, Iowa Interstate Railroad, and Wisconsin Central Ltd. In 2022, the Canadian Pacific Railway, one year prior to its merger with the Kansas City Southern Railway, was dropped from the pool, leaving CN as the only Canadian member. Union Pacific Railroad Museum The Union Pacific Railroad Museum is a former Carnegie library in Council Bluffs, Iowa, that houses artifacts, photographs, and documents that trace the development of the railroad and the American West. The company pays upkeep on the privately owned building, which houses part of Union Pacific's corporate collection, one of the oldest in the United States."
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_06956d75118e",
+    "engine": "lossy-k3-c90",
+    "question": "Does the Suez Canal use locks to raise and lower ships?",
+    "failure_modes": [
+      "negation"
+    ],
+    "claim": "When USS Saratoga made her first trip through the Gatun Locks in 1928, the ship knocked over all the concrete lamp posts along the canal, and In 2016, a decade-long expansion project created larger locks, allowing bigger ships to transit through deeper and wider channels.",
+    "cited_snippets": [
+      "ship. When USS Saratoga made her first trip through the Gatun Locks in 1928, the ship knocked over all the concrete lamp posts along the canal. In 2016, a decade-long expansion project created larger locks, allowing bigger ships to transit through deeper and wider channels. The allowed dimensions of ships using these locks increased by 25 percent in length, 51 percent in beam, and 26 percent in draft, as defined by Neopanamax metrics. As with a toll road, vessels transiting the canal must pay tolls. Tolls for the canal are"
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_b53d34e0a962",
+    "engine": "lossy-k3-c90+numeric-drift",
+    "question": "Does the James Webb Space Telescope measure ultraviolet light, and what wavelength range is it sensitive to?",
+    "failure_modes": [
+      "negation"
+    ],
+    "claim": "Optical telescopes typically have mirrors polished to an accuracy of about a tenth of the wavelength of visible light, but the Space Telescope was to be used for observations from the visible through the ultraviolet (shorter wavelengths) and was specified to be diffraction limited to take full advantage of the space environment.",
+    "cited_snippets": [
+      "fabricate and test. The mirror and optical systems of the telescope determine the final performance, and they were designed to exacting specifications. Optical telescopes typically have mirrors polished to an accuracy of about a tenth of the wavelength of visible light, but the Space Telescope was to be used for observations from the visible through the ultraviolet (shorter wavelengths) and was specified to be diffraction limited to take full advantage of the space environment. Therefore, its mirror needed to be polished to an accuracy of 10 nanometers, or about 1/65"
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_f9e1bf57535f",
+    "engine": "extractive-k3-c90",
+    "question": "How much does BCG vaccine efficacy against tuberculosis vary between trials, and what geographic pattern do those trials show?",
+    "failure_modes": [
+      "contested",
+      "numeric"
+    ],
+    "claim": "Still, those trials conducted elsewhere have shown no protective effect, and efficacy appears to fall the closer one gets to the equator.",
+    "cited_snippets": [
+      "Trials in the UK consistently show a 60 to 80% protective effect. Still, those trials conducted elsewhere have shown no protective effect, and efficacy appears to fall the closer one gets to the equator. A 1994 systematic review found that BCG reduces the risk of getting tuberculosis by about 50%."
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_16647625b69a",
+    "engine": "lossy-k3-c250+wrong-source",
+    "question": "How is one international unit of insulin defined by mass, and who set the first definition of an insulin unit and in what year?",
+    "failure_modes": [
+      "simple",
+      "numeric"
+    ],
+    "claim": "1923 Dr. Trent Champion de Crespigny delivers the first treatments with insulin produced in Australia, to a 9-year-old, in Adelaide, South Australia, on 7 January 1923.",
+    "cited_snippets": [
+      "The unit of insulin was set by the insulin committee at the University of Toronto. The unit evolved eventually to the old USP insulin unit, where one unit (U) of insulin was set equal to the amount of insulin required to reduce the concentration of blood glucose in a fasting rabbit to 45 m g/d L (2.5 m mol/L). Once the chemical structure and mass of insulin was known, the unit of insulin was defined by the mass of pure crystalline insulin required to obtain the USP unit. The unit of measurement used in insulin therapy is not part of the International System of Units (abbreviated SI) which is the modern form of the metric system. Instead the pharmacological international unit (IU) is defined by the WHO Expert Committee on Biological Standardization. The central problem for those requiring external insulin is picking the right dose of insulin and the right timing. Physiological regulation of blood glucose, as in the non-diabetic, would be best. Increased blood glucose levels after a meal is a stimulus for prompt release of insulin from the pancreas. The increased insulin level causes glucose absorption and storage in cells, reduces glycogen to glucose conversion, reducing blood glucose levels, and so reducing insulin release. The result is that the blood glucose level rises somewhat after eating, and within an hour or so, returns to the normal 'fasting' level."
+    ],
+    "has_oracle": true
+  },
+  {
+    "claim_id": "cl_c83f0f168882",
+    "engine": "lossy-k3-c90+wrong-source",
+    "question": "What was ASML's market capitalization, as of when, and what share of worldwide lithography machine sales did it have?",
+    "failure_modes": [
+      "recency",
+      "numeric"
+    ],
+    "claim": "As of 2025, ASML had 83% percent of the worldwide sales of lithography machines.",
+    "cited_snippets": [
+      "As of January 2026, ASML had a market capitalization of approximately $527 billion, making it Europe's largest technology company and one of its most valuable companies overall. ASML was founded in 1984 as a joint venture between the Dutch technology companies Philips and ASM International and became an independent publicly traded company four years later. The company was established to complete development of a lithography machine that Philips had been developing internally, but initially had no market-ready products."
+    ],
+    "has_oracle": true
+  },
+  {
+    "claim_id": "cl_bf108bf793b8",
+    "engine": "lossy-k3-c250",
+    "question": "What did Heathrow Terminal 5 cost to build, and when did it open to the public?",
+    "failure_modes": [
+      "simple",
+      "numeric"
+    ],
+    "claim": "However, the Airports Inquiries of 1981–83 and the 1985 Airports Policy White Paper considered further expansion and, following a four-year-long public inquiry in 1995–99, Terminal 5 was approved.",
+    "cited_snippets": [
+      "From 12 September 2019, the climate change campaign group, Heathrow Pause, attempted to disrupt flights into and out of Heathrow Airport in London by flying drones in the airport's exclusion zone. The action was unsuccessful in disrupting the flights and nineteen people were arrested. Future expansion and plans Third runway and terminal expansion There is a long history of expansion proposals for Heathrow since it was first designated as a civil airport. Following the cancellation of the Maplin project in 1974, a fourth terminal was proposed, but expansion beyond this was ruled out. However, the Airports Inquiries of 1981–83 and the 1985 Airports Policy White Paper considered further expansion and, following a four-year-long public inquiry in 1995–99, Terminal 5 was approved. In 2003, after many studies and consultations, the Future of Air Transport White Paper was published, which proposed a third runway at Heathrow, as well as a second runway at Stansted Airport. In January 2009, the Transport Secretary at the time, Geoff Hoon announced that the British government supported the expansion of Heathrow by building a third 2,200-metre (7,200 ft) runway and a sixth terminal building. This decision followed the 2003 white paper on the future of air transport in the UK, and a public consultation in November 2007. This was a controversial decision which met with widespread opposition because of the expected greenhouse gas emissions, impact on local communities, as well as noise and air pollution concerns."
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_2f4f0447bee3",
+    "engine": "extractive-k3-c250",
+    "question": "What was the capital cost of the Hornsdale Power Reserve that Tesla built under the 2017 South Australian contract?",
+    "failure_modes": [
+      "simple",
+      "numeric"
+    ],
+    "claim": "During 2017 Tesla, Inc. won the contract and built the Hornsdale Power Reserve, for a capital cost of A$90 million, leading to the colloquial Tesla Big Battery name.",
+    "cited_snippets": [
+      "Hornsdale Power Reserve, colloquially known as the Tesla Big Battery, is a 150 MW (194 MWh) grid-connected energy storage system. The Hornsdale Power Reserve is owned by Neoen and is co-located with the Hornsdale Wind Farm in the Mid North region of South Australia, also owned by Neoen. The original installation in 2017 was the largest lithium-ion battery in the world at 100 MW / 129 MWh. It was expanded in 2020 to 194 MWh at 150 MW. Despite the expansion, it inevitably lost that title in August 2020 to the Gateway Energy Storage in California, USA. In Australia the large Victorian Big Battery (300 MW / 450 MWh) began operations in December 2021. Those have since been leapfrogged by many other batteries. In 2016, South Australia suffered grid damages and blackout during storms, as well as high electricity prices. Grid batteries were among the solutions discussed. South Australia received 90 proposals and considered five projects to build a grid-connected battery to increase grid stability under adverse weather events. This has resulted in less use of gas-fired generators to provide grid stability. During 2017 Tesla, Inc. won the contract and built the Hornsdale Power Reserve, for a capital cost of A$90 million, leading to the colloquial Tesla Big Battery name. Elon Musk placed a wager that the battery would be completed within \"100 days from contract signature\", otherwise the battery would be free."
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_6f1cbc333e2f",
+    "engine": "extractive-k3-c250",
+    "question": "What container capacity is reported for the Emma Maersk, and what claim is made about its size?",
+    "failure_modes": [
+      "contested",
+      "multi_hop"
+    ],
+    "claim": "In 2006, the largest container ship in the world to that date, the E-class vessel Emma Maersk, was delivered to Maersk Line from Odense Steel Shipyard.",
+    "cited_snippets": [
+      "million twenty-foot equivalent unit (TEU) container capacity. As of January 2021, as the largest container fleet, it held 17% of the global TEU. In 2006, the largest container ship in the world to that date, the E-class vessel Emma Maersk, was delivered to Maersk Line from Odense Steel Shipyard. Since then, seven other sister ships have been built, and on 21 February 2011 Maersk ordered ten even larger container ships from Daewoo, the Triple E class, each with a capacity of 18,000 containers. The first was delivered in 2013. There was an option for 10–20 more, and in June 2011, Maersk placed a follow-on order for a second batch of ten sister ships (to the same design with the same shipyard), but cancelled its option for a third batch of ten. As of February 2010, Maersk had an order book for new ships totaling 857000TEU (including options on the Triple E class); that backlog is larger than the existing fleet of the fourth-largest line, Evergreen Line. Maersk Line cooperated with the United States Navy on testing 7–100% algae biofuel on the Maersk Kalmar in December 2011. In January 2012, Søren Skou took over as CEO of Maersk Line from Eivind Kolding. Later that year, the company ceased its business in Iran in order to prevent potential damage to the company's business with Western countries, particularly the US, due to the sanctions regime led by those countries. On 15 March 2022, Robert M. Uggla was appointed Chair of the Board at"
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_c156829b08bb",
+    "engine": "extractive-k3-c90",
+    "question": "How much has Europe invested in the development of Ariane 6 and its launch site, as of what date, and what per-launch subsidy did the ESA Director General cite?",
+    "failure_modes": [
+      "recency",
+      "numeric"
+    ],
+    "claim": "As of August 2026, Europe had invested about €3.6 billion in the development of Ariane 6 and its launch site in French Guiana.",
+    "cited_snippets": [
+      "As of August 2026, Europe had invested about €3.6 billion in the development of Ariane 6 and its launch site in French Guiana. ESA Director General Josef Aschbacher said that, based on a launch rate of nine flights per year, European governments would need to subsidise each Ariane 6 launch by between €32 and 38 million. The Ariane 6 programme, approved by the ESA in 2012 as a lower-cost successor to Ariane 5, has faced criticism over its development costs, launch price, and lack of reusability."
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_416614160efb",
+    "engine": "extractive-k3-c90",
+    "question": "Did the January 2025 fire at the Moss Landing battery storage facility release hydrogen fluoride into the air?",
+    "failure_modes": [
+      "negation"
+    ],
+    "claim": "The Moss Landing Power Plant is a natural gas powered electricity generation plant as well as a battery energy storage facility, located in Moss Landing, California, United States, at the midpoint of Monterey Bay.",
+    "cited_snippets": [
+      "The Moss Landing Power Plant is a natural gas powered electricity generation plant as well as a battery energy storage facility, located in Moss Landing, California, United States, at the midpoint of Monterey Bay. As of 2025, the site's battery storage facility is one of the largest in the world, at 630 MW (power) and 2,500 MWh (energy). The energy storage facility stores excess electricity (usually lower-price solar electricity during the daytime) for later use during periods of higher electricity demand (usually evening hours)."
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_938674a1f6af",
+    "engine": "lossy-k3-c90+wrong-source",
+    "question": "What are the rated power and energy capacity of the Hornsdale Power Reserve after its 2020 expansion?",
+    "failure_modes": [
+      "numeric",
+      "recency"
+    ],
+    "claim": "(This is a third-party estimate, based on spot energy prices; it is possible that the HPR has contracted to provide power at a lower price, in exchange for a more certain income stream.) After six months of operation, the Hornsdale Power Reserve was responsible for 55% of frequency control and ancillary services in South Australia.",
+    "cited_snippets": [
+      "Hornsdale Power Reserve, colloquially known as the Tesla Big Battery, is a 150 MW (194 MWh) grid-connected energy storage system. The Hornsdale Power Reserve is owned by Neoen and is co-located with the Hornsdale Wind Farm in the Mid North region of South Australia, also owned by Neoen. The original installation in 2017 was the largest lithium-ion battery in the world at 100 MW / 129 MWh. It was expanded in 2020 to 194 MWh at 150 MW."
+    ],
+    "has_oracle": true
+  },
+  {
+    "claim_id": "cl_4748b82c096a",
+    "engine": "lossy-k3-c250+polarity-flip",
+    "question": "Does Denmark need to install additional peak-load power plants to balance its wind power?",
+    "failure_modes": [
+      "negation"
+    ],
+    "claim": "Denmark has also retained 6 GW of its traditional power plants, therefore it does need to install additional peak-load plants to balance its wind power.",
+    "cited_snippets": [
+      "The country has very large offshore wind resources, and large areas of sea territory with a shallow water depth of 5–15 m, where siting is most feasible. These sites offer higher wind speeds, in the range of roughly 8.5–9.0 m/s at 50 m height. There have been no major problems from wind variability, although there is a temporary problem resulting from the connection of a large bloc of wind power from offshore wind farms to a single point on a weak section of the transmission network. The wind resource over Denmark was mapped in 1999 by EMD International A/S and Risø National Laboratory. The mapping was made using a 200 m grid resolution using the models in WindPRO and WAsP. The results were validated on more than 1200 wind turbines nationwide. Denmark is connected by transmission line to other European countries (e.g. Cross-Skagerrak) at an electricity interconnection level (transmission capacity relative to production capacity) of 44% in 2015, and increased since then. Denmark has also retained 6 GW of its traditional power plants, therefore it does not need to install additional peak-load plants to balance its wind power. Instead, it purchases additional power from its neighbours when necessary. With some strengthening of the grid, Denmark plans to increase wind's share even further. In 2010 the plan was to reach 50% of consumption in 2020 (which was almost met), and up to 84% in 2035."
+    ],
+    "has_oracle": true
+  },
+  {
+    "claim_id": "cl_e64ba39e36b7",
+    "engine": "lossy-k3-c90+wrong-source",
+    "question": "Which TSMC process was the first commercially available EUV lithographic process in the industry, and how many wafers per hour could an EUV scanner produce as of 2022?",
+    "failure_modes": [
+      "multi_hop",
+      "recency",
+      "numeric"
+    ],
+    "claim": "The largest shareholders in early 2024 were: National Development Fund, Executive Yuan (6.38%) Capital Research and Management Company (3.61%) Government of Singapore Investment Corporation (3.32%) Fidelity Investments (1.37%) New Labor Pension Scheme (1.28%) The Vanguard Group (1.26%) Yuanta Securities Investment (1.02%) Fidelity International (0.8%) Fubon Life Insurance (0.75%) TSMC's N7+ is the first commercially available extreme-ultraviolet lithographic process in the semiconductor industry.",
+    "cited_snippets": [
+      "for EUV compared to 193 nm immersion, even with two exposures using the latter. At the 2009 EUV Symposium, Hynix reported that the wall plug efficiency was ~0.02% for EUV, i.e., to get 200 watts at intermediate focus for 100 wafers per hour, one would require 1 megawatt of input power, compared to 165 kilowatts for an ArF immersion scanner, and that even at the same throughput, the footprint of the EUV scanner was ~3× the footprint of an ArF immersion scanner, resulting in productivity loss. Additionally, to confine ion"
+    ],
+    "has_oracle": true
+  },
+  {
+    "claim_id": "cl_19585aa82e28",
+    "engine": "lossy-k3-c90+numeric-drift",
+    "question": "How many passengers did Changi Airport handle in 2025, and how did that compare with the previous year?",
+    "failure_modes": [
+      "recency",
+      "numeric"
+    ],
+    "claim": "For the 2025 full-year figures published by the airport, the airport handled 69,980,000 passengers (a 2.8% increase compared to 2024), the highest in its 44-year history.",
+    "cited_snippets": [
+      "A fifth terminal is currently under construction. Changi Airport serves more than 100 airlines flying to 170 cities in around 100+ countries and territories worldwide. About 7,000 flights arrive or depart at Changi each week, or one every 80 seconds. For the 2025 full-year figures published by the airport, the airport handled 69,980,000 passengers (a 3.4% increase compared to 2024), the highest in its 44-year history. This made it the fourth busiest international airport in the world and the seventh busiest in Asia Pacific."
+    ],
+    "has_oracle": true
+  },
+  {
+    "claim_id": "cl_5cbf884c28b5",
+    "engine": "lossy-k3-c250",
+    "question": "By what method are crystalline silicon wafers formed, and what purity are wafers held to?",
+    "failure_modes": [
+      "simple"
+    ],
+    "claim": "Wafers are formed of highly pure, nearly defect-free single crystalline material, with a purity of roughly 100% (9N) or higher.",
+    "cited_snippets": [
+      "In electronics, a wafer (also called a slice or substrate) is a thin slice of semiconductor, such as a crystalline silicon (c-Si, silicium), used for the fabrication of integrated circuits and, in photovoltaics, to manufacture solar cells. The wafer serves as the substrate for microelectronic devices built in and upon the wafer. It undergoes many microfabrication processes, such as doping, ion implantation, etching, thin-film deposition of various materials, and photolithographic patterning. Finally, the individual microcircuits are separated by wafer dicing and packaged as an integrated circuit. In the semiconductor industry, the term wafer appeared in the 1950s to describe a thin round slice of semiconductor material, typically germanium or silicon. The round shape characteristic of these wafers comes from single-crystal ingots usually produced using the Czochralski method. Though, silicon wafers were first introduced in the 1940s. By 1960, silicon wafers were being manufactured in the U.S. by companies such as MEMC and SunEdison. In 1965, American engineers Eric O. Ernst, Donald J. Hurd, and Gerard Seeley, while working under IBM, filed Patent US3423629A for the first high-capacity epitaxial apparatus. Wafers are formed of highly pure, nearly defect-free single crystalline material, with a purity of 99.9999999% (9N) or higher. One process for forming crystalline wafers is known as the Czochralski method, invented by Polish chemist Jan Czochralski. In this process, a cylindrical ingot of high purity monocrystalline semiconductor, such as silicon or germanium, called a boule, is formed by pulling a seed crystal from a melt."
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_67609c3e5c86",
+    "engine": "lossy-k3-c90",
+    "question": "What gain in low Earth orbit payload does the Ariane 64 Block 2 provide, and what is the increased thrust of its enhanced Vinci upper stage engine?",
+    "failure_modes": [
+      "numeric"
+    ],
+    "claim": "While both would use a cryogenic main stage powered by a Vulcain 2 engine and two P145 solid boosters, Ariane 6.1 would feature a cryogenic upper stage powered by the Vinci engine and boost up to 8,500 kg (18,700 lb) to GTO, while Ariane 6.2 would use a lower-cost hypergolic upper stage powered by the Aestus engine.",
+    "cited_snippets": [
+      "While both would use a cryogenic main stage powered by a Vulcain 2 engine and two P145 solid boosters, Ariane 6.1 would feature a cryogenic upper stage powered by the Vinci engine and boost up to 8,500 kg (18,700 lb) to GTO, while Ariane 6.2 would use a lower-cost hypergolic upper stage powered by the Aestus engine. Ariane 6.1 would have the ability to launch two electrically powered satellites at once, while Ariane 6.2 would be focused on launching government payloads."
+    ],
+    "has_oracle": false
   }
 ]

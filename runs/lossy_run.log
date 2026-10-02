@@ -1,0 +1,37 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 203, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\HP\Desktop\citation-faithfulness-bench\cfbench\__main__.py", line 3, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "C:\Users\HP\Desktop\citation-faithfulness-bench\cfbench\cli.py", line 470, in main
+    return args.func(args)
+           ~~~~~~~~~^^^^^^
+  File "C:\Users\HP\Desktop\citation-faithfulness-bench\cfbench\cli.py", line 109, in cmd_run
+    result = variant.inject(q)
+  File "C:\Users\HP\Desktop\citation-faithfulness-bench\cfbench\engines\faulty.py", line 343, in inject
+    outcome = self._corrupt(record, claim)
+  File "C:\Users\HP\Desktop\citation-faithfulness-bench\cfbench\engines\faulty.py", line 592, in _corrupt
+    if _competing_sentence(
+       ~~~~~~~~~~~~~~~~~~~^
+        citation.snippet, claim.text, original, other
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ) is not None:
+    ^
+  File "C:\Users\HP\Desktop\citation-faithfulness-bench\cfbench\engines\faulty.py", line 247, in _competing_sentence
+    figures = _magnitudes(claim_text)
+  File "C:\Users\HP\Desktop\citation-faithfulness-bench\cfbench\engines\faulty.py", line 219, in _magnitudes
+    and not _looks_like_year(m.group(1), float(m.group(1)))
+                                         ~~~~~^^^^^^^^^^^^
+ValueError: could not convert string to float: '2,500'
+running lossy-k3-c90 over 106 questions (3437 chunks)
+  -> 309 claims extracted, 0 errors
+running lossy-k3-c90+numeric-drift over 106 questions (3437 chunks)
+  -> 309 claims extracted, 0 errors, 172 faults injected
+running lossy-k3-c90+wrong-source over 106 questions (3437 chunks)
+  -> 309 claims extracted, 0 errors, 308 faults injected
+running lossy-k3-c90+dropped-citation over 106 questions (3437 chunks)
+  -> 309 claims extracted, 0 errors, 309 faults injected
+running lossy-k3-c90+polarity-flip over 106 questions (3437 chunks)
+  -> 309 claims extracted, 0 errors, 25 faults injected
+running lossy-k3-c90+entity-swap over 106 questions (3437 chunks)
