@@ -1,0 +1,273 @@
+[
+  {
+    "claim_id": "cl_e74795fcc40d",
+    "engine": "lossy-k3-c250+numeric-drift",
+    "question": "What are the dimensions of the new lock chambers built for the Panama Canal expansion?",
+    "failure_modes": [
+      "numeric"
+    ],
+    "claim": "Panama Canal pilots were initially unprepared to handle the flight decks of aircraft carriers, which protrude beyond the hull on either side of the ship. consideration, an enlargement scheme to allow for a greater number of transits and the ability to handle larger ships, similar to the Third Lock Scheme of 1939, was recommended by the Panama's government canal authority.",
+    "cited_snippets": [
+      "allow the passage of large warships. A compromise was made and the locks were built 33.53 m (110.0 ft) wide. Each lock is 320 m (1,050 ft) long, with the walls ranging in thickness from 15 m (49 ft) at the base to 3 m (9.8 ft) at the top. The central wall between the parallel locks at Gatun is 18 m (59 ft) thick and over 24 m (79 ft) high. The steel lock gates measure an average of 2 m (6.6 ft) thick, 19.5 m (64 ft) wide, and 20 m (66 ft) high. Panama Canal pilots were initially unprepared to handle the flight decks of aircraft carriers, which protrude beyond the hull on either side of the ship. When USS Saratoga made her first trip through the Gatun Locks in 1928, the ship knocked over all the concrete lamp posts along the canal. In 2016, a decade-long expansion project created larger locks, allowing bigger ships to transit through deeper and wider channels. The allowed dimensions of ships using these locks increased by 25 percent in length, 51 percent in beam, and 26 percent in draft, as defined by Neopanamax metrics. As with a toll road, vessels transiting the canal must pay tolls. Tolls for the canal are set by the Panama Canal Authority and are based on vessel type, size, and the type of cargo. For container ships, the toll is assessed on the ship's capacity expressed in twenty-foot equivalent units (TEUs), one TEU being the size",
+      "consideration, an enlargement scheme to allow for a greater number of transits and the ability to handle larger ships, similar to the Third Lock Scheme of 1939, was recommended by the Panama's government canal authority. The expansion proposal was estimated to cost US$5.25 billion and expected to double the canal's shipping capacity by allowing both the passage of longer and wider Post-Panamax ships, with an increase in overall traffic. This proposal was approved in a national referendum by about 80% on 22 October 2006. The canal expansion began in 2007. There were numerous engineering aspects to the project, including the excavation of material and construction of the new locks. On 3 September 2007, thousands of Panamanians stood across from Paraíso Hill in Panama to witness a huge initial explosion and launch of the Expansion Program. The first phase of the project was the dry excavations of the 218 meters (715 feet) wide trench connecting the Gaillard Cut with the Pacific coast, removing 47 million cubic meters of earth and rock. It was announced in July 2009 that the Belgian dredging company Jan De Nul, together with a consortium of contractors consisting of the Spanish Sacyr Vallehermoso, the Italian Impregilo, and the Panamanian company Grupo Cusa, had been awarded the contract to build the six new locks for US$3.1 billion. The design of the locks is a carbon copy of the Berendrecht Lock, which is 68 m wide and 500 m long, making it the second largest lock in the world"
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_bf4c97f2f217",
+    "engine": "lossy-k3-c90+dropped-citation",
+    "question": "As of October 2, 2026, how many Falcon 9 full mission successes had been achieved, out of how many attempts, and at what success rate?",
+    "failure_modes": [
+      "numeric",
+      "recency"
+    ],
+    "claim": "The core for the mission, Falcon 9 B1046, was the first Block 5 booster produced, and had flown initially on the Bangabandhu Satellite-1 mission.",
+    "cited_snippets": [],
+    "has_oracle": true
+  },
+  {
+    "claim_id": "cl_ead8a2dfce26",
+    "engine": "lossy-k3-c250+wrong-source",
+    "question": "What is the maximum monthly wafer capacity of GlobalFoundries' Fab 8, and where is it?",
+    "failure_modes": [
+      "numeric"
+    ],
+    "claim": "In 2023, it was announced that GlobalFoundries plans to invest $8 billion in its Dresden facility, doubling the capacity of its largest production site, and Module 2 was originally named \"(AMD) Fab 30\" and was a 200 mm fab brought online in 1999 and later produced up to 30,000 Wafer Outs Per Month.",
+    "cited_snippets": [
+      "are in Singapore. Fabs 8 through 10 are in the northeast United States. These sites are supported by a global network of R&D, design enablement, and customer support in Singapore, China, Taiwan, Japan, India, the United States, Germany, and the United Kingdom. In February 2017, the company announced a new 300 Fab [Fab 11] in China for growing semiconductor market in China. In 2016 GlobalFoundries licensed the 14 nm 14LPP FinFET process from Samsung Electronics. In 2018 GlobalFoundries developed the 12 nm 12LP node based on Samsung's 14 nm 14LPP process. On 27 August 2018 GlobalFoundries announced it had cancelled their 7LP process due to a strategy shift to focus on specialized processes instead of leading edge performance. On 29 January 2019 AMD announced an amended wafer supply agreement with GlobalFoundries. AMD now has full flexibility for wafer purchases from any foundry at 7 nm or beyond. AMD and GlobalFoundries agreed to commitments and pricing at 12 nm for 2019 through 2021. On 20 May 2019 Marvell Technology Group announced it would acquire Avera Semi from GlobalFoundries for $650 million and potentially an additional $90 million. Avera Semi was GlobalFoundries' ASIC Solutions division, which had been a part of IBM's semiconductor manufacturing business. On 1 February 2019 GlobalFoundries announced the $236 million sale of its Fab 3E in Tampines, Singapore, to Vanguard International Semiconductor (VIS) as part of their plan to exit the MEMS business by 31 December 2019. On April 22, 2019, GlobalFoundries announced the $430 million sale of"
+    ],
+    "has_oracle": true
+  },
+  {
+    "claim_id": "cl_d35982dc42ea",
+    "engine": "lossy-k3-c250+numeric-drift",
+    "question": "Is BCG vaccination recommended during pregnancy, and what did the WHO decide in 2007 about giving BCG to infants with HIV?",
+    "failure_modes": [
+      "negation"
+    ],
+    "claim": "In 2007, the WHO stopped recommending BCG for infants with HIV, even if the risk of exposure to tuberculosis is high, because of the risk of disseminated BCG infection (which is roughly 400 per 100,0.0 in that higher risk context).",
+    "cited_snippets": [
+      "for nonsuppurative lymphadenitis. If suppuration occurs, it may need needle aspiration. For unresolved suppuration, surgical excision may be required. Evidence for the treatment of these complications is scarce. Uncommonly, breast and gluteal abscesses can occur due to haematogenous (carried by the blood) and lymphangiomatous spread. Regional bone infection (BCG osteomyelitis or osteitis) and disseminated BCG infection are rare complications of BCG vaccination, but potentially life-threatening. Systemic antituberculous therapy may be helpful in severe complications. When BCG is used for bladder cancer, around 2.9% of treated patients discontinue immunotherapy due to a genitourinary or systemic BCG-related infection, however while symptomatic bladder BCG infection is frequent, the involvement of other organs is very uncommon. When systemic involvement occurs, liver and lungs are the first organs to be affected (1 week [median] after the last BCG instillation). If BCG is accidentally given to an immunocompromised patient (e.g., an infant with severe combined immune deficiency), it can cause disseminated or life-threatening infection. The documented incidence of this happening is less than one per million immunizations given. In 2007, the WHO stopped recommending BCG for infants with HIV, even if the risk of exposure to tuberculosis is high, because of the risk of disseminated BCG infection (which is roughly 400 per 100,000 in that higher risk context). The person's age and the frequency with which BCG is given have always varied from country to country. The WHO recommends childhood BCG for all countries with a high incidence of tuberculosis and/or high leprosy burden. This is"
+    ],
+    "has_oracle": true
+  },
+  {
+    "claim_id": "cl_3498acb7a945",
+    "engine": "extractive-k3-c90",
+    "question": "What range and typical passenger count does the Boeing 787-9 offer?",
+    "failure_modes": [
+      "numeric"
+    ],
+    "claim": "two versions: the A350-800 with a 8,800 nmi (16,300 km; 10,100 mi) range with a typical passenger capacity of 253 in a three-class configuration, and the A350-900 with 7,500 nmi (13,900 km; 8,600 mi) range and a 300-seat three-class configuration.",
+    "cited_snippets": [
+      "two versions: the A350-800 with a 8,800 nmi (16,300 km; 10,100 mi) range with a typical passenger capacity of 253 in a three-class configuration, and the A350-900 with 7,500 nmi (13,900 km; 8,600 mi) range and a 300-seat three-class configuration. The A350 was designed to be a direct competitor to the Boeing 787-9 and 777-200ER. The original A350 design was publicly criticised by two of Airbus's largest customers, International Lease Finance Corporation (ILFC) and GE Capital Aviation Services (GECAS). On 28 March 2006, ILFC President Steven F. Udvar-Házy urged Airbus"
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_731bf4dbc17a",
+    "engine": "lossy-k3-c250",
+    "question": "By how much was Hubble's proposed primary mirror diameter reduced during the funding crisis of the 1970s, and for what reasons?",
+    "failure_modes": [
+      "simple",
+      "numeric"
+    ],
+    "claim": "This is over six times larger than the collecting area of Hubble's 2.4 m (7.9 ft) diameter mirror, which has a collecting area of 4.0 m2 (43 ft2), and Webb has a 6.5-meter-diameter (21-foot) gold-coated beryllium primary mirror made up of 18 separate hexagonal mirrors.",
+    "cited_snippets": [
+      "delays. A significant redesign was carried out in 2005, with construction completed in 2016, followed by years of exhaustive testing, at a total cost of US$10 billion. The mass of the James Webb Space Telescope (JWST) is about half that of the Hubble Space Telescope. Webb has a 6.5-meter-diameter (21-foot) gold-coated beryllium primary mirror made up of 18 separate hexagonal mirrors. The mirror has a polished area of 26.3 m2 (283 ft2), of which 0.9 m2 (9.7 ft2) is obscured by the secondary support struts, giving a total collecting area of 25.4 m2 (273 ft2). This is over six times larger than the collecting area of Hubble's 2.4 m (7.9 ft) diameter mirror, which has a collecting area of 4.0 m2 (43 ft2). The mirror has a gold coating to provide infrared reflectivity, covered by a thin layer of glass for durability. Webb is designed primarily for near-infrared astronomy, but can also detect orange and red visible light and the mid-infrared region, depending on the instrument used. It can detect objects up to 100 times fainter than Hubble can, and objects much earlier in the history of the universe, back to redshift z≈20 (about 180 million years cosmic time after the Big Bang). For comparison, the earliest stars are thought to have formed between z≈30 and z≈20 (100–180 million years cosmic time), and the first galaxies may have formed around redshift z≈15 (about 270 million years cosmic time). Hubble is unable to see further back than very early reionization at"
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_611508607f1a",
+    "engine": "lossy-k3-c250",
+    "question": "On what date, and aboard which launch vehicle, was Voyager 1 launched?",
+    "failure_modes": [
+      "simple"
+    ],
+    "claim": "The Voyager 1 probe was launched on September 5, 1977, from Launch Complex 41 at the Cape Canaveral Air Force Station, aboard a Titan IIIE launch vehicle, and Despite being launched later, Voyager 1 reached both Jupiter and Saturn sooner, following a shorter trajectory.",
+    "cited_snippets": [
+      "over time due to the 87.7-year half-life of the fuel and degradation of the thermocouples. According to current plans, they may continue operating with at least one science instrument into the 2030s. Unlike Voyager's other instruments, the operation of the cameras for visible light is not autonomous, but is controlled by an imaging parameter table contained in one of the digital computers, the Flight Data Subsystem (FDS). Since the 1990s, most space probes have been equipped with completely autonomous cameras. The computer command subsystem (CCS) controls the cameras. The CCS contains fixed computer programs, such as command decoding, fault-detection and fault-correction routines, antenna pointing routines, and spacecraft sequencing routines. This computer is an improved version of the one that was used in the 1970s Viking orbiters. The Attitude and Articulation Control Subsystem (AACS) controls the spacecraft orientation. It keeps the high-gain antenna pointing towards Earth, controls attitude changes, and points the scan platform. The custom-built AACS systems on both Voyagers are the same. The Voyager 1 probe was launched on September 5, 1977, from Launch Complex 41 at the Cape Canaveral Air Force Station, aboard a Titan IIIE launch vehicle. The Voyager 2 probe had been launched two weeks earlier, on August 20, 1977. Despite being launched later, Voyager 1 reached both Jupiter and Saturn sooner, following a shorter trajectory. Voyager 1's launch almost failed because Titan's LR-91 second stage shut down prematurely, leaving 1,200 pounds (540 kg) of propellant unburned. Recognizing the deficiency, the Centaur stage's on-board computers ordered"
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_ea21b948fb24",
+    "engine": "lossy-k3-c250+numeric-drift",
+    "question": "As of 2025, how large is the battery energy storage facility at the Moss Landing Power Plant site?",
+    "failure_modes": [
+      "recency",
+      "numeric"
+    ],
+    "claim": "The Moss Landing Power Plant site has since been chosen as California's primary location to provide battery based energy storage in order to better utilize renewable energy sources such as solar and wind on a grid-wide commercial scale.",
+    "cited_snippets": [
+      "heat exchanger and transferred to water that feeds a steam turbine, similar to units 6 and 7. On a smaller scale than the supercritical units, units 1 and 2 are also more flexible, with a start-up time of only an hour, against 24 hours for units 6 and 7. Battery energy storage facilities Utilities in California are required by a 2013 law to provide significant battery storage by 2024. The Moss Landing Power Plant site has since been chosen as California's primary location to provide battery based energy storage in order to better utilize renewable energy sources such as solar and wind on a grid-wide commercial scale. On June 29, 2018 Vistra Corp announced that it planned on building at the Moss Landing Power Station site, what became the world's largest commercial electric battery energy storage site. The batteries use around 100 GWh/year as energy lost during the round-trip. Planning and construction On June 29, 2018, Vistra Energy announced that it will develop a 300 MW / 1,200 MWh energy storage system to be located at Moss Landing, using the existing turbine building and existing interconnection from units 6 and 7, connecting to the 500 kV grid. Vistra Energy expected the energy storage system to begin commercial operation by the end of 2020, pending receipt of approval from California Public Utilities Commission (CPUC). This would be the largest lithium-ion battery energy storage system in the world. The project began construction in December 2019, and Phase 1 began operating at the"
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_4bacbaaaaef4",
+    "engine": "extractive-k3-c250",
+    "question": "What did Heathrow Terminal 5 cost to build, and when did it open to the public?",
+    "failure_modes": [
+      "simple",
+      "numeric"
+    ],
+    "claim": "However, the Airports Inquiries of 1981–83 and the 1985 Airports Policy White Paper considered further expansion and, following a four-year-long public inquiry in 1995–99, Terminal 5 was approved.",
+    "cited_snippets": [
+      "aircraft. On 12 July 2013, the emergency locator transmitter (ELT) on an Ethiopian Airlines Boeing 787 Dreamliner parked at Heathrow airport caught fire due to a short circuit. There were no passengers aboard and no injuries. From 12 September 2019, the climate change campaign group, Heathrow Pause, attempted to disrupt flights into and out of Heathrow Airport in London by flying drones in the airport's exclusion zone. The action was unsuccessful in disrupting the flights and nineteen people were arrested. Future expansion and plans Third runway and terminal expansion There is a long history of expansion proposals for Heathrow since it was first designated as a civil airport. Following the cancellation of the Maplin project in 1974, a fourth terminal was proposed, but expansion beyond this was ruled out. However, the Airports Inquiries of 1981–83 and the 1985 Airports Policy White Paper considered further expansion and, following a four-year-long public inquiry in 1995–99, Terminal 5 was approved. In 2003, after many studies and consultations, the Future of Air Transport White Paper was published, which proposed a third runway at Heathrow, as well as a second runway at Stansted Airport. In January 2009, the Transport Secretary at the time, Geoff Hoon announced that the British government supported the expansion of Heathrow by building a third 2,200-metre (7,200 ft) runway and a sixth terminal building. This decision followed the 2003 white paper on the future of air transport in the UK, and a public consultation in November 2007. This was a controversial"
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_ed93fc553826",
+    "engine": "lossy-k3-c90",
+    "question": "What share of the global semiconductor foundry market does TSMC hold, and as of what date was it the world's largest non-US company by market capitalisation?",
+    "failure_modes": [
+      "recency",
+      "numeric"
+    ],
+    "claim": "In March 2017, TSMC's market capitalisation surpassed that of semiconductor giant Intel for the first time, hitting NT$5.14 trillion (US$168.4 billion), with Intel's at, and TSMC's revenue in the first quarter of 2020 reached US$10 billion, while its market capitalisation was US$254 billion.",
+    "cited_snippets": [
+      "in April 2021. TSMC's revenue in the first quarter of 2020 reached US$10 billion, while its market capitalisation was US$254 billion. TSMC's market capitalisation reached a value of NT$1.9 trillion (US$63.4 billion) in December 2010. It was ranked 70th in the FT Global 500 2013 list of the world's most highly valued companies with a capitalisation of US$86.7 billion, while reaching US$110 billion in May 2014. In March 2017, TSMC's market capitalisation surpassed that of semiconductor giant Intel for the first time, hitting NT$5.14 trillion (US$168.4 billion), with Intel's at"
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_7c6b977026e7",
+    "engine": "lossy-k3-c90",
+    "question": "Does the Suez Canal use locks to raise and lower ships?",
+    "failure_modes": [
+      "negation"
+    ],
+    "claim": "He argued in favor of a canal using a lock system to raise and lower ships from a large reservoir 85 feet (26 m) above sea level.",
+    "cited_snippets": [
+      "seen the Chagres in full flood, was summoned to Washington; he declared a sea-level approach to be \"an entirely untenable proposition\". He argued in favor of a canal using a lock system to raise and lower ships from a large reservoir 85 feet (26 m) above sea level. This would create both the largest dam (Gatun Dam) and the largest human-made lake (Gatun Lake) in the world at that time. The water to refill the locks would be taken from Gatun Lake by opening and closing enormous gates and valves"
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_53e37715d694",
+    "engine": "lossy-k3-c90+polarity-flip",
+    "question": "What was Maersk's annual revenue in its 2025 financial year, and how many people worked for the group that year?",
+    "failure_modes": [
+      "numeric",
+      "recency"
+    ],
+    "claim": "In the 2025 financial year, Maersk generated revenue of US$roughly 54 billion. activities\" accounted for 8.8% of Maersk's revenue in 2008 and posted 25% of the group's profit for this period.",
+    "cited_snippets": [
+      "As of 2008, Damco had 10,800 employees in offices in more than 93 countries. and was involved in supply chain management and freight forwarding all over the world. In September 2019, Maersk announced that they would dissolve the Damco brand and integrate their remaining activities after initially merging Maersk Line and Damco at the beginning of 2019, when the freight forwarding business of Damco stayed separate. The dissolving of the Damco brand was completed by the end of 2020. In the 2025 financial year, Maersk generated revenue of US$53.9 billion.",
+      "activities\" accounted for 8.8% of Maersk's revenue in 2008 and posted 25% of the group's profit for this period. The business segment comprises Maersk Tankers (its technical management business sold to Synergy Marine Group in 2021), Maersk Supply Service, Maersk Drilling, Maersk FPSOs, Maersk LNG and Svitzer. South American ex Aliança Brazilian coaster container ship subsidiary with eight ships. In January 2024, it was announced that Hapag-Lloyd, together with Maersk, would launch a long-term operational cooperation under the name Gemini Cooperation in February 2025. The new cooperation is expected to"
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_b0b0f5922d31",
+    "engine": "lossy-k3-c250",
+    "question": "Which company is the only producer of EUV systems for chip production, and how does the dominant commercial EUV light source generate its light?",
+    "failure_modes": [
+      "multi_hop",
+      "simple"
+    ],
+    "claim": "Laser-produced plasma (LPP) Laser-produced plasma, or LPP, is the dominant light-source architecture used in commercial high-volume manufacturing (HVM) EUV lithography.",
+    "cited_snippets": [
+      "SMEE also filed patents for their alternative proposals relevant to EUV technologies. In December 2025, Reuters reported that China had secretly completed a prototype EUV machine in Shenzhen, which was expected to produce working chips between 2028 and 2030. Types of EUV Light Sources Extreme ultraviolet (EUV) lithography requires radiation at 13.5 nm(≈92 eV) to match the peak reflectivity band of molybdenum/silicon (Mo/Si) multilayers mirrors. In plasma-based EUV sources, ionization precedes much of the EUV emission. The thermal production of multicharged positive ions requires a hot, dense plasma, which can itself strongly absorb EUV radiation. Laser-produced plasma (LPP) Laser-produced plasma, or LPP, is the dominant light-source architecture used in commercial high-volume manufacturing (HVM) EUV lithography. The source architecture centers on a droplet generator that ejects ~25 μm diameter molten tin droplets at ~70 m/s through a vacuum chamber. A dual-pulse carbon dioxide(CO2) laser system (operating at a wavelength of 10.6 μm, pulse duration ~15–25 ns, intensity ~10¹¹ W/cm²) then targets each droplet. A low-energy \"pre-pulse\" strikes the droplet first, expanding it into a low-density pancake-like cloud of tin vapor. A high-energy \"main pulse\" then strikes this vapor, ionizing it into a high-temperature plasma with electron temperatures of 20–50 eV and electron densities of 10²⁰–10²¹ cm⁻³. Within this plasma, tin ions in charge states Sn IX through Sn XIV undergo 4p⁶4dⁿ → 4p⁵4dⁿ⁺¹ + 4dⁿ⁻¹4f transitions, producing strong emission lines clustered around 13.5 nm with a 2% full-width at half-maximum (FWHM) bandwidth. The source operates at a repetition rate of ~50"
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_7be8a14b4889",
+    "engine": "lossy-k3-c250",
+    "question": "What is the largest adiabatic compressed-air energy storage plant described in the corpus, and what conversion efficiency does it achieve?",
+    "failure_modes": [
+      "recency",
+      "numeric"
+    ],
+    "claim": "Compressed-air-energy storage (CAES) is a way to store energy for later use using compressed air.",
+    "cited_snippets": [
+      "Compressed-air-energy storage (CAES) is a way to store energy for later use using compressed air. At a utility scale, energy generated during periods of low demand can be released during peak load periods. The first utility-scale CAES project was in the Huntorf power plant in Elsfleth, Germany, and is still operational as of 2024. The Huntorf plant was initially developed as a load balancer for fossil-fuel-generated electricity, but the global shift towards renewable energy renewed interest in CAES systems, to help highly intermittent energy sources like photovoltaics and wind satisfy fluctuating electricity demands. One ongoing challenge in large-scale design is the management of thermal energy, since the compression of air leads to an unwanted temperature increase that not only reduces operational efficiency but can also lead to damage. The main difference between various architectures lies in thermal engineering. On the other hand, small-scale systems have long been used for propulsion of mine locomotives. Contrasted with traditional batteries, compressed-air systems can store energy for longer periods of time and have less upkeep. Compression of air creates heat; the air is warmer after compression. Expansion removes heat. If no extra heat is added, the air will be much colder after expansion. If the heat generated during compression can be stored and used during expansion, then the efficiency of the storage improves considerably. There are several ways in which a CAES system can deal with heat. Air storage can be adiabatic, diabatic, isothermal, or near-isothermal. Adiabatic storage continues to store the heat energy"
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_87771d5b7e5e",
+    "engine": "lossy-k3-c250",
+    "question": "At what altitude does the International Space Station orbit, and how long has it been continuously inhabited?",
+    "failure_modes": [
+      "recency",
+      "numeric"
+    ],
+    "claim": "The station orbits in Low Earth Orbit (LEO) at a minimum mean altitude of 370 km (230 mi) and a maximum of 460 km (290 mi), in the center of the thermosphere.",
+    "cited_snippets": [
+      "of the ISS are operated and monitored by their respective space agencies at mission control centers across the globe, primarily the Christopher C. Kraft Jr. Mission Control Center in Houston and the RKA Mission Control Center (TsUP) in Moscow, with support from Tsukuba Space Center in Japan, Payload Operations and Integration Center in Huntsville, Alabama, U.S., Columbus Control Center in Munich, Germany and Mobile Servicing System Control at the Canadian Space Agency's headquarters in Saint-Hubert, Quebec. Orbit, debris and visibility Altitude and orbital inclination The ISS is currently maintained in a nearly circular orbit with an eccentricity of 0.0002267 and at an inclination of 51.6 degrees to Earth's equator. This orbit was selected because it is the lowest inclination that can be directly reached by Russian Soyuz and Progress spacecraft launched from Baikonur Cosmodrome at 46° N latitude without overflying China or dropping spent rocket stages in inhabited areas. As a result, it makes more polar latitudes accessible and observable, for example the Chinese Space Station orbits more equatorial with an inclination of 41.47°. The ISS travels prograde (with Earth's rotation, west to east) at an average speed of 28,000 kilometres per hour (17,000 mph), and completes 15.5 orbits per day (93 minutes per orbit). The station orbits in Low Earth Orbit (LEO) at a minimum mean altitude of 370 km (230 mi) and a maximum of 460 km (290 mi), in the center of the thermosphere. The altitude was in the past allowed to fall around the time of"
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_7e5d815829ae",
+    "engine": "extractive-k3-c90",
+    "question": "What gain in low Earth orbit payload does the Ariane 64 Block 2 provide, and what is the increased thrust of its enhanced Vinci upper stage engine?",
+    "failure_modes": [
+      "numeric"
+    ],
+    "claim": "The second (upper) stage of Ariane 6 is called the Upper Liquid Propulsion Module (ULPM).",
+    "cited_snippets": [
+      "(1,050,000 lbf) of thrust. The P120C and P160C are also used as the first stage of the upgraded Vega C launcher, allowing increased production volumes and reduced unit costs through commonality. They are improved versions of the P80 motor used on the original Vega. The second (upper) stage of Ariane 6 is called the Upper Liquid Propulsion Module (ULPM). It shares the same 5.4 m (18 ft) diameter as the LLPM and is also fuelled by LH2 and LOX. It is powered by the Vinci engine, which delivers 180 kN"
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_0c9029026456",
+    "engine": "lossy-k3-c250+numeric-drift",
+    "question": "Who founded TSMC, in what year was the company established, and what was it the world's first of?",
+    "failure_modes": [
+      "simple"
+    ],
+    "claim": "Morris Chang founded the company to commercialise semiconductor research originally developed at ITRI, becoming the world’s first dedicated semiconductor foundry.",
+    "cited_snippets": [
+      "Taiwan Semiconductor Manufacturing Company Limited (Chinese: 台灣積體電路製造股份有限公司; Taiwan Semiconductor or TSMC, stylised in all lowercase) is a Taiwanese multinational semiconductor contract manufacturing and design company. Headquartered in Hsinchu Science Park, it was the world's largest non-US company by market capitalisation as of June 30, 2026. It holds a commanding majority in the semiconductor foundry market, accounting for approximately 70% of the global market share. As the leading dedicated contract chipmaker, it serves as the main supplier for Nvidia, Apple, Broadcom, and Qualcomm. The company has grown rapidly due to the artificial intelligence (AI) boom and its importance in the creation of advanced chips needed for AI. Its role as a supply chain bottleneck raises concerns that a disruption could cause another worldwide chip shortage. Although the government of Taiwan is the largest individual shareholder, the majority of TSMC is owned by foreign investors. In 2026, the company was ranked 31st in the Forbes Global 2000. Taiwan's exports of integrated circuits amounted to $184 billion in 2022, nearly 25 percent of Taiwan's GDP. TSMC constitutes about 30 percent of the Taiwan Stock Exchange's main index. TSMC was established in 1987 as a joint venture between Taiwan’s government, the Industrial Technology Research Institute (ITRI), and private investors. Morris Chang founded the company to commercialise semiconductor research originally developed at ITRI, becoming the world’s first dedicated semiconductor foundry. When Chang retired in 2018, after 31 years of TSMC leadership, Mark Liu became chairman and C. C. Wei became Chief Executive. It has been"
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_5809f17e3594",
+    "engine": "lossy-k3-c90",
+    "question": "The corpus describes two separate 100 MW storage systems with 400 MWh of storage brought online in China in 2022; which technologies are they and what efficiency is reported?",
+    "failure_modes": [
+      "multi_hop",
+      "numeric"
+    ],
+    "claim": "As of 2022, the Gem project at Rosamond in Kern County, California, was planned to provide 500 MW / 4,000 MWh of storage.",
+    "cited_snippets": [
+      "in 2016. This project has been delayed until at least 2020. Canadian company Hydrostor planned to build four Advance plants in Toronto, Goderich, Angas, and Rosamond (2020). Some included partial heat storage in water, improving efficiency to 65%. As of 2022, the Gem project at Rosamond in Kern County, California, was planned to provide 500 MW / 4,000 MWh of storage. The Pecho project in San Luis Obispo, California, was planned to be 400 MW / 3,200 MWh. The Broken Hill project in New South Wales, Australia was 200 MW"
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_52bce279c9f5",
+    "engine": "lossy-k3-c90+polarity-flip",
+    "question": "Which battery chemistry burned in the January 2025 Moss Landing fire, and how does the corpus compare that chemistry for safety with lithium iron phosphate?",
+    "failure_modes": [
+      "multi_hop"
+    ],
+    "claim": "Newer battery designs such as those based on lithium iron phosphate chemistry suffer from neither of these problems, and pressure vessel from full to empty.",
+    "cited_snippets": [
+      "pressure vessel from full to empty. It is technically challenging to design air engines to maintain high efficiency and sufficient power over a wide range of pressures. Compressed air can transfer power at very high flux rates, which meets the principal acceleration and deceleration objectives of transportation systems, particularly for hybrid vehicles. Compressed air systems have advantages over conventional batteries, including longer lifetimes of pressure vessels and lower material toxicity. Newer battery designs such as those based on lithium iron phosphate chemistry suffer from neither of these problems. Compressed air"
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_be2cf7b6876e",
+    "engine": "lossy-k3-c90+wrong-source",
+    "question": "How much does a High-NA EUV lithography system cost, and what numerical aperture does it reach?",
+    "failure_modes": [
+      "contested",
+      "numeric"
+    ],
+    "claim": "Depth of focus being reduced by increasing NA is also a concern, especially in comparison with multi-patterning exposures using roughly 190 nm immersion lithography: High-NA EUV tools focus horizontal and vertical lines differently from low-NA systems, due to the different demagnification for.",
+    "cited_snippets": [
+      "of EUV systems, with the first shipments for R&D shipped to Intel in December 2023, and TSMC in late 2024. The platform is designated High-NA as it increases the numerical aperture (NA) from 0.33 to 0.55. each system costs approximately $370 million. ASML became a sponsor of the PSV football club in 2019 together with Philips, VDL Groep, Royal Swinkels Family Brewers and Jumbo Supermarkets from the Brainport region. Together they run various initiatives like soccer training camps for school children, the development of interactive programs for teaching, assisting community"
+    ],
+    "has_oracle": true
+  }
+]
