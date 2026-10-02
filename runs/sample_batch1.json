@@ -1,0 +1,279 @@
+[
+  {
+    "claim_id": "cl_103ad3a56f8a",
+    "engine": "lossy-k3-c90+wrong-source",
+    "question": "How effective is one dose of measles vaccine at preventing measles, and how effective are two doses?",
+    "failure_modes": [
+      "simple",
+      "numeric"
+    ],
+    "claim": "The measles vaccine is equally effective for preventing measles in all formulations, but side effects vary for different combinations. the vaccine are about 97% effective at preventing measles.",
+    "cited_snippets": [
+      "children globally had received at least one dose of the vaccine as of 2018. In 2021, at least 183 countries provided two doses in their routine immunization schedule. It is on the World Health Organization's List of Essential Medicines. As outbreaks easily occur in under-vaccinated populations, non-prevalence of disease is seen as a test of sufficient vaccination within a population. One dose is about 93% effective while two doses of the vaccine are about 97% effective at preventing measles. Before the widespread use of the vaccine, measles was so common"
+    ],
+    "has_oracle": true
+  },
+  {
+    "claim_id": "cl_9e51ce94815f",
+    "engine": "lossy-k3-c90+wrong-source",
+    "question": "What did Heathrow Terminal 5 cost to build, and when did it open to the public?",
+    "failure_modes": [
+      "simple",
+      "numeric"
+    ],
+    "claim": "Terminal 5 is expected to open in mid-2030s.",
+    "cited_snippets": [
+      "and swerve towards the terminal building. It hit two parked British European Airways Hawker Siddeley Trident aircraft, burst into flames, and came to rest against the ground floor of the terminal building. Six of the eight crew died, as did eight horses on board. Trident G-ARPT was written off, and Trident G-ARPI was badly damaged, but subsequently repaired, only to be lost in the Staines crash in 1972. On 18 June 1972, Trident G-ARPI, operating as BEA548, crashed in a field close to the Crooked Billet Public House, Staines, two"
+    ],
+    "has_oracle": true
+  },
+  {
+    "claim_id": "cl_d6861c3529ed",
+    "engine": "lossy-k3-c90+numeric-drift",
+    "question": "What did it cost to develop the Airbus A350?",
+    "failure_modes": [
+      "contested",
+      "numeric"
+    ],
+    "claim": "the aircraft, and that previous contracts for the GEnx on the original A350 did not apply to the XWB.",
+    "cited_snippets": [
+      "the aircraft, and that previous contracts for the GEnx on the original A350 did not apply to the XWB. Engine Alliance partner Pratt & Whitney seemed to be unaligned with GE on this, having publicly stated that it was looking at an advanced derivative of the GP7000. In April 2007, former Airbus CEO Louis Gallois held direct talks with GE management over developing a GEnx variant for the A350 XWB. In June 2007, John Leahy indicated that the A350 XWB would not feature the GEnx engine, saying that Airbus wanted"
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_e05c9eada11a",
+    "engine": "extractive-k3-c250",
+    "question": "How much mass can the Ariane 62 variant place into low Earth orbit, and how much can the Ariane 64 place into low Earth orbit?",
+    "failure_modes": [
+      "numeric"
+    ],
+    "claim": "The Ariane 62 variant uses two P120C solid rocket boosters, while Ariane 64 uses four.",
+    "cited_snippets": [
+      "Ariane 6 (French: [aʁjan sis]) is a European expendable launch system developed for the European Space Agency (ESA) and French Space Agency (CNES) and manufactured by a consortium of European companies, led by the prime contractor ArianeGroup. As part of the Ariane rocket family, it is operated by Arianespace, replacing the Ariane 5. The project's primary contributors were France (55.3%), Germany (21%) and Italy (7.6%), with the remaining work distributed among ten other participating countries. This two-stage rocket utilizes liquid hydrogen and liquid oxygen (hydrolox) engines. The first stage features an upgraded Vulcain engine from Ariane 5, while the second uses the Vinci engine, designed specifically for this rocket. The Ariane 62 variant uses two P120C solid rocket boosters, while Ariane 64 uses four. The P120C booster is shared with Europe's other launch vehicle Vega C, and is an improved version of the P80 used on the original Vega. Selected in December 2014 over an all-solid-fuel alternative, Ariane 6 was initially planned for a 2020 debut. However, the program faced delays, with the first launch eventually taking place on 9 July 2024. While the rocket successfully launched, the mission experienced a partial failure when the upper stage malfunctioned and was not able to complete its final deorbit burn. The second launch was therefore postponed to 6 March 2025, successfully delivering its first commercial payload to orbit, the CSO-3 reconnaissance satellite. Ariane 6 was designed to reduce launch costs and increase annual launch capacity from seven to eleven missions compared with"
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_69edac0feee0",
+    "engine": "extractive-k3-c250",
+    "question": "Does Denmark need to install additional peak-load power plants to balance its wind power?",
+    "failure_modes": [
+      "negation"
+    ],
+    "claim": "Pumped storage provides a load at times of high electricity output and low electricity demand, enabling additional system peak capacity.",
+    "cited_snippets": [
+      "reserve, load following, and operating reserve, in addition to bulk energy storage and peak-shaving functions. This operational flexibility has become increasingly important in power systems with larger shares of variable renewable generation. The most important use for pumped storage has traditionally been to balance baseload powerplants, but they may also be used to abate the fluctuating output of intermittent energy sources. Pumped storage provides a load at times of high electricity output and low electricity demand, enabling additional system peak capacity. In certain jurisdictions, electricity prices may be close to zero or occasionally negative on occasions that there is more electrical generation available than there is load available to absorb it. Although at present this is rarely due to wind or solar power alone, increased use of such generation will increase the likelihood of those occurrences. It is particularly likely that pumped storage will become especially important as a balance for very large-scale photovoltaic and wind generation. Increased long-distance transmission capacity combined with significant amounts of energy storage will be a crucial part of regulating any large-scale deployment of intermittent renewable power sources. The high non-firm renewable electricity penetration in some regions supplies 40% of annual output, but 60% may be reached before additional storage is necessary. Smaller pumped storage plants cannot achieve the same economies of scale as larger ones, but some do exist, including a recent 13 MW project in Germany. Shell Energy has proposed a 5 MW project in Washington State. In 2016, proposals were made for"
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_5551d6d7cc71",
+    "engine": "lossy-k3-c250+entity-swap",
+    "question": "How many people were displaced by the construction of the Three Gorges Dam?",
+    "failure_modes": [
+      "contested",
+      "numeric"
+    ],
+    "claim": "Funding sources include the Three Gorges Dam Construction Fund, profits from the Gezhouba Dam, loans from the China Development Bank, loans from domestic and foreign commercial banks, corporate bonds, and revenue from both before and after the dam had become fully operational.",
+    "cited_snippets": [
+      "(156,000 acres) of land, compared to the 1,350 km2 (330,000 acres) of reservoir created by the Itaipu Dam. The Chinese government estimated that the Three Gorges Dam project would cost 180 billion yuan (US$22.5 billion). By the end of 2008, spending had reached 148.365 billion yuan, of which 64.613 billion yuan was spent on construction, 68.557 billion yuan on relocating affected residents, and 15.195 billion yuan on financing. It was estimated in 2009 that the cost of construction would be fully recouped when the dam had generated 1,000 terawatt-hours (3,600 PJ) of electricity, yielding 250 billion yuan; total cost recovery was thus expected to be completed ten years after the dam became fully operational. In fact, the entire cost of the Three Gorges Dam was recovered by December 20, 2013. Funding sources include the Three Gorges Dam Construction Fund, profits from the Gezhouba Dam, loans from the China Development Bank, loans from domestic and foreign commercial banks, corporate bonds, and revenue from both before and after the dam had become fully operational. Additional charges were assessed as follows: every province receiving power from the Three Gorges Dam had to pay an extra ¥7.00 per MWh, and the other provinces had to pay an additional charge of ¥4.00 per MWh. No surcharge was imposed on the Tibet Autonomous Region. Power generation and distribution Power generation is managed by China Yangtze Power, a listed subsidiary of China Three Gorges Corporation (CTGC), a Central Enterprise administered by SASAC. The Three Gorges Dam is"
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_72afd41667ff",
+    "engine": "lossy-k3-c90",
+    "question": "How effective is one dose of measles vaccine at preventing measles, and how effective are two doses?",
+    "failure_modes": [
+      "simple",
+      "numeric"
+    ],
+    "claim": "The measles vaccine is equally effective for preventing measles in all formulations, but side effects vary for different combinations. the vaccine are about 97% effective at preventing measles.",
+    "cited_snippets": [
+      "measles vaccination. The vaccine is available both by itself and in combinations such as the MMR vaccine (a combination with the rubella vaccine and mumps vaccine) or the MMRV vaccine (a combination of MMR with the chickenpox vaccine). The measles vaccine is equally effective for preventing measles in all formulations, but side effects vary for different combinations. The World Health Organization (WHO) recommends measles vaccine be given at nine months of age in areas of the world where the disease is common, or at twelve months where the disease is",
+      "the vaccine are about 97% effective at preventing measles. Before the widespread use of the vaccine, measles was so common that infection was considered \"as inevitable as death and taxes.\" In the United States, reported cases of measles fell from 3 to 4 million with 400 to 500 deaths to tens of thousands of cases per year following introduction of two measles vaccines in 1963 (both an inactivated and a live attenuated vaccine (Edmonston B strain) were licensed for use, see chart at right). Increasing uptake of the vaccine following"
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_d4d5e6c580c5",
+    "engine": "lossy-k3-c250+wrong-source",
+    "question": "Does the Airbus A350 use the lithium-ion main battery design that caused the Boeing 787 to be grounded?",
+    "failure_modes": [
+      "negation",
+      "multi_hop"
+    ],
+    "claim": "On January 16, 2013, the FAA issued an emergency airworthiness directive ordering all American-based airlines to ground their Boeing 787s until yet-to-be-determined modifications were made to the electrical system to reduce the risk of the battery overheating or catching fire.",
+    "cited_snippets": [
+      "review of the 787's critical systems. The focus of the review was on the safety of the lithium-ion batteries made of lithium cobalt oxide (LiCoO2). The 787 battery contract was signed in 2005, when this was the only type of lithium aerospace battery available, but since then newer and safer types (such as LiFePO4), which provide less reaction energy with virtually no cobalt content to avoid cobalt's thermal runaway characteristic, have become available. FAA approved a 787 battery in 2007 with nine \"special conditions\". A battery approved by FAA (through Mobile Power Solutions) was made by Rose Electronics using Kokam cells; the batteries installed in the 787 are made by Yuasa. The first big hurdle for Boeing was that the ranks of commercial aircraft engineers lacked lithium-ion battery expertise in that lithium-ion batteries had never before been used on a Boeing commercial jet. Boeing chief technology officer John Tracy began canvassing the entire organization for lithium-ion battery experts. He also began calling his contacts outside the aerospace industry. Within a day, about a dozen Boeing engineers from across the United States assembled at Boeing's Everett, Washington engineering center. The collaborators began ongoing collaborative group sessions—not just a series of meetings—that lasted weeks with breaks only for meals and sleep. Evan Rosen writes in The Culture of Collaboration (2024, expanded and updated edition) that for the Boeing 787 battery effort, hierarchy was out the window, because the collaborators were working outside of their usual reporting structure. There was no chain of"
+    ],
+    "has_oracle": true
+  },
+  {
+    "claim_id": "cl_0d4dedebbe08",
+    "engine": "lossy-k3-c90+numeric-drift",
+    "question": "Which countries remain polio-endemic with wild poliovirus, and at what age does the WHO recommend the first measles vaccine dose where measles is common?",
+    "failure_modes": [
+      "multi_hop"
+    ],
+    "claim": "The measles vaccine was first introduced in 1963, and of age in areas of the world where the disease is common, or at twelve months where the disease is not common. and Pakistan are the only polio-endemic countries in the world (where wild polio has not yet been eradicated), and As of 2015, the Global Alliance for Vaccines and Immunization supplies the inactivated vaccine to developing countries for as little as €0.9 (about US$0.89) per dose in 10-dose vials.",
+    "cited_snippets": [
+      "of age in areas of the world where the disease is common, or at twelve months where the disease is not common. Measles vaccine is based on a live but weakened strain of measles. It comes as a dried powder that is mixed with a specific liquid before being injected either just under the skin or into a muscle. Verification that the vaccine was effective can be determined by blood tests. The measles vaccine was first introduced in 1963. In that year, the Edmonston-B strain of measles virus was turned",
+      "and Pakistan are the only polio-endemic countries in the world (where wild polio has not yet been eradicated). Several countries have additional precautionary polio vaccination travel requirements, for example to and from 'key at-risk countries', which as of December 2020 include China, Indonesia, Mozambique, Myanmar, and Papua New Guinea. As of 2015, the Global Alliance for Vaccines and Immunization supplies the inactivated vaccine to developing countries for as little as €0.75 (about US$0.89) per dose in 10-dose vials. A misconception has been present in Pakistan that the polio vaccine contains"
+    ],
+    "has_oracle": true
+  },
+  {
+    "claim_id": "cl_0c669c4d371c",
+    "engine": "lossy-k3-c90",
+    "question": "Have rates of autism, Guillain-Barre syndrome or inflammatory bowel disease been found to increase after measles vaccination, and what became of the Wakefield paper?",
+    "failure_modes": [
+      "negation",
+      "simple"
+    ],
+    "claim": "The controversy surrounding Wakefield's publication led to decreased MMR vaccination rates and a subsequent increase in measles cases in the UK.",
+    "cited_snippets": [
+      "the MMR vaccine and autism. The controversy surrounding Wakefield's publication led to decreased MMR vaccination rates and a subsequent increase in measles cases in the UK. In Japan, where the MMR vaccine is not used as a combined vaccine, autism rates have remained unaffected, further disproving Wakefield's hypothesis. According to a 2019 Los Angeles Times article, concerns were raised about unvaccinated students contributing to the large number of measles outbreaks. While Robert F. Kennedy Jr—United States Secretary of Health and Human Services— publicly supported Wakefield's disproven theory that vaccines cause"
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_d2336569f820",
+    "engine": "lossy-k3-c250+entity-swap",
+    "question": "Which Maersk business unit operates container terminals at Rotterdam, and what kind of area is Maasvlakte?",
+    "failure_modes": [
+      "multi_hop"
+    ],
+    "claim": "A. P. Moller–Maersk's independent APM Terminals business unit with its separate headquarters in The Hague, Netherlands, operates a Global Port, Terminal and Inland Services Network with interests in 57 ports and container terminals in 36 countries on five continents, as well as 155 Inland Services operations in 48 countries.",
+    "cited_snippets": [
+      "sanctions regime led by those countries. On 15 March 2022, Robert M. Uggla was appointed Chair of the Board at A.P. Moller – Maersk, succeeding Jim Hagemann Snabe. The appointment marks a generational change in the company. Robert M. Uggla represents the founding family and remains as CEO of A.P. Moller Holding. On 12 December 2022, Vincent Clerc was appointed CEO of Maersk effective 1 January 2023. A. P. Moller–Maersk's independent APM Terminals business unit with its separate headquarters in The Hague, Netherlands, operates a Global Port, Terminal and Inland Services Network with interests in 57 ports and container terminals in 36 countries on five continents, as well as 155 Inland Services operations in 48 countries. Port and Terminal Operations include: New projects under construction: Savona, and Tema. Africa: Abidjan, Apapa, Cotonou, Douala, Luanda, Monrovia, Onne, Pointe Noire, Port Elizabeth, Tangier, and Tema. Europe: Algeciras, Aarhus, Barcelona, Bremerhaven, Gothenburg, Port of Poti, Rotterdam-Maasvlakte, Rotterdam-Maasvlakte 2, Wilhelmshaven-JadeWeserPort, Valencia, Gijón, Zeebrugge, Vado Ligure Reefer Terminal and Vado Gateway. North America: Los Angeles, Miami, Mobile, Port Elizabeth, and Tacoma. Latin America: Buenos Aires, Buenaventura (Colombia), Cartagena, Itajaí, Pecém, Callao, Santos, Lázaro Cárdenas, Puerto Quetzal, Yucatan, and Limon (Costa Rica). Middle East: Aqaba, Haifa, Bahrain, Salalah, Port Said and Jebel Ali. Asia: Cai Mep, Colombo, Dalian, Guangzhou, Kobe, Laem Chabang, Karachi, Pipavav, Qingdao, Tanjung Pelepas, Tianjin, Shanghai, Xiamen, Yokohama, India, and Singapore. Maersk Container Industry Maersk Container Industry A/S: Container manufacturing with factories in China (Dongguan and Qingdao) and headquarters in Denmark (Tinglev). Container"
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_8e3da1806bde",
+    "engine": "lossy-k3-c90+polarity-flip",
+    "question": "Did California meet its target of 20% renewables by 2010?",
+    "failure_modes": [
+      "negation",
+      "numeric"
+    ],
+    "claim": "According to a report by the California Public Utilities Commission (CPUC), California failed to meet the 20% renewables by 2010 target, and In 2010, Southern California Edison produced 19.4% of its electricity from renewable sources, Pacific Gas and Electric Company generated 17.7% of the electricity it sold from renewable sources, and San Diego Gas & Electric generated 11.9% of its electricity from renewable sources.",
+    "cited_snippets": [
+      "resources by 2030, and 100% will be generated by carbon-free sources by 2045. Much of this is expected to come from solar power. According to a report by the California Public Utilities Commission (CPUC), California failed to meet the 20% renewables by 2010 target. In 2010, Southern California Edison produced 19.4% of its electricity from renewable sources, Pacific Gas and Electric Company generated 17.7% of the electricity it sold from renewable sources, and San Diego Gas & Electric generated 11.9% of its electricity from renewable sources. As of October 2020,"
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_6d2292d301bb",
+    "engine": "lossy-k3-c90",
+    "question": "Which Ariane rocket variant launched the James Webb Space Telescope, and when did the Ariane 6 make its first flight?",
+    "failure_modes": [
+      "multi_hop",
+      "negation"
+    ],
+    "claim": "The Webb was launched on 25 December 2021 on an Ariane 5 rocket from Kourou, French Guiana, and the telescope's first image was released to the public on 11 July 2022.",
+    "cited_snippets": [
+      "and radio ranges) required to achieve the desired resolution. The Webb was launched on 25 December 2021 on an Ariane 5 rocket from Kourou, French Guiana. In January 2022, it arrived at its destination, a solar orbit near the Sun–Earth L2 Lagrange point, about 1.5 million kilometers (930,000 mi) from Earth. The telescope's first image was released to the public on 11 July 2022. The U.S. National Aeronautics and Space Administration (NASA) led Webb's design and development and partnered with two central agencies: the European Space Agency (ESA) and the"
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_3e511154346a",
+    "engine": "extractive-k3-c250",
+    "question": "How many passengers did Changi Airport handle in 2025, and how did that compare with the previous year?",
+    "failure_modes": [
+      "recency",
+      "numeric"
+    ],
+    "claim": "Part of this project was planned to help expand Terminal 1 to handle 24 million passengers per year by 2018 with stand-alone check-in facilities and lounges.",
+    "cited_snippets": [
+      "Airport, which opened on 17 April 2019, is a nature-themed entertainment and retail complex interconnecting Terminals 1, 2 and 3. Announced in 2013, it is a new terminal-like structure that is intended to simultaneously be a mixed-use complex. It is situated on a 3.5-hectare site where the Terminal 1 car park used to reside, which has since been moved underground. Jewel was developed by Jewel Changi Airport Trustee Pte Ltd, a joint venture between Changi Airport Group and CapitaLand, through its wholly owned shopping mall business, CapitaLand Mall Asia. The project cost S$1.7 billion. Part of this project was planned to help expand Terminal 1 to handle 24 million passengers per year by 2018 with stand-alone check-in facilities and lounges. The indoor waterfall (named \"Rain Vortex\") in the structure holds the World Record for the tallest indoor waterfall in the world at 40m high, cascading down 7 storeys. The Air Hub & Cargo Development department of the Changi Airport Group (CAG) manages the Changi Airfreight Centre, which is located to the north of the airport premises. In 2025, Changi Airport handled 2,080,000 tonnes of air freight, achieving one of its strongest cargo performance on record. The top five air cargo markets in 2025 were China, the United States, Australia, Hong Kong, and India. Recent cargo volumes at Changi Airport have been heavily driven by global demand for semiconductors, artificial intelligence (AI) technology, electric vehicles, and cleantech. Changi Airport has been honored frequently at the Asian Freight Logistics and Supply Chain"
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_986bc2bec48b",
+    "engine": "lossy-k3-c90+polarity-flip",
+    "question": "What is the largest adiabatic compressed-air energy storage plant described in the corpus, and what conversion efficiency does it achieve?",
+    "failure_modes": [
+      "recency",
+      "numeric"
+    ],
+    "claim": "Upon removal from storage, the temperature of this compressed air is the one indicator of the amount of stored energy that remains in this air.",
+    "cited_snippets": [
+      "plant, the largest in the world at the time, was switched on in Huai'an, China. It consists of two 300 MW units with a 71% conversion efficiency rate. Diabatic storage dissipates much of the heat of compression with intercoolers (thus approaching isothermal compression) into the atmosphere as waste, essentially wasting the energy used to perform the work of compression. Upon removal from storage, the temperature of this compressed air is the one indicator of the amount of stored energy that remains in this air. Consequently, if the air temperature is"
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_8717a9d48cc5",
+    "engine": "extractive-k3-c250",
+    "question": "What net income and consolidated revenue did TSMC report for 2020?",
+    "failure_modes": [
+      "numeric",
+      "simple"
+    ],
+    "claim": "In July 2022, TSMC announced the company had posted a record profit in the second quarter, with net income up 76.4 percent year-over-year.",
+    "cited_snippets": [
+      "12/16 nanometre FinFET process technology in addition to the previously announced 22/28 nanometre process and increase monthly production capacity from 45,000 to 55,000 12-inch wafers. The total capital expenditure for JASM's Kumamoto fab is estimated to be approximately US$8.6 billion. The Japanese government wants JASM to supply essential chips to Japan's electronic device makers and auto companies as trade friction between the United States and China threatens to disrupt supply chains. The fab is expected to directly create about 1,700 high-tech professional jobs. In July 2022, TSMC announced the company had posted a record profit in the second quarter, with net income up 76.4 percent year-over-year. The company saw steady growth in the automotive and data centre sectors with some weakness in the consumer market. Some of the capital expenditures are projected to be pushed up to 2023. In the third quarter of 2022, Berkshire Hathaway disclosed purchase of 60 million shares in TSMC, acquiring a $4.1 billion stake, making it one of its largest holdings in a technology company. However, Berkshire sold off 86.2 percent of its stake by the next quarter citing geopolitical tensions as a factor. In February 2024, TSMC shares hit a record high, with the high on the trading day reaching NT$709 and closing at NT$697 (+8%). This was influenced by the increase in the price target on chip designer Nvidia. TSMC currently manufactures 3-nanometre chips and plans to start 2-nanometre mass production in 2025. It is included in the FTSE4Good Index, being the only"
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_08321bcc811f",
+    "engine": "lossy-k3-c250+entity-swap",
+    "question": "What was ASML's market capitalization, as of when, and what share of worldwide lithography machine sales did it have?",
+    "failure_modes": [
+      "recency",
+      "numeric"
+    ],
+    "claim": "As of 2025, ASML had 83% percent of the worldwide sales of lithography machines.",
+    "cited_snippets": [
+      "placed further restrictions on the shipment of some advanced chip-making equipment to China. On 6 September 2024, the Dutch government tightened export controls on certain ASML chipmaking equipment, aligning its policy with U.S. restrictions to limit China's access to advanced technology amid safety and geopolitical concerns. These restrictions were expanded for tighter export controls in January 2025, with ASML required to apply for export licenses with the Dutch government instead of the U.S. In December 2025, Reuters reported that China had secretly built a prototype EUV machine in Shenzhen with the assistance of former ASML engineers, with the machine expected to produce working chips between 2028 and 2030. ASML produces the photolithography machines used in the production of integrated circuits, called \"scanners\". In these machines, patterns are optically imaged onto a silicon wafer that is covered with a film of light-sensitive material (photoresist). This procedure is repeated dozens of times on a single wafer. The photoresist is then further processed to create the actual electronic circuits on the silicon. The optical imaging that ASML's machines deal with is used in the fabrication of nearly all integrated circuits. As of 2025, ASML had 83% percent of the worldwide sales of lithography machines. ASML's earlier competition consisted of Ultratech, Canon, Nikon, MKS Instruments, Lam Research and Cadence Design Systems. Since immersion lithography was first proposed by Burn-Jeng Lin in the 1970s, ASML cooperated with TSMC. In 2004, TSMC began commercial production of 90 nanometer semiconductor nodes using ASML immersion lithography. By 2011,"
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_e4d1d818caa2",
+    "engine": "lossy-k3-c90",
+    "question": "Who founded TSMC, in what year was the company established, and what was it the world's first of?",
+    "failure_modes": [
+      "simple"
+    ],
+    "claim": "4.1% capital came from Taiwan's then ruling party’s investment arm: Kuomintang Central Investment Co. From the company's onset, TSMC operated primarily as a project of the Taiwanese state, as opposed to a completely private company.",
+    "cited_snippets": [
+      "4.1% capital came from Taiwan's then ruling party’s investment arm: Kuomintang Central Investment Co. From the company's onset, TSMC operated primarily as a project of the Taiwanese state, as opposed to a completely private company. Its first CEO was James E. Dykes, who left after a year and Morris Chang became the CEO. Although Philips initially held a 27.5% stake in TSMC, its influence extended beyond financial investment. In addition to capital, Philips played a crucial role by transferring semiconductor manufacturing technology, intellectual property, and patents to TSMC, enabling the"
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_e68f2b4c7552",
+    "engine": "lossy-k3-c250",
+    "question": "What power rating do the corpus documents give for the Hornsdale Power Reserve, and do they agree?",
+    "failure_modes": [
+      "contested",
+      "numeric"
+    ],
+    "claim": "Hornsdale Power Reserve, colloquially known as the Tesla Big Battery, is a 150 MW (194 MWh) grid-connected energy storage system, and the Hornsdale Power Reserve is owned by Neoen and is co-located with the Hornsdale Wind Farm in the Mid North region of South Australia, also owned by Neoen.",
+    "cited_snippets": [
+      "Hornsdale Power Reserve, colloquially known as the Tesla Big Battery, is a 150 MW (194 MWh) grid-connected energy storage system. The Hornsdale Power Reserve is owned by Neoen and is co-located with the Hornsdale Wind Farm in the Mid North region of South Australia, also owned by Neoen. The original installation in 2017 was the largest lithium-ion battery in the world at 100 MW / 129 MWh. It was expanded in 2020 to 194 MWh at 150 MW. Despite the expansion, it inevitably lost that title in August 2020 to the Gateway Energy Storage in California, USA. In Australia the large Victorian Big Battery (300 MW / 450 MWh) began operations in December 2021. Those have since been leapfrogged by many other batteries. In 2016, South Australia suffered grid damages and blackout during storms, as well as high electricity prices. Grid batteries were among the solutions discussed. South Australia received 90 proposals and considered five projects to build a grid-connected battery to increase grid stability under adverse weather events. This has resulted in less use of gas-fired generators to provide grid stability. During 2017 Tesla, Inc. won the contract and built the Hornsdale Power Reserve, for a capital cost of A$90 million, leading to the colloquial Tesla Big Battery name. Elon Musk placed a wager that the battery would be completed within \"100 days from contract signature\", otherwise the battery would be free. Tesla had already begun construction, and some units were already operational by 29 September 2017, the time"
+    ],
+    "has_oracle": false
+  },
+  {
+    "claim_id": "cl_5d7694c64377",
+    "engine": "extractive-k3-c90",
+    "question": "What are Hubble's cumulative costs, and how much had NASA spent on the project by the time of launch?",
+    "failure_modes": [
+      "contested",
+      "numeric"
+    ],
+    "claim": "In 1977, then NASA Administrator James C. Fletcher proposed a token $5 million for Hubble in NASA's budget.",
+    "cited_snippets": [
+      "of the proposed budget for the telescope and forced cuts in the budget for the planning stages, which at the time consisted of very detailed studies of potential instruments and hardware for the telescope. In 1974, public spending cuts led to Congress deleting all funding for the telescope project. In 1977, then NASA Administrator James C. Fletcher proposed a token $5 million for Hubble in NASA's budget. Then NASA Associate Administrator for Space Science, Noel Hinners, instead cut all funding for Hubble, gambling that this would galvanize the scientific community"
+    ],
+    "has_oracle": false
+  }
+]
