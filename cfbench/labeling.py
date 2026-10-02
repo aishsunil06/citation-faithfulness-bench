@@ -28,13 +28,31 @@ KEYMAP = {
     "s": Verdict.SUPPORTED,
     "p": Verdict.PARTIAL,
     "u": Verdict.UNSUPPORTED,
+    "c": Verdict.CONTRADICTED,
     "n": Verdict.UNCITED,
 }
 
 _PROMPT = (
-    "[s]upported  [p]artial  [u]nsupported  [n]o-citation  "
+    "[s]upported  [p]artial  [u]nsupported  [c]ontradicted  [n]o-citation  "
     "[k]skip  [q]uit > "
 )
+
+# Printed at the top of every session. The first labelling session stalled on
+# exactly this confusion: the labeller was asked to grade a claim that did not
+# answer its question, which is a different axis entirely.
+_RULES = """You are grading the CITATION, not the answer.
+
+The only question: does the cited text say this sentence?
+
+  s  the cited text says it
+  p  related, but weaker, narrower, or a number/date/scope is off
+  u  the cited text does not support it
+  c  the cited text says the OPPOSITE
+  n  no citation was attached
+
+Ignore whether the sentence is a good or complete answer to the question.
+A perfectly cited sentence that answers the wrong question is still 's'.
+"""
 
 
 def load_labels(path: str | Path) -> list[Label]:

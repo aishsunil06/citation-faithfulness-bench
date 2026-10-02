@@ -39,14 +39,27 @@ class Verdict(str, Enum):
     """Does the cited source actually support the claim?"""
 
     SUPPORTED = "supported"          # source states the claim
-    PARTIAL = "partial"              # source is related but weaker/narrower//off in detail
-    UNSUPPORTED = "unsupported"      # source does not support it (or contradicts)
+    PARTIAL = "partial"              # source is related but weaker, narrower, or off in detail
+    UNSUPPORTED = "unsupported"      # source simply does not support the claim
+    CONTRADICTED = "contradicted"    # source states the opposite
     UNCITED = "uncited"              # claim carried no citation at all
 
     @property
     def is_credit(self) -> bool:
         """Whether this verdict earns credit under the strict scoring rule."""
         return self is Verdict.SUPPORTED
+
+    @property
+    def is_failure(self) -> bool:
+        """Whether the citation is outright wrong, as opposed to merely weak.
+
+        CONTRADICTED is kept separate from UNSUPPORTED because they are
+        different product failures. An irrelevant source is careless
+        attribution; a source that states the opposite means the engine read
+        the evidence and asserted against it, which is both more damaging and
+        more diagnostic.
+        """
+        return self in (Verdict.UNSUPPORTED, Verdict.CONTRADICTED)
 
 
 def _new_id(prefix: str) -> str:

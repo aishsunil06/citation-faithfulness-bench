@@ -25,12 +25,14 @@ def engine(answer="Northwind reported revenue of 412 million dollars [1].",
     return MockEngine(script={"q1": (answer, [tuple(c) for c in citations])})
 
 
-def test_numeric_drift_changes_the_number_and_flags_unsupported():
+def test_numeric_drift_changes_the_number_and_flags_contradicted():
+    # The source still states the original figure, so it actively disagrees
+    # with the corrupted claim rather than merely failing to support it.
     result = NumericDrift(engine(), seed=1).inject(Q)
 
     assert "412" not in result.record.claims[0].text
     assert len(result.oracle) == 1
-    assert result.oracle[0].verdict is Verdict.UNSUPPORTED
+    assert result.oracle[0].verdict is Verdict.CONTRADICTED
     assert "412" in result.oracle[0].rationale
 
 
