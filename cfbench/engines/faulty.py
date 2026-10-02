@@ -221,7 +221,9 @@ def _rewrite(
     replacement = new_text.strip().rstrip(".").strip()
     if core and core in record.answer_text:
         record.answer_text = record.answer_text.replace(core, replacement, 1)
-    elif old_token and old_token in record.answer_text:
+    elif old_token and record.answer_text.count(old_token) == 1:
+        # Only when the token is unambiguous: a blind single replacement could
+        # otherwise rewrite a different sentence of the same answer.
         record.answer_text = record.answer_text.replace(old_token, new_token, 1)
     claim.text = new_text
 
