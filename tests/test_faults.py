@@ -175,3 +175,111 @@ def test_smaller_intervals_require_more_labels():
 def test_labels_needed_rejects_impossible_targets():
     with pytest.raises(ValueError):
         labels_needed(0.0)
+
+
+# --------------------------------------------------------------------------
+# Label prioritisation
+# --------------------------------------------------------------------------
+
+
+def _two_mode_setup():
+    from cfbench.engines.faulty import DroppedCitation
+
+    q_num = Question(id="q1", text="Revenue?", failure_modes=(FailureMode.NUMERIC,))
+    q_neg = Question(
+        id="q2", text="Any incidents?", failure_modes=(FailureMode.NEGATION,)
+    )
+    eng = MockEngine(
+        script={
+            "q1": ("Revenue was 412 million dollars [1].", [("u1", SNIPPET)]),
+            "q2": ("No incidents were found [1].", [("u2", "No incidents found.")]),
+        }
+    )
+    clean = [eng.answer(q_num), eng.answer(q_neg)]
+
+    faulty = DroppedCitation(eng, seed=0)
+    inj = [faulty.inject(q_num), faulty.inject(q_neg)]
+    oracle = [lb for r in inj for lb in r.oracle]
+    return [q_num, q_neg], clean + [r.record for r in inj], oracle
+
+
+def test_prioritize_skips_claims_already_known_by_construction():
+    from cfbench.labeling import pending_claims, prioritize
+
+    questions, answers, oracle = _two_mode_setup()
+
+    raw = pending_claims(answers, oracle, "human:a")
+    pri = prioritize(questions, answers, oracle, "human:a")
+
+    assert len(pri) < len(raw)
+    oracle_ids = {lb.claim_id for lb in oracle}
+    assert not any(claim.id in oracle_ids for _rec, claim in pri)
+
+
+def test_prioritize_can_be_told_to_keep_oracle_claims():
+    from cfbench.labeling import pending_claims, prioritize
+
+    questions, answers, oracle = _two_mode_setup()
+    pri = prioritize(questions, answers, oracle, "human:a", exclude_oracle=False)
+    assert len(pri) == len(pending_claims(answers, oracle, "human:a"))
+
+
+def test_prioritize_alternates_between_failure_modes():
+    # A 2-label budget must not spend both on the same mode.
+    from cfbench.labeling import prioritize
+
+    questions, answers, oracle = _two_mode_setup()
+    pri = prioritize(questions, answers, oracle, "human:a")
+    q_by_id = {q.id: q for q in questions}
+    first_two = [
+        q_by_id[rec.question_id].failure_modes[0] for rec, _c in pri[:2]
+    ]
+    assert len(set(first_two)) == 2
+
+
+def test_ambiguity_peaks_near_a_judge_decision_boundary():
+    from cfbench.labeling import claim_ambiguity
+    from cfbench.schema import Claim
+
+    def mk(text):
+        return Claim(question_id="q1", text=text, citation_ids=["c1"])
+
+    verbatim = mk("Northwind reported revenue of 412 million dollars")
+    unrelated = mk("Completely different subject matter entirely here")
+
+    clear = claim_ambiguity(verbatim, [SNIPPET])
+    borderline = claim_ambiguity(
+        mk("Northwind revenue dollars unrelated padding words here now"), [SNIPPET]
+    )
+
+    assert claim_ambiguity(unrelated, [SNIPPET]) < borderline
+    assert clear < borderline
+
+
+def test_ambiguity_is_zero_for_uncited_claims():
+    from cfbench.labeling import claim_ambiguity
+    from cfbench.schema import Claim
+
+    bare = Claim(question_id="q1", text="Something asserted.", citation_ids=[])
+    assert claim_ambiguity(bare, []) == 0.0
+
+
+def test_label_session_respects_prioritised_order(tmp_path):
+    from cfbench.labeling import label_session, load_labels, prioritize
+
+    questions, answers, oracle = _two_mode_setup()
+    path = tmp_path / "labels.jsonl"
+    from cfbench.schema import write_jsonl
+    write_jsonl(path, oracle)
+
+    expected_first = prioritize(questions, answers, oracle, "human:a")[0][1].id
+
+    replies = iter(["s", ""])
+    label_session(
+        questions, answers, path, "human:a", limit=1,
+        input_fn=lambda _: next(replies), print_fn=lambda *a, **k: None,
+    )
+
+    human = [lb for lb in load_labels(path) if lb.is_human]
+    assert len(human) == 1
+    assert human[0].claim_id == expected_first

@@ -154,7 +154,12 @@ def cmd_label(args: argparse.Namespace) -> int:
     if not labeler.startswith("human"):
         labeler = f"human:{labeler}"
     label_session(
-        questions, answers, args.labels, labeler, limit=args.limit
+        questions,
+        answers,
+        args.labels,
+        labeler,
+        limit=args.limit,
+        prioritized=not args.no_priority,
     )
     return 0
 
@@ -283,6 +288,11 @@ def build_parser() -> argparse.ArgumentParser:
     common(sp)
     sp.add_argument("--labeler", required=True, help="e.g. human:aishwarya")
     sp.add_argument("--limit", type=int, default=None)
+    sp.add_argument(
+        "--no-priority",
+        action="store_true",
+        help="label in raw document order instead of by information value",
+    )
     sp.set_defaults(func=cmd_label)
 
     sp = sub.add_parser("report", help="render the leaderboard and calibration")
