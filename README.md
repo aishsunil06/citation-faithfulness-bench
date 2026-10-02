@@ -113,7 +113,7 @@ special-casing. Four faults ship:
 
 | Fault | Corruption | Correct verdict |
 |---|---|---|
-| `numeric-drift` | shifts a figure so it no longer matches the source | `unsupported` |
+| `numeric-drift` | shifts a figure so it no longer matches the source | `contradicted` |
 | `wrong-source` | repoints the claim at a different retrieved source | `unsupported` |
 | `dropped-citation` | strips the citation, leaving a bare assertion | `uncited` |
 | `padded-claim` | appends a confident sentence no source supports | `unsupported` |
@@ -143,6 +143,25 @@ corpus.jsonl ──► BM25 index ──► engine ──► answer prose + cita
                                   ▼
             leaderboard (with bootstrap CIs) + failure modes
 ```
+
+## Verdicts
+
+| Verdict | Meaning |
+|---|---|
+| `supported` | the cited snippet states the claim, numbers and dates included |
+| `partial` | relevant but weaker, narrower, or off in a detail |
+| `unsupported` | the snippet is about something else, or silent on the point |
+| `contradicted` | the snippet addresses this exact point and states the opposite |
+| `uncited` | the claim carried no citation at all |
+
+`contradicted` is deliberately separate from `unsupported`. An irrelevant
+citation is careless attribution; a source that states the opposite means the
+engine had the right evidence in hand and asserted against it. Those are
+different product failures with different fixes, and collapsing them hides
+which one an engine actually has. Neither earns credit under strict scoring.
+
+`uncited` is likewise kept apart: asserting something with no source at all is
+a different failure from asserting it with a bad one.
 
 ## Failure modes
 
@@ -212,7 +231,7 @@ degradation rather than noise.
 Working: retrieval with chunk sweeps, extractive and generative engines, four
 fault injectors, claim decomposition, two judges, bootstrap confidence
 intervals, failure-mode decomposition, resumable human labelling with
-information-ordered queueing, dataset validation, report rendering. 81 tests,
+information-ordered queueing, dataset validation, report rendering. 86 tests,
 all offline.
 
 Honest limitations:
@@ -262,5 +281,5 @@ cfbench/
     lossy.py       paraphrases lossily, for genuinely borderline claims
     mock.py        scripted engine for tests
 data/              seed corpus and question set
-tests/             81 offline tests
+tests/             86 offline tests
 ```

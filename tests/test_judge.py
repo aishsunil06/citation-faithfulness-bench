@@ -21,15 +21,35 @@ def test_high_overlap_is_supported():
     assert label.verdict is Verdict.SUPPORTED
 
 
-def test_missing_number_overrides_high_overlap():
-    # Every word matches except the figure, which is the classic citation
-    # failure the lexical judge must not score as supported.
+def test_swapped_number_on_the_same_fact_is_contradicted():
+    # Every word matches except the figure. The source addresses this exact
+    # point and states something else, which is contradiction rather than an
+    # irrelevant citation.
     label = LexicalJudge().judge(
         claim("Northwind reported revenue of 500 million dollars"),
         ["Northwind reported revenue of 412 million dollars."],
     )
-    assert label.verdict is Verdict.UNSUPPORTED
+    assert label.verdict is Verdict.CONTRADICTED
     assert "500" in label.rationale
+
+
+def test_number_absent_from_an_unrelated_source_is_unsupported():
+    # Low overlap means the source is not about this fact at all, so there is
+    # nothing to contradict.
+    label = LexicalJudge().judge(
+        claim("Northwind reported revenue of 500 million dollars"),
+        ["Quarterly aviation charter bookings rose across regional hubs."],
+    )
+    assert label.verdict is Verdict.UNSUPPORTED
+
+
+def test_contradiction_needs_a_number_in_the_source():
+    # A source with no figures at all cannot be said to state a different one.
+    label = LexicalJudge().judge(
+        claim("Northwind reported revenue of 500 million dollars"),
+        ["Northwind reported revenue growth driven by cold-chain contracts."],
+    )
+    assert label.verdict is Verdict.UNSUPPORTED
 
 
 def test_number_formats_normalise():
@@ -92,3 +112,25 @@ def test_get_judge_resolves_names():
         assert "unknown judge" in str(exc)
     else:
         raise AssertionError("expected ValueError")
+
+
+def test_contradicted_counts_as_a_failure_but_not_as_credit():
+    assert Verdict.CONTRADICTED.is_failure
+    assert not Verdict.CONTRADICTED.is_credit
+    assert Verdict.UNSUPPORTED.is_failure
+    assert not Verdict.PARTIAL.is_failure       # weak, but not outright wrong
+    assert Verdict.SUPPORTED.is_credit
+
+
+def test_llm_judge_parses_the_contradicted_verdict():
+    raw = '{"verdict": "contradicted", "rationale": "source says 412 not 500"}'
+    label = LLMJudge(model="m")._parse(claim("x"), raw)
+    assert label.verdict is Verdict.CONTRADICTED
+
+
+def test_llm_prompt_documents_every_verdict_it_may_return():
+    from cfbench.judge import JUDGE_SYSTEM_PROMPT
+
+    for v in (Verdict.SUPPORTED, Verdict.PARTIAL, Verdict.UNSUPPORTED,
+              Verdict.CONTRADICTED):
+        assert f'"{v.value}"' in JUDGE_SYSTEM_PROMPT

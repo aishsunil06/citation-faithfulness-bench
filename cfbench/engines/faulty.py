@@ -94,7 +94,9 @@ class NumericDrift(_Base):
 
     The commonest real citation failure: the sentence is about the right thing
     and points at the right document, but the figure is wrong. Correct verdict
-    is UNSUPPORTED, because the cited source does not state the altered number.
+    is CONTRADICTED, not UNSUPPORTED: the source addresses this exact fact and
+    states a different number, which is a stronger failure than an irrelevant
+    citation.
     """
 
     fault = "numeric-drift"
@@ -120,7 +122,7 @@ class NumericDrift(_Base):
         )
         record.answer_text = record.answer_text.replace(original, replacement, 1)
         return (
-            Verdict.UNSUPPORTED,
+            Verdict.CONTRADICTED,
             f"injected numeric drift: {original} -> {replacement}",
             claim,
         )

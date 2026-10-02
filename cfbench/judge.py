@@ -101,11 +101,20 @@ class LexicalJudge:
         # A number asserted in the claim but absent from every snippet is the
         # single most reliable unsupported signal, so it overrides overlap.
         claim_nums = _numbers(claim.text)
-        missing_nums = claim_nums - _numbers(joined)
+        snippet_nums = _numbers(joined)
+        missing_nums = claim_nums - snippet_nums
         if claim_nums and missing_nums:
+            # High lexical overlap plus a swapped figure means the source is
+            # talking about this very fact and stating a different number, i.e.
+            # contradiction rather than mere absence of support.
+            contradicts = (
+                best_overlap >= self.partial_threshold and bool(snippet_nums)
+            )
             return Label(
                 claim_id=claim.id,
-                verdict=Verdict.UNSUPPORTED,
+                verdict=(
+                    Verdict.CONTRADICTED if contradicts else Verdict.UNSUPPORTED
+                ),
                 labeler=self.name,
                 rationale=(
                     f"numbers {sorted(missing_nums)} in the claim appear in no "
@@ -152,7 +161,16 @@ verdict must be exactly one of:
   entities. Paraphrase is fine; changed facts are not.
 - "partial": the snippet is relevant but weaker, narrower, or differs in a
   detail such as a number, date, scope, or qualifier.
-- "unsupported": the snippet does not support the claim, or contradicts it.
+- "unsupported": the snippet simply does not support the claim. It is about
+  something else, or is silent on the point.
+- "contradicted": the snippet addresses this exact point and states the
+  opposite. Use this when the snippet gives a different number, date, or
+  polarity for the very fact the claim asserts. Prefer this over
+  "unsupported" whenever the source actively disagrees rather than being
+  merely irrelevant.
+
+Do not grade whether the claim answers any particular question. Only whether
+the cited snippet supports the sentence as written.
 
 rationale: one sentence, naming the specific mismatch if there is one.
 """
