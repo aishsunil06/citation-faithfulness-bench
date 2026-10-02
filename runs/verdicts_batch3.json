@@ -1,0 +1,22 @@
+{
+  "cl_e4eb34e61117": ["uncited", "cited_snippets is empty"],
+  "cl_4dbc36e4276f": ["supported", "snippet states 2023 Denmark wind capacity 7,510 MW with 4,860 MW onshore and 2,650 MW offshore verbatim"],
+  "cl_ca592884c34c": ["supported", "snippet contains both the 1955 McLean/Tantlinger sentence and the 1952 CONEX sentence verbatim"],
+  "cl_6323fad7aeed": ["supported", "snippet states the Ariane 6.1/6.2 configuration and 8,500 kg GTO figure verbatim"],
+  "cl_d24bce5e8247": ["unsupported", "snippet discusses a 350 MW battery at the Crimson Solar Project, saying nothing about a union group or California Flats"],
+  "cl_3bfa295390c7": ["unsupported", "snippet is about JWST design reviews and funding, silent on renewables storage or demand response"],
+  "cl_202c2c43fa80": ["contradicted", "snippet gives 95±20 TWh annual generation, claim states 103±20 TWh for the same figure"],
+  "cl_47f1484bcd3c": ["supported", "snippet states the FCL definition verbatim"],
+  "cl_ad600145a2a1": ["supported", "snippet states 1 IU equals the biological equivalent of 34.7 ug crystalline insulin verbatim"],
+  "cl_859e7c33bd2c": ["supported", "snippet states the raised US$60-64 billion 2026 capex forecast versus US$52-56 billion prior guidance verbatim"],
+  "cl_fc16d8b836ea": ["uncited", "cited_snippets is empty"],
+  "cl_f400b8beb7ca": ["unsupported", "snippet gives 2010 advertised v1.0 prices of $49.9-56 million, not the 2024 internal cost estimate of $15-28 million"],
+  "cl_58d0e85732f7": ["unsupported", "snippet reports Block 5 success at 635/636 (99.8%), a different subset and period than the claimed 689/692 Falcon 9 total as of October 2, 2026"],
+  "cl_14a40cf6a785": ["partial", "accident portion (eight accidents, one hull loss, as of June 2025) matches the snippet, but the subject is garbled to 'the Boeing roughly 790' where the source says 'the Boeing 787'"],
+  "cl_06956d75118e": ["supported", "snippet states the 1928 USS Saratoga lamp-post incident and the 2016 larger-locks expansion verbatim"],
+  "cl_16647625b69a": ["unsupported", "snippet covers the Toronto/USP insulin unit definitions and is silent on de Crespigny's 1923 Adelaide treatment"],
+  "cl_2f4f0447bee3": ["supported", "snippet states Tesla won the 2017 contract and built Hornsdale for A$90 million verbatim"],
+  "cl_416614160efb": ["supported", "snippet states the Moss Landing Power Plant description verbatim"],
+  "cl_e64ba39e36b7": ["unsupported", "snippet covers EUV wall-plug efficiency and scanner footprint, silent on TSMC shareholders or N7+ being the first commercial EUV process"],
+  "cl_67609c3e5c86": ["supported", "snippet states the Ariane 6.1/6.2 configuration and 8,500 kg GTO figure verbatim"]
+}

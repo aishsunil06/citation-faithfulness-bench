@@ -43,7 +43,26 @@ _QUALIFIER = re.compile(
     re.IGNORECASE,
 )
 
-_NUMBER = re.compile(r"\b(\d{2,}(?:\.\d+)?)\b")
+# Comma-grouped numerals are one token. Without this, "7,175" split into "7"
+# and "175", and rounding the tail produced "7,roughly 180" -- a garbled string
+# rather than a plausible paraphrase. Graders flagged it as unjudgeable, which
+# is the opposite of what a borderline-case generator is for.
+_NUMBER = re.compile(r"\b(\d{1,3}(?:,\d{3})+(?:\.\d+)?|\d{2,}(?:\.\d+)?)\b")
+
+# A number forming part of a name is an identifier, not a quantity. Rounding it
+# produced "The Boeing roughly 790", which asserts nothing about the world and
+# cannot be graded either way.
+_IDENT_HEADS = frozenset({
+    "fab", "falcon", "boeing", "airbus", "ariane", "voyager", "apollo",
+    "soyuz", "nxe", "twinscan", "no", "number", "model", "type", "mark",
+    "phase", "block", "unit", "version", "chapter", "section", "figure",
+    "table", "annex", "appendix", "route", "line", "terminal", "runway",
+})
+
+
+def _is_identifier(text: str, start: int) -> bool:
+    words = re.findall(r"[A-Za-z]+", text[max(0, start - 20):start])
+    return bool(words) and words[-1].lower() in _IDENT_HEADS
 
 
 def _drop_qualifier(sentence: str, rng) -> tuple[str, str] | None:
@@ -70,19 +89,30 @@ def _looks_like_year(raw: str, value: float) -> bool:
 
 
 def _round_number(sentence: str, rng) -> tuple[str, str] | None:
-    candidates = [
-        m for m in _NUMBER.finditer(sentence)
-        if not _looks_like_year(m.group(1), float(m.group(1)))
-    ]
+    def parse(text: str) -> float | None:
+        try:
+            return float(text.replace(",", ""))
+        except ValueError:
+            return None
+
+    candidates = []
+    for match in _NUMBER.finditer(sentence):
+        value = parse(match.group(1))
+        if value is None:
+            continue
+        # A comma-grouped numeral is never a year, so "1,800" is a quantity.
+        if "," not in match.group(1) and _looks_like_year(match.group(1), value):
+            continue
+        if _is_identifier(sentence, match.start(1)):
+            continue
+        candidates.append(match)
     if not candidates:
         return None
+
     target = rng.choice(candidates)
     raw = target.group(1)
-    try:
-        value = float(raw)
-    except ValueError:
-        return None
-    if value < 10:
+    value = parse(raw)
+    if value is None or value < 10:
         return None
 
     # Two significant figures, so 412 -> 410 rather than 400. The goal is a
@@ -93,12 +123,14 @@ def _round_number(sentence: str, rng) -> tuple[str, str] | None:
     if rounded == int(value):
         return None
 
+    # Render in the original's shape so the paraphrase stays readable.
+    shown = f"{rounded:,}" if "," in raw else str(rounded)
     out = (
         sentence[:target.start(1)]
-        + f"roughly {rounded}"
+        + f"roughly {shown}"
         + sentence[target.end(1):]
     )
-    return out, f"rounded {raw} to roughly {rounded}"
+    return out, f"rounded {raw} to roughly {shown}"
 
 
 # Words that only ever start a sentence, so lowercasing them mid-sentence is
