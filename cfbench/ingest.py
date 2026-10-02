@@ -69,6 +69,45 @@ _MIN_LINE_CHARS = 25
 _MIN_DOC_WORDS = 60
 
 
+# Headings that mark the end of article prose. Everything after the first one
+# is link lists and citations, not statements about the world.
+#
+# Dropping the heading alone is not enough, which a real capture proved: the
+# heading "See also" is 8 characters and already falls to the length filter,
+# but its *body* lines are long enough to survive. A Hornsdale Power Reserve
+# capture ended with "Battery storage power station List of energy storage
+# projects in South Australia ... Tesla big battery defies sceptics, sends
+# industry bananas over performance" welded onto the prose. A retrieved chunk
+# of link headlines looks like evidence and is not, so the whole tail goes.
+_END_OF_PROSE = frozenset({
+    "see also",
+    "references",
+    "external links",
+    "further reading",
+    "bibliography",
+    "notes",
+    "citations",
+    "sources",
+    "footnotes",
+    "gallery",
+})
+
+
+def _truncate_at_footer(raw: str) -> str:
+    """Cut the text at the first standalone footer heading.
+
+    Matching is on the whole stripped line, not a prefix, so the sentence
+    "Notes from the inspection were filed" survives while the heading "Notes"
+    ends the document.
+    """
+    lines = raw.splitlines()
+    for i, line in enumerate(lines):
+        stripped = line.strip().rstrip(":").lower()
+        if stripped in _END_OF_PROSE:
+            return chr(10).join(lines[:i])
+    return raw
+
+
 def clean_text(raw: str) -> str:
     """Strip boilerplate and reference markers from a captured page.
 
@@ -77,7 +116,9 @@ def clean_text(raw: str) -> str:
     used, so the line breaks inside a paragraph carry no information, and
     removing them keeps a judged snippet readable.
     """
-    without_markers = _MARKERS.sub("", raw)
+    # Footer truncation must happen on the still-multiline text, since it is
+    # the line structure that identifies a heading.
+    without_markers = _MARKERS.sub("", _truncate_at_footer(raw))
 
     kept: list[str] = []
     for line in without_markers.splitlines():

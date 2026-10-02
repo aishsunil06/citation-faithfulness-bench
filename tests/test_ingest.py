@@ -266,3 +266,62 @@ def test_ingest_rows_tolerates_a_missing_title():
 
 def test_ingest_rows_on_no_rows_returns_nothing():
     assert ingest_rows([]) == ([], [])
+
+
+# --------------------------------------------------------------------------
+# Footer truncation
+# --------------------------------------------------------------------------
+#
+# Found on a real capture: dropping the "See also" heading is not enough,
+# because its body lines are long enough to survive the length filter and end
+# up welded onto the prose as if they were statements of fact.
+
+
+def test_footer_section_bodies_are_cut_not_just_their_headings():
+    raw = (
+        "The reserve has a capacity of 150 megawatts and cost 90 million dollars.\n"
+        "See also\n"
+        "Battery storage power station\n"
+        "List of energy storage projects in South Australia\n"
+        "External links\n"
+        "energypost.eu - Tesla big battery defies sceptics over performance\n"
+    )
+    out = clean_text(raw)
+    assert "capacity of 150 megawatts" in out
+    assert "Battery storage power station" not in out
+    assert "defies sceptics" not in out
+
+
+def test_truncation_matches_a_whole_heading_not_a_prose_mention():
+    # "Notes" as a heading ends the article; "Notes from..." is a real sentence.
+    raw = (
+        "Notes from the inspection were filed with the regulator in March 2024.\n"
+        "The site returned to service the following week without incident.\n"
+    )
+    out = clean_text(raw)
+    assert "Notes from the inspection" in out
+    assert "returned to service" in out
+
+
+def test_truncation_stops_at_the_first_footer_heading_only():
+    raw = (
+        "Real prose about the plant and its commissioning in 2017 follows here.\n"
+        "References\n"
+        "Some citation line that is long enough to survive the length filter.\n"
+        "Real prose that comes after references must also be dropped entirely.\n"
+    )
+    out = clean_text(raw)
+    assert "commissioning in 2017" in out
+    assert "citation line" not in out
+    assert "comes after references" not in out
+
+
+def test_a_heading_with_a_trailing_colon_still_truncates():
+    raw = (
+        "The canal handled 13,000 transits in the reporting year overall.\n"
+        "References:\n"
+        "A long citation line that would otherwise survive the length filter.\n"
+    )
+    out = clean_text(raw)
+    assert "13,000 transits" in out
+    assert "citation line" not in out
