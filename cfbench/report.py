@@ -220,7 +220,82 @@ def build_report(
             rows.append([engine] + [counts.get(v, 0) for v in Verdict])
         lines.append(_table(["engine"] + [v.value for v in Verdict], rows))
 
+    lines.append(_completeness_section(questions, answers))
+
     return "\n".join(lines)
+
+
+def _completeness_section(
+    questions: Sequence[Question],
+    answers: Sequence[AnswerRecord],
+) -> str:
+    """Render answer coverage, the axis faithfulness cannot see.
+
+    Kept separate from the faithfulness leaderboard because the two measure
+    different things and averaging them would hide both: an engine can cite
+    every sentence correctly and answer the wrong question, scoring 100% on
+    faithfulness and near zero here.
+    """
+    from .completeness import aggregate, completeness, most_missed
+
+    out = ["\n## Answer completeness\n"]
+
+    q_by_id = {q.id: q for q in questions}
+    with_aspects = [q for q in questions if q.aspects]
+
+    # A question set with no aspects authored would otherwise render as every
+    # engine scoring 0.0, which reads as total failure rather than as missing
+    # data. Say which it is.
+    if not with_aspects:
+        out.append(
+            "_No question declares `aspects`, so completeness is unmeasured. "
+            "This is missing data, not an engine scoring zero._\n"
+        )
+        return "".join(out)
+
+    out.append(
+        f"Scored over the **{len(with_aspects)} of {len(questions)}** questions "
+        f"that declare aspects.\n"
+    )
+
+    by_engine: dict[str, list] = defaultdict(list)
+    pairs: list[tuple[Question, AnswerRecord]] = []
+    for record in answers:
+        question = q_by_id.get(record.question_id)
+        if question is None or not question.aspects:
+            continue
+        by_engine[record.engine].append(completeness(question, record))
+        pairs.append((question, record))
+
+    rows = []
+    for engine, scores in sorted(
+        by_engine.items(), key=lambda kv: -aggregate(kv[1])
+    ):
+        total_aspects = sum(s.n_aspects for s in scores)
+        total_covered = sum(s.n_covered for s in scores)
+        rows.append([
+            engine,
+            len(scores),
+            _pct(aggregate(scores)),
+            f"{total_covered}/{total_aspects}",
+        ])
+    out.append(_table(["engine", "questions", "mean coverage", "aspects hit"], rows))
+
+    missed = most_missed(pairs, limit=10)
+    if missed:
+        out.append("\n### Most-missed aspects\n")
+        out.append(_table(
+            ["aspect", "times missed"],
+            [[aspect, count] for aspect, count in missed],
+        ))
+
+    out.append(
+        "\nCoverage is keyword presence, not semantic equivalence. A correct "
+        "paraphrase that avoids the aspect's wording counts as a miss, so "
+        "these figures are a lower bound and are only comparable between "
+        "engines over the same aspects, never readable as an absolute.\n"
+    )
+    return "".join(out)
 
 
 def _kappa_verdict(k: float) -> str:

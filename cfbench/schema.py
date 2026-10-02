@@ -73,6 +73,11 @@ class Question:
     domain: str = "general"
     id: str = field(default_factory=lambda: _new_id("q"))
     notes: str = ""
+    # What a complete answer must mention; consumed by `completeness`. Placed
+    # last among the defaulted fields so no existing positional construction
+    # shifts, and empty by default so a question set authored before this axis
+    # existed still loads.
+    aspects: tuple[str, ...] = ()
 
     def __post_init__(self) -> None:
         if not self.text.strip():
@@ -247,6 +252,8 @@ def question_from_dict(d: dict) -> Question:
         failure_modes=tuple(FailureMode(m) for m in d["failure_modes"]),
         domain=d.get("domain", "general"),
         notes=d.get("notes", ""),
+        # Tuple, not list, to keep Question hashable and frozen in spirit.
+        aspects=tuple(d.get("aspects") or ()),
     )
 
 

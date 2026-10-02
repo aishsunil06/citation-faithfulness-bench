@@ -14,15 +14,19 @@ import json
 import sys
 from dataclasses import asdict
 from pathlib import Path
+from typing import Sequence
 
+from .completeness import aggregate, completeness, most_missed
 from .engines import ExtractiveEngine, OpenAIRAGEngine
 from .engines.lossy import LossyEngine
 from .engines.faulty import FAULTS, wrap
+from .ingest import ingest_rows
 from .judge import get_judge
 from .labeling import label_session, load_labels
 from .report import build_report, disagreements
-from .retrieval import build_index, load_corpus
+from .retrieval import BM25Index, build_index, load_corpus, tokenize
 from .schema import (
+    Question,
     answer_from_dict,
     question_from_dict,
     read_jsonl,
@@ -195,6 +199,111 @@ def cmd_disagree(args: argparse.Namespace) -> int:
     return 0
 
 
+def answerability(
+    questions: Sequence[Question],
+    index: BM25Index,
+    min_overlap: float = 0.25,
+) -> list[str]:
+    """Return ids of questions the corpus cannot plausibly answer.
+
+    An unanswerable question is the most damaging kind of dataset bug here: no
+    engine can cite a source that does not exist, so every engine looks
+    unfaithful and the failure is attributed to the engines instead of the
+    data. Authoring questions separately from documents makes it easy to do by
+    accident, so `validate` fails rather than warns.
+
+    The check is retrieval-shaped, not semantic: a question passes if some
+    chunk shares at least `min_overlap` of its content tokens. That admits
+    questions whose keywords appear without the answer, so this catches
+    wholesale absence, not subtle unanswerability.
+    """
+    unanswerable: list[str] = []
+    for question in questions:
+        q_tokens = set(tokenize(question.text))
+        if not q_tokens:
+            unanswerable.append(question.id)
+            continue
+        best = 0.0
+        for chunk, _score in index.search(question.text, top_k=5):
+            overlap = len(q_tokens & set(tokenize(chunk.text))) / len(q_tokens)
+            best = max(best, overlap)
+        if best < min_overlap:
+            unanswerable.append(question.id)
+    return unanswerable
+
+
+def cmd_ingest(args: argparse.Namespace) -> int:
+    """Clean and dedupe a captured raw corpus into a usable one.
+
+    Capture is an operator step (see tools/fetch_wikipedia.py) so the library
+    stays network-free and a run is reproducible from the committed corpus.
+    """
+    rows = list(read_jsonl(args.input))
+    if not rows:
+        sys.exit(f"no raw rows found at {args.input}")
+
+    docs, dropped = ingest_rows(rows)
+    if not docs:
+        sys.exit(f"every row was dropped; nothing written to {args.out}")
+
+    write_jsonl(
+        args.out,
+        [{"url": d.url, "title": d.title, "text": d.text} for d in docs],
+    )
+    words = sum(len(d.text.split()) for d in docs)
+    print(f"kept {len(docs)} documents ({words:,} words) -> {args.out}")
+    if dropped:
+        print(f"dropped {len(dropped)} (too thin or near-duplicate):")
+        for url in dropped:
+            print(f"  - {url}")
+    return 0
+
+
+def cmd_completeness(args: argparse.Namespace) -> int:
+    """Score how much of each question an engine's answer actually addressed.
+
+    Separate from faithfulness on purpose: an engine can cite every sentence
+    correctly and still answer the wrong question, and the faithfulness score
+    cannot see that.
+    """
+    questions = _load_questions(args.questions)
+    answers = _load_answers(args.answers)
+    if not answers:
+        sys.exit(f"no answers at {args.answers}; run `run` first")
+
+    q_by_id = {q.id: q for q in questions}
+    authored = sum(1 for q in questions if q.aspects)
+    if not authored:
+        sys.exit(
+            "no question declares `aspects`, so completeness cannot be scored. "
+            "Populate aspects in the question file first."
+        )
+    print(f"{authored}/{len(questions)} questions declare aspects")
+
+    by_engine: dict[str, list] = {}
+    pairs_by_engine: dict[str, list] = {}
+    for record in answers:
+        question = q_by_id.get(record.question_id)
+        if question is None or not question.aspects:
+            continue
+        by_engine.setdefault(record.engine, []).append(
+            completeness(question, record)
+        )
+        pairs_by_engine.setdefault(record.engine, []).append((question, record))
+
+    print()
+    for engine in sorted(by_engine, key=lambda e: -aggregate(by_engine[e])):
+        scores = by_engine[engine]
+        print(f"{engine:<40} {aggregate(scores):.1%}  (n={len(scores)})")
+
+    print()
+    print("most-missed aspects:")
+    flat = [p for pairs in pairs_by_engine.values() for p in pairs]
+    for aspect, count in most_missed(flat, limit=args.limit):
+        print(f"  {count:>4}  {aspect}")
+    return 0
+
+
 def cmd_validate(args: argparse.Namespace) -> int:
     """Fail loudly on dataset problems that would silently skew results."""
     from collections import Counter
@@ -224,7 +333,21 @@ def cmd_validate(args: argparse.Namespace) -> int:
     for m in thin:
         problems.append(f"failure mode '{m}' has only {mode_counts[m]} questions")
 
+    if corpus:
+        index = build_index(corpus, words_per_chunk=90, overlap_words=20)
+        for qid in answerability(questions, index):
+            problems.append(f"corpus cannot answer question: {qid}")
+
+    no_aspects = [q.id for q in questions if not q.aspects]
+    if no_aspects and len(no_aspects) != len(questions):
+        problems.append(
+            f"{len(no_aspects)} question(s) declare no aspects, so completeness "
+            f"cannot be scored for them: {', '.join(no_aspects[:5])}"
+            + (" ..." if len(no_aspects) > 5 else "")
+        )
+
     print(f"questions: {len(questions)}   corpus docs: {len(corpus)}")
+    print(f"questions with aspects declared: {len(questions) - len(no_aspects)}")
     print("failure-mode coverage:")
     for mode, count in sorted(mode_counts.items(), key=lambda kv: -kv[1]):
         print(f"  {mode:<11} {count}")
@@ -318,6 +441,19 @@ def build_parser() -> argparse.ArgumentParser:
     sp.add_argument("--judge", default="judge:lexical")
     sp.add_argument("--limit", type=int, default=20)
     sp.set_defaults(func=cmd_disagree)
+
+    sp = sub.add_parser("ingest", help="clean and dedupe a captured raw corpus")
+    sp.add_argument("--input", type=Path, default=Path("data/corpus.raw.jsonl"))
+    sp.add_argument("--out", type=Path, default=Path("data/corpus.real.jsonl"))
+    sp.set_defaults(func=cmd_ingest)
+
+    sp = sub.add_parser(
+        "score-completeness", help="score answer coverage of question aspects"
+    )
+    sp.add_argument("--questions", type=Path, default=DEFAULT_QUESTIONS)
+    sp.add_argument("--answers", type=Path, default=DEFAULT_ANSWERS)
+    sp.add_argument("--limit", type=int, default=10)
+    sp.set_defaults(func=cmd_completeness)
 
     sp = sub.add_parser("validate", help="check dataset integrity")
     sp.add_argument("--questions", type=Path, default=DEFAULT_QUESTIONS)
