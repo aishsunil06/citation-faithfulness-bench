@@ -260,7 +260,13 @@ def test_polarity_flip_declines_a_hedged_claim():
 
 - [ ] **Step 3: Implement `EntitySwap` and `PolarityFlip` in `cfbench/engines/faulty.py`**
 
-`EntitySwap` finds capitalised multi-word spans in the claim that also appear in the cited snippet, and substitutes one for a different such span drawn from a non-cited citation on the same record; it declines when no alternative exists. `PolarityFlip` toggles a single unhedged negation marker (`no`, `not`, `never`, `without`) and declines when the claim contains a modal (`may`, `might`, `could`, `appears`) or more than one marker.
+`PolarityFlip` toggles a single unhedged negation marker (`no`, `not`, `never`, `without`) and declines when the claim contains a modal (`may`, `might`, `could`, `appears`) or more than one marker.
+
+**AMENDED during implementation — the original wording specified a wrong oracle.** It said to substitute an entity "drawn from a non-cited citation", which guarantees the *cited* source is silent about the substitute. A source silent about entity B does not contradict a claim about entity B; it merely fails to support it, so the correct verdict would be `unsupported` and the oracle would have been wrong. This is the same class of error as the 3.1-billion-by-3248 bug.
+
+`EntitySwap` therefore keeps that candidate *pool* (entities from non-cited citations, which is what makes the fault realistic) but adds a mandatory gate: the substituted entity must also appear in the **cited** snippet, with a differing figure for the same predicate. Only then is `contradicted` defensible.
+
+**Consequence, measured:** with that gate, `entity-swap` fires **zero** times on this corpus, across both engines and chunk widths 90/250/500/900. No retrieved snippet contains two entities sharing a predicate with differing figures. The injector is correct but inapplicable to Wikipedia-style prose, which describes one subject at a time rather than comparing two. It stays in the codebase, tested, and the findings must report 0 injections and say why rather than quietly omitting it. A strict gate that rarely fires is the right trade when the alternative is a wrong oracle.
 
 - [ ] **Step 4: Run tests, verify pass**
 

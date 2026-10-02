@@ -963,3 +963,45 @@ def test_rate_zero_injects_nothing_for_the_new_faults():
 
     assert EntitySwap(swap_engine(), rate=0.0, seed=3).inject(Q).oracle == []
     assert PolarityFlip(neg_engine(), rate=0.0, seed=3).inject(Q).oracle == []
+
+
+@pytest.mark.parametrize(
+    "claim_text",
+    [
+        "The agency denied that no incidents occurred at Mesa",
+        "The operator failed to report no incidents at Mesa",
+        "Neither operator reported no incidents at Mesa",
+    ],
+)
+def test_polarity_flip_declines_a_second_negative_in_the_claim(claim_text):
+    # Two interacting negatives: flipping one does not reliably reverse what
+    # the sentence asserts, so the verdict would be arguable.
+    from cfbench.engines.faulty import PolarityFlip
+
+    result = PolarityFlip(
+        neg_engine(answer=f"{claim_text} [1].", snippet=f"{claim_text}.")
+    ).inject(Q)
+    assert result.oracle == []
+
+
+def test_polarity_flip_reads_the_negating_sentence_not_the_whole_chunk():
+    # A hedge elsewhere in a long retrieved chunk says nothing about this
+    # fact, so it must not veto an otherwise plain negation.
+    from cfbench.engines.faulty import PolarityFlip
+
+    snippet = (
+        "The audit found no incidents at the Mesa site. "
+        "Analysts may revisit the county forecast later this year."
+    )
+    result = PolarityFlip(neg_engine(snippet=snippet), seed=0).inject(Q)
+    assert result.oracle and result.oracle[0].verdict is Verdict.CONTRADICTED
+
+
+def test_polarity_flip_declines_when_only_a_hedged_sentence_negates():
+    from cfbench.engines.faulty import PolarityFlip
+
+    snippet = (
+        "The Mesa site was reviewed in detail. "
+        "The audit may have found no incidents at the Mesa site."
+    )
+    assert PolarityFlip(neg_engine(snippet=snippet), seed=0).inject(Q).oracle == []
