@@ -53,6 +53,21 @@ python -m cfbench label --labeler human:yourname --limit 50
 python -m cfbench report --out runs/report.md     # now includes kappa
 ```
 
+The queue is ordered by expected information per label, not document order:
+
+- **Claims with an oracle label are dropped.** Their verdict is known by
+  construction, so a human read buys nothing. On the current run that removes
+  145 of 240 claims from the queue.
+- **Ambiguous claims come first.** A claim whose overlap sits near a judge's
+  decision boundary is where judge and human are most likely to diverge, which
+  is what calibration needs to measure. Overlap of 0.02 or 0.98 is a case every
+  judge already gets right.
+- **Modes round-robin**, so a 50-label budget cannot land entirely on `numeric`
+  and leave `contested` with nothing.
+
+Pass `--no-priority` for raw document order, which is only useful for auditing
+coverage.
+
 With `OPENAI_API_KEY` set, the generative engine and LLM judge become available:
 
 ```bash
@@ -188,8 +203,9 @@ degradation rather than noise.
 
 Working: retrieval with chunk sweeps, extractive and generative engines, four
 fault injectors, claim decomposition, two judges, bootstrap confidence
-intervals, failure-mode decomposition, resumable human labelling, dataset
-validation, report rendering. 59 tests, all offline.
+intervals, failure-mode decomposition, resumable human labelling with
+information-ordered queueing, dataset validation, report rendering. 65 tests,
+all offline.
 
 Honest limitations:
 
@@ -224,7 +240,7 @@ cfbench/
   claims.py        answer prose -> atomic claims with citations
   judge.py         LexicalJudge (offline baseline), LLMJudge
   metrics.py       faithfulness scores, agreement, Cohen's kappa
-  labeling.py      resumable terminal labelling tool
+  labeling.py      resumable labelling tool + information-ordered queue
   report.py        leaderboard, failure modes, calibration
   cli.py           run / judge / label / report / disagree / validate
   engines/
@@ -233,5 +249,5 @@ cfbench/
     faulty.py      fault injectors with known-correct verdicts
     mock.py        scripted engine for tests
 data/              seed corpus and question set
-tests/             59 offline tests
+tests/             65 offline tests
 ```
