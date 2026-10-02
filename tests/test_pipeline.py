@@ -8,6 +8,7 @@ from cfbench.judge import LexicalJudge
 from cfbench.labeling import label_session, pending_claims
 from cfbench.metrics import agreement, score
 from cfbench.report import build_report, disagreements
+from cfbench.claims import split_sentences
 from cfbench.retrieval import Document, build_index, chunk_document
 from cfbench.schema import (
     FailureMode,
@@ -232,3 +233,104 @@ def test_labelling_rejects_unknown_keys_then_accepts(tmp_path):
         input_fn=lambda _: next(replies), print_fn=lambda *a, **k: None,
     )
     assert n == 1
+
+
+# --------------------------------------------------------------------------
+# Sentence-aware chunking
+# --------------------------------------------------------------------------
+#
+# Found by graders working the real corpus: chunks cut at an exact word count
+# produced claims like "with Intel's at," which assert nothing, and chunks that
+# began mid-sentence dropped the subject clause so a snippet could fail to name
+# the entity its own sentence was about. Either way the row becomes
+# unjudgeable, which is worse than having no row.
+
+
+SENTENCES = (
+    "The first plant opened in 1978 with a rated output of 290 megawatts. "
+    "A second site followed in 1991 and reached 110 megawatts. "
+    "Neither facility recorded a safety incident during the review period. "
+    "The regulator confirmed both remained in compliance throughout. "
+    "A third expansion was proposed but never entered construction. "
+)
+
+
+def _chunks(text, width=30, overlap=8):
+    return chunk_document(Document(url="u", text=text), 0, width, overlap)
+
+
+def test_chunks_end_on_sentence_boundaries():
+    for chunk in _chunks(SENTENCES * 3):
+        assert chunk.text.rstrip().endswith("."), chunk.text
+
+
+def test_chunks_start_on_sentence_boundaries():
+    for chunk in _chunks(SENTENCES * 3):
+        first = chunk.text.lstrip()[0]
+        assert first.isupper() or first.isdigit(), chunk.text[:60]
+
+
+def test_no_chunk_ends_in_a_dangling_fragment():
+    # The concrete failure: a trailing clause with no predicate.
+    for chunk in _chunks(SENTENCES * 3):
+        assert not chunk.text.rstrip().endswith(","), chunk.text
+
+
+def test_the_word_budget_stays_a_ceiling():
+    # Widths must remain comparable across a sweep, since the sweep is the
+    # headline comparison. A sentence that would overflow starts the next
+    # chunk rather than overshooting this one.
+    for width in (20, 30, 60):
+        for chunk in _chunks(SENTENCES * 3, width=width, overlap=width // 4):
+            assert len(chunk.text.split()) <= width, (width, chunk.text)
+
+
+def test_overlap_is_never_silently_zero_for_long_sentences():
+    # The bug this pins: a purely budget-driven carry-back produced NO overlap
+    # whenever sentences were longer than overlap_words, which is the common
+    # case for prose.
+    chunks = _chunks(SENTENCES * 3, width=30, overlap=2)
+    assert len(chunks) >= 2
+    for a, b in zip(chunks, chunks[1:]):
+        assert set(split_sentences(a.text)) & set(split_sentences(b.text))
+
+
+def test_overlap_carries_whole_sentences_between_chunks():
+    chunks = _chunks(SENTENCES * 3)
+    assert len(chunks) >= 2
+    # Some sentence of chunk N reappears in chunk N+1.
+    for a, b in zip(chunks, chunks[1:]):
+        shared = set(split_sentences(a.text)) & set(split_sentences(b.text))
+        assert shared, (a.text[-60:], b.text[:60])
+
+
+def test_text_without_sentence_boundaries_falls_back_to_word_windows():
+    # A table or list has nothing to pack on; it must still chunk.
+    doc = Document(url="u", text=" ".join(str(i) for i in range(100)))
+    chunks = chunk_document(doc, 0, words_per_chunk=40, overlap_words=10)
+    assert len(chunks) > 1
+    assert all(len(c.text.split()) <= 40 for c in chunks)
+
+
+def test_a_single_sentence_longer_than_the_budget_still_chunks():
+    long_sentence = "word " * 200 + "end."
+    chunks = chunk_document(
+        Document(url="u", text=long_sentence), 0, words_per_chunk=40, overlap_words=10
+    )
+    assert len(chunks) > 1
+
+
+def test_engine_claims_are_whole_sentences_after_chunking(tmp_path):
+    # End to end: the engine's claims should no longer be fragments.
+    index = build_index(
+        [Document(url="u", title="T", text=SENTENCES * 4)],
+        words_per_chunk=40,
+        overlap_words=10,
+    )
+    record = ExtractiveEngine(index=index, top_k=2).answer(
+        Question(id="q1", text="What output did the first plant have?",
+                 failure_modes=(FailureMode.NUMERIC,))
+    )
+    assert record.claims
+    for claim in record.claims:
+        assert not claim.text.rstrip(".").endswith(","), claim.text
