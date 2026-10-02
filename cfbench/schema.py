@@ -10,6 +10,7 @@ diffable in git and readable without the library.
 
 from __future__ import annotations
 
+import hashlib
 import json
 import uuid
 from dataclasses import asdict, dataclass, field
@@ -136,6 +137,52 @@ class Label:
     @property
     def is_human(self) -> bool:
         return self.labeler.startswith("human")
+
+
+# --------------------------------------------------------------------------
+# Stable, content-addressed identifiers
+# --------------------------------------------------------------------------
+#
+# Human labels are this project's only irreplaceable asset, and they are stored
+# by claim id. Random per-run ids meant that re-running an engine invalidated
+# every label collected against it: on the first real labelling session, 17
+# labels were orphaned by a single re-run.
+#
+# Ids are therefore derived from content. The same engine, over the same
+# question, producing the same sentence with the same sources, yields the same
+# id on every run, so labels accumulate instead of evaporating. A changed claim
+# gets a new id on purpose, because the old label no longer describes it.
+
+
+def content_citation_id(url: str, snippet: str) -> str:
+    digest = hashlib.sha1(f"{url}|{snippet.strip()}".encode("utf-8")).hexdigest()
+    return f"c_{digest[:12]}"
+
+
+def content_claim_id(engine: str, question_id: str, index: int, text: str) -> str:
+    payload = f"{engine}|{question_id}|{index}|{text.strip()}"
+    return f"cl_{hashlib.sha1(payload.encode('utf-8')).hexdigest()[:12]}"
+
+
+def stabilize_ids(record: "AnswerRecord") -> "AnswerRecord":
+    """Rewrite a record's citation and claim ids to content-addressed ones.
+
+    Must be called *after* any mutation of claim text, citations, or the engine
+    name, since all three feed the hash. Fault injectors therefore call it at
+    the end of injection rather than relying on build_record.
+    """
+    remap: dict[str, str] = {}
+    for citation in record.citations:
+        new_id = content_citation_id(citation.url, citation.snippet)
+        remap[citation.id] = new_id
+        citation.id = new_id
+
+    for index, claim in enumerate(record.claims):
+        claim.citation_ids = [remap.get(cid, cid) for cid in claim.citation_ids]
+        claim.id = content_claim_id(
+            record.engine, record.question_id, index, claim.text
+        )
+    return record
 
 
 # --------------------------------------------------------------------------

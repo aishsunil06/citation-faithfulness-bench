@@ -13,7 +13,7 @@ import time
 from typing import Protocol
 
 from ..claims import decompose_answer
-from ..schema import AnswerRecord, Citation, Question
+from ..schema import AnswerRecord, Citation, Question, stabilize_ids
 
 
 class AnswerEngine(Protocol):
@@ -40,7 +40,7 @@ def build_record(
         error=error,
     )
     record.claims = decompose_answer(question.id, answer_text, citations)
-    return record
+    return stabilize_ids(record)
 
 
 class _Timer:
