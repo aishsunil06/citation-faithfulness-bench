@@ -33,6 +33,48 @@ def _looks_like_year(raw: str, value: float) -> bool:
     return len(raw) == 4 and value == int(value) and 1800 <= value <= 2200
 
 
+# A number that forms part of a name is an identifier, not a quantity.
+# Corrupting it changes which thing the claim is about rather than what the
+# claim says about it: "Fab 8" became "Fab 7", a different facility, and
+# "Falcon 9" or "Boeing 787" would go the same way. The resulting verdict is
+# arguable, so these are skipped.
+_IDENTIFIER_HEADS = frozenset({
+    "fab", "falcon", "boeing", "airbus", "ariane", "voyager", "apollo",
+    "soyuz", "nxe", "twinscan", "no", "number", "model", "type", "mark",
+    "phase", "block", "unit", "version", "chapter", "section", "figure",
+    "table", "annex", "appendix", "route", "line", "terminal", "runway",
+})
+
+
+def _is_identifier(text: str, start: int) -> bool:
+    """True if the number at `start` follows a name-like designator."""
+    prefix = text[max(0, start - 20):start]
+    words = re.findall(r"[A-Za-z]+", prefix)
+    if not words:
+        return False
+    return words[-1].lower() in _IDENTIFIER_HEADS
+
+
+def _has_bound_suffix(text: str, end: int) -> bool:
+    """True for a trailing bound marker, as in "EUR 10+ billion".
+
+    `_is_directional` only inspects what precedes the figure, so a suffixed
+    bound slipped through: shifting "10+ billion" to "12+ billion" makes a
+    strictly stronger claim the source does not support, which is
+    `unsupported`, not `contradicted`.
+    """
+    return text[end:end + 1] in {"+", "-"}
+
+
+def _states_number(snippet_text: str, raw: str) -> bool:
+    """True if the snippet contains this figure as a whole token.
+
+    Whole-token so "7" is not satisfied by "17" or "2007"; without that the
+    gate would pass on an unrelated digit and let a wrong oracle through.
+    """
+    return re.search(rf"(?<![\d.]){re.escape(raw)}(?![\d.])", snippet_text) is not None
+
+
 # Cue words that make a following number a BOUND rather than a point value.
 # Shifting a bounded figure does not produce a contradiction, it produces a
 # claim that is logically weaker or stronger than the source:
@@ -318,10 +360,31 @@ class NumericDrift(_Base):
         # entailed by "by 2030". Fault injection is only worth anything while
         # the oracle verdict is beyond argument, so both are left alone and
         # resolved by human labelling instead.
+        # The cited snippet must actually state the figure being corrupted.
+        #
+        # This gate was missing and the oracle was wrong without it. The
+        # injector assumed the claim it was handed was already faithful, which
+        # the extractive engine guaranteed by quoting verbatim but the lossy
+        # engine does not. On real text it produced claims like "Fab 7 to
+        # produce 7 nm FinFET parts" cited to a snippet that never mentioned
+        # the original figure: the uncorrupted claim was already UNSUPPORTED,
+        # so labelling the corrupted one CONTRADICTED asserted a fact about
+        # the source that was not true.
+        #
+        # A contradiction requires the source to say something different about
+        # the same thing. If the source never said the original figure, there
+        # is nothing for the new figure to contradict.
+        snippets = " ".join(record.snippets_for(claim))
+        if not snippets:
+            return None
+
         candidates = [
             m for m in _NUMBER.finditer(claim.text)
             if not _is_directional(claim.text, m.start(1))
             and not _looks_like_year(m.group(1), float(m.group(1)))
+            and not _is_identifier(claim.text, m.start(1))
+            and not _has_bound_suffix(claim.text, m.end(1))
+            and _states_number(snippets, m.group(1))
         ]
         if not candidates:
             return None
