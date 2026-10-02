@@ -66,6 +66,40 @@ Read the disagreements. This is where a score turns into a finding:
 python -m cfbench disagree --judge judge:lexical
 ```
 
+Validate the dataset and see how many labels a given precision needs:
+
+```bash
+python -m cfbench validate
+```
+
+### Fault injection
+
+Human labels are slow. But if a *known* corruption is applied to an otherwise
+faithful answer, the correct verdict is known by construction, so a judge can
+be measured on day one:
+
+```bash
+python -m cfbench run --engine extractive --chunk-words 90 --fault numeric-drift --fault wrong-source --fault dropped-citation --fault padded-claim
+python -m cfbench judge --judge lexical
+python -m cfbench report --out runs/report.md
+```
+
+Each injector writes `oracle:<fault>` labels next to the corrupted answers, so
+the existing agreement machinery compares judge against oracle with no
+special-casing. Four faults ship:
+
+| Fault | Corruption | Correct verdict |
+|---|---|---|
+| `numeric-drift` | shifts a figure so it no longer matches the source | `unsupported` |
+| `wrong-source` | repoints the claim at a different retrieved source | `unsupported` |
+| `dropped-citation` | strips the citation, leaving a bare assertion | `uncited` |
+| `padded-claim` | appends a confident sentence no source supports | `unsupported` |
+
+This establishes a **floor**, not a substitute for human labelling: injected
+faults are unambiguous, and real citation failures are frequently borderline.
+A judge that misses synthetic corruption will certainly miss subtler real
+failures.
+
 ## Pipeline
 
 ```
@@ -75,15 +109,16 @@ corpus.jsonl ──► BM25 index ──► engine ──► answer prose + cita
                                    claims.py decomposes into
                                    one claim per sentence
                                               │
-                      ┌───────────────────────┴──────────────────┐
-                      ▼                                          ▼
-            judge (lexical | LLM)                        human labelling
-                      │                                          │
-                      └──────────────► metrics.agreement ◄───────┘
-                                       (accuracy, Cohen's kappa)
-                                              │
-                                              ▼
-                                   leaderboard + failure modes
+           ┌──────────────────────┼──────────────────────┐
+           ▼                      ▼                      ▼
+  judge (lexical|LLM)     human labelling      oracle (fault injection:
+           │                      │             verdict known by design)
+           │                      │                      │
+           └──────────► metrics.agreement ◄──────────────┘
+                     kappa  |  fault detection rate
+                                  │
+                                  ▼
+            leaderboard (with bootstrap CIs) + failure modes
 ```
 
 ## Failure modes
@@ -120,30 +155,65 @@ Scaling to a real corpus is the next step, and the loader takes any
 `{url, title, text}` JSONL. The synthetic set exists to validate the pipeline,
 not to be the published result.
 
+## Findings so far
+
+Run: 15 questions, 10-document corpus, BM25 with 90-word chunks, `top_k=3`,
+scored by the rule-based judge. 45 claims per engine variant.
+
+**Fault detection by the lexical judge:**
+
+| Injected fault | n | detection |
+|---|---|---|
+| `dropped-citation` | 45 | 100.0% |
+| `numeric-drift` | 40 | 100.0% |
+| `padded-claim` | 15 | 100.0% |
+| `wrong-source` | 45 | **77.8%** |
+
+The informative result is the last row. Token overlap catches a changed number
+every time, because the number is simply absent from the cited snippet. It is
+substantially weaker on **wrong-source attribution**: it marked 10 of 45
+mis-attributed claims as `partial` rather than `unsupported`, because a
+topically adjacent wrong source still shares most of the claim's vocabulary.
+
+That is a concrete, falsifiable hypothesis for what an LLM judge has to earn
+its cost on: wrong-source attribution, not numeric drift. Numeric checking is
+already solved by ten lines of regex.
+
+**Clean-engine baseline:** `extractive-k3-c90` scores 77.8% strict,
+95% CI [64.4%, 88.9%]. Every fault-injected variant falls outside that
+interval, which is the sanity check that the instrument responds to real
+degradation rather than noise.
+
 ## Current status and known limitations
 
-Working: retrieval, chunk sweeps, extractive and generative engines, claim
-decomposition, both judges, scoring, failure-mode decomposition, resumable
-human labelling, report rendering. 40 tests, all offline.
+Working: retrieval with chunk sweeps, extractive and generative engines, four
+fault injectors, claim decomposition, two judges, bootstrap confidence
+intervals, failure-mode decomposition, resumable human labelling, dataset
+validation, report rendering. 59 tests, all offline.
 
 Honest limitations:
 
-- **No human labels yet**, so no judge is calibrated and no faithfulness number
-  here should be quoted. The report says so rather than hiding it.
-- **The chunk sweep is currently uninformative.** The extractive engine quotes
-  verbatim from the chunk it cites, so it is near the faithfulness ceiling by
-  construction and all chunk widths score identically. The sweep only becomes
-  meaningful for the generative engine, which can drift from its source. The
-  extractive line is best read as the reference an LLM engine should be measured
-  against, not as a result in itself.
+- **No human labels yet.** Fault injection measures a floor on unambiguous
+  cases; it says nothing about borderline ones, which is where real
+  disagreement lives. No Cohen's kappa exists yet, and the report refuses to
+  print one rather than implying calibration that has not happened.
+- **The corpus is 10 synthetic documents.** Results characterise the
+  instrument, not the state of real answer engines. Scaling to a real corpus
+  is the next step; the loader takes any `{url, title, text}` JSONL.
+- **`python -m cfbench validate` reports the sample size needed:** +/-10%
+  needs 97 labels, +/-5% needs 385. The current 15-question set cannot support
+  narrow claims, and the confidence intervals say so out loud.
+- **The chunk sweep is uninformative for the extractive engine**, which quotes
+  verbatim from the chunk it cites and so sits near the faithfulness ceiling by
+  construction. Chunk geometry should only matter for the generative engine.
+  Untested, because that needs an API key.
 - **Claim decomposition is sentence-level.** A sentence asserting two things
-  with one citation is scored as one claim, which is generous to the engine.
-- **The lexical judge cannot do inference.** It catches numeric and polarity
-  mismatches, but a claim correctly entailed by a source in different words
-  reads as low overlap and gets marked down. That is the gap the LLM judge is
-  meant to close, and the kappa comparison is how you find out whether it does.
-- **Judging runs against stored snippets, not live URLs**, so a run stays
-  reproducible after the web changes. It also means link rot is out of scope.
+  under one citation is scored as one claim, which is generous to the engine.
+- **The bootstrap resamples claims, not questions.** Claims from the same
+  question are correlated, so a question-level cluster bootstrap would give
+  wider, more honest intervals.
+- **Judging runs against stored snippets, not live URLs**, so runs stay
+  reproducible after the web moves. Link rot is out of scope.
 
 ## Layout
 
@@ -156,11 +226,12 @@ cfbench/
   metrics.py       faithfulness scores, agreement, Cohen's kappa
   labeling.py      resumable terminal labelling tool
   report.py        leaderboard, failure modes, calibration
-  cli.py           run / judge / label / report / disagree
+  cli.py           run / judge / label / report / disagree / validate
   engines/
     extractive.py  retrieval-only; the faithfulness reference line
     openai_rag.py  retrieval + LLM that must cite inline
+    faulty.py      fault injectors with known-correct verdicts
     mock.py        scripted engine for tests
 data/              seed corpus and question set
-tests/             40 offline tests
+tests/             59 offline tests
 ```

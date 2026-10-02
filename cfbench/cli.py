@@ -16,6 +16,7 @@ from dataclasses import asdict
 from pathlib import Path
 
 from .engines import ExtractiveEngine, OpenAIRAGEngine
+from .engines.faulty import FAULTS, wrap
 from .judge import get_judge
 from .labeling import label_session, load_labels
 from .report import build_report, disagreements
@@ -55,6 +56,7 @@ def cmd_run(args: argparse.Namespace) -> int:
 
     existing = _load_answers(args.out) if args.append else []
     records = list(existing)
+    oracle_labels = []
 
     for chunk_words in args.chunk_words:
         index = build_index(
@@ -76,22 +78,48 @@ def cmd_run(args: argparse.Namespace) -> int:
             )
             engine.name = f"rag-{args.model}-k{args.top_k}-c{chunk_words}"
 
-        print(
-            f"running {engine.name} over {len(questions)} questions "
-            f"({len(index.chunks)} chunks)"
-        )
-        errors = 0
-        for q in questions:
-            record = engine.answer(q)
-            if record.error:
-                errors += 1
-                print(f"  ! {q.id}: {record.error}", file=sys.stderr)
-            records.append(record)
-        claims = sum(len(r.claims) for r in records if r.engine == engine.name)
-        print(f"  -> {claims} claims extracted, {errors} errors")
+        variants = [(engine, None)] + [
+            (wrap(engine, fault, rate=args.fault_rate, seed=args.seed), fault)
+            for fault in (args.fault or [])
+        ]
+
+        for variant, fault in variants:
+            print(
+                f"running {variant.name} over {len(questions)} questions "
+                f"({len(index.chunks)} chunks)"
+            )
+            errors = 0
+            produced = 0
+            for q in questions:
+                if fault is None:
+                    record = variant.answer(q)
+                else:
+                    result = variant.inject(q)
+                    record, oracle = result.record, result.oracle
+                    oracle_labels.extend(oracle)
+                if record.error:
+                    errors += 1
+                    print(f"  ! {q.id}: {record.error}", file=sys.stderr)
+                records.append(record)
+                produced += len(record.claims)
+            note = ""
+            if fault is not None:
+                injected = sum(
+                    1 for lb in oracle_labels if lb.labeler == f"oracle:{fault}"
+                )
+                note = f", {injected} faults injected"
+            print(f"  -> {produced} claims extracted, {errors} errors{note}")
 
     n = write_jsonl(args.out, records)
     print(f"wrote {n} answer records to {args.out}")
+
+    if oracle_labels:
+        existing = [
+            lb for lb in load_labels(args.labels)
+            if not lb.labeler.startswith("oracle:")
+        ]
+        write_jsonl(args.labels, existing + oracle_labels)
+        print(f"wrote {len(oracle_labels)} oracle labels to {args.labels}")
     return 0
 
 
@@ -157,6 +185,55 @@ def cmd_disagree(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_validate(args: argparse.Namespace) -> int:
+    """Fail loudly on dataset problems that would silently skew results."""
+    from collections import Counter
+
+    from .metrics import labels_needed
+
+    questions = _load_questions(args.questions)
+    corpus = load_corpus(read_jsonl(args.corpus))
+    problems: list[str] = []
+
+    ids = Counter(q.id for q in questions)
+    for qid, count in ids.items():
+        if count > 1:
+            problems.append(f"duplicate question id: {qid} ({count}x)")
+
+    urls = Counter(d.url for d in corpus)
+    for url, count in urls.items():
+        if count > 1:
+            problems.append(f"duplicate corpus url: {url} ({count}x)")
+
+    for d in corpus:
+        if len(d.text.split()) < 20:
+            problems.append(f"corpus doc too short to chunk usefully: {d.url}")
+
+    mode_counts = Counter(m.value for q in questions for m in q.failure_modes)
+    thin = [m for m, c in mode_counts.items() if c < 3]
+    for m in thin:
+        problems.append(f"failure mode '{m}' has only {mode_counts[m]} questions")
+
+    print(f"questions: {len(questions)}   corpus docs: {len(corpus)}")
+    print("failure-mode coverage:")
+    for mode, count in sorted(mode_counts.items(), key=lambda kv: -kv[1]):
+        print(f"  {mode:<11} {count}")
+    print()
+    print("labels needed for a given confidence-interval half-width:")
+    for hw in (0.10, 0.07, 0.05):
+        print(f"  +/-{hw:.0%}  ->  {labels_needed(hw)} labels")
+
+    if problems:
+        print()
+        print(f"{len(problems)} problem(s):", file=sys.stderr)
+        for prob in problems:
+            print(f"  - {prob}", file=sys.stderr)
+        return 1
+    print()
+    print("no problems found")
+    return 0
+
+
 # --------------------------------------------------------------------------
 
 
@@ -186,6 +263,15 @@ def build_parser() -> argparse.ArgumentParser:
     )
     sp.add_argument("--overlap", type=int, default=20)
     sp.add_argument("--append", action="store_true", help="keep existing records")
+    sp.add_argument("--labels", type=Path, default=DEFAULT_LABELS)
+    sp.add_argument(
+        "--fault",
+        action="append",
+        choices=sorted(FAULTS),
+        help="also run a fault-injected variant; repeatable",
+    )
+    sp.add_argument("--fault-rate", type=float, default=1.0)
+    sp.add_argument("--seed", type=int, default=0)
     sp.set_defaults(func=cmd_run)
 
     sp = sub.add_parser("judge", help="label claims with an automated judge")
@@ -209,6 +295,11 @@ def build_parser() -> argparse.ArgumentParser:
     sp.add_argument("--judge", default="judge:lexical")
     sp.add_argument("--limit", type=int, default=20)
     sp.set_defaults(func=cmd_disagree)
+
+    sp = sub.add_parser("validate", help="check dataset integrity")
+    sp.add_argument("--questions", type=Path, default=DEFAULT_QUESTIONS)
+    sp.add_argument("--corpus", type=Path, default=DEFAULT_CORPUS)
+    sp.set_defaults(func=cmd_validate)
 
     return p
 

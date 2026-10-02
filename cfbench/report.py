@@ -11,7 +11,14 @@ from __future__ import annotations
 from collections import Counter, defaultdict
 from typing import Mapping, Sequence
 
-from .metrics import Agreement, agreement, score, score_by_failure_mode
+from .metrics import (
+    Agreement,
+    agreement,
+    bootstrap_ci,
+    detection_rates,
+    score,
+    score_by_failure_mode,
+)
 from .schema import AnswerRecord, FailureMode, Label, Question, Verdict
 
 
@@ -51,8 +58,13 @@ def build_report(
 
     human = [lb for lb in labels if lb.is_human]
     judges: dict[str, list[Label]] = defaultdict(list)
+    oracle: list[Label] = []
     for lb in labels:
-        if not lb.is_human:
+        if lb.is_human:
+            continue
+        if lb.labeler.startswith("oracle:"):
+            oracle.append(lb)
+        else:
             judges[lb.labeler].append(lb)
 
     lines: list[str] = [f"# {title}\n"]
@@ -117,16 +129,52 @@ def build_report(
             by_engine.items(), key=lambda kv: -score(kv[1]).strict
         ):
             sc = score(group)
+            lo, hi = bootstrap_ci(group, "strict")
             rows.append([
                 engine,
                 sc.n_claims,
                 _pct(sc.strict),
+                f"[{_pct(lo)}, {_pct(hi)}]",
                 _pct(sc.lenient),
                 _pct(sc.uncited_rate),
             ])
         lines.append(_table(
-            ["engine", "claims", "strict", "lenient", "uncited"], rows
+            ["engine", "claims", "strict", "95% CI", "lenient", "uncited"], rows
         ))
+        lines.append(
+            "\nIntervals are a percentile bootstrap over claims. Where two "
+            "engines' intervals overlap, this run does not distinguish them.\n"
+        )
+
+    # ---- fault-injection validation ---------------------------------------
+    if oracle and judges:
+        lines.append("\n## Fault-injection validation\n")
+        lines.append(
+            "Faults were injected into otherwise-faithful answers, so the "
+            "correct verdict is known by construction and needs no human "
+            "reading. This measures the floor of a judge's sensitivity: a "
+            "judge that misses synthetic corruption will certainly miss "
+            "subtler real failures. It does not replace human labelling, "
+            "because injected faults are unambiguous and real ones often "
+            "are not.\n"
+        )
+        for judge_name, judge_labels in sorted(judges.items()):
+            rates = detection_rates(oracle, judge_labels)
+            if not rates:
+                continue
+            lines.append(f"\n### `{judge_name}`\n")
+            rows = []
+            for fault, det in sorted(rates.items()):
+                said = ", ".join(
+                    f"{v.value} x{c}"
+                    for v, c in sorted(
+                        det.confusions.items(), key=lambda kv: -kv[1]
+                    )
+                )
+                rows.append([fault, det.n, det.n_detected, _pct(det.rate), said])
+            lines.append(_table(
+                ["injected fault", "n", "caught", "detection", "judge said"], rows
+            ))
 
     # ---- failure-mode decomposition ---------------------------------------
     primary = human if human else (next(iter(judges.values())) if judges else [])
