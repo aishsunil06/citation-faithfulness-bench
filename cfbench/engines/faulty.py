@@ -22,7 +22,7 @@ import random
 import re
 from dataclasses import dataclass, field
 
-from ..schema import AnswerRecord, Citation, Label, Question, Verdict
+from ..schema import AnswerRecord, Citation, Label, Question, Verdict, stabilize_ids
 
 _NUMBER = re.compile(r"\b(\d+(?:\.\d+)?)\b")
 
@@ -52,25 +52,41 @@ class _Base:
     def inject(self, question: Question) -> InjectionResult:
         record = self.engine.answer(question)
         record.engine = self.name
-        oracle: list[Label] = []
-        for claim in record.claims:
+
+        # Corrupt first, collecting verdicts against the claim *objects*. Ids
+        # are deliberately not read yet: corruption changes claim text and the
+        # engine name, both of which feed the content-addressed id, so any id
+        # captured here would be stale by the time the record is written.
+        pending: list[tuple[object, Verdict, str]] = []
+        for claim in list(record.claims):
             if self._rng.random() > self.rate:
                 continue
-            label = self._corrupt(record, claim)
-            if label is not None:
-                oracle.append(label)
+            outcome = self._corrupt(record, claim)
+            if outcome is not None:
+                verdict, why, target = outcome
+                pending.append((target, verdict, why))
+
+        stabilize_ids(record)
+
+        oracle = [
+            Label(
+                claim_id=target.id,
+                verdict=verdict,
+                labeler=f"oracle:{self.fault}",
+                rationale=why,
+            )
+            for target, verdict, why in pending
+        ]
         return InjectionResult(record=record, oracle=oracle)
 
-    def _corrupt(self, record: AnswerRecord, claim) -> Label | None:
-        raise NotImplementedError
+    def _corrupt(self, record: AnswerRecord, claim):
+        """Corrupt a claim.
 
-    def _oracle(self, claim, verdict: Verdict, why: str) -> Label:
-        return Label(
-            claim_id=claim.id,
-            verdict=verdict,
-            labeler=f"oracle:{self.fault}",
-            rationale=why,
-        )
+        Returns `(verdict, rationale, target_claim)` or None. The target is
+        returned explicitly because an injector may label a claim it appended
+        rather than the one it was handed.
+        """
+        raise NotImplementedError
 
 
 class NumericDrift(_Base):
@@ -83,7 +99,7 @@ class NumericDrift(_Base):
 
     fault = "numeric-drift"
 
-    def _corrupt(self, record: AnswerRecord, claim) -> Label | None:
+    def _corrupt(self, record: AnswerRecord, claim):
         matches = list(_NUMBER.finditer(claim.text))
         if not matches:
             return None
@@ -103,10 +119,10 @@ class NumericDrift(_Base):
             claim.text[:target.start(1)] + replacement + claim.text[target.end(1):]
         )
         record.answer_text = record.answer_text.replace(original, replacement, 1)
-        return self._oracle(
-            claim,
+        return (
             Verdict.UNSUPPORTED,
             f"injected numeric drift: {original} -> {replacement}",
+            claim,
         )
 
 
@@ -120,15 +136,15 @@ class WrongSource(_Base):
 
     fault = "wrong-source"
 
-    def _corrupt(self, record: AnswerRecord, claim) -> Label | None:
+    def _corrupt(self, record: AnswerRecord, claim):
         if len(record.citations) < 2 or not claim.citation_ids:
             return None
         others = [c for c in record.citations if c.id not in claim.citation_ids]
         if not others:
             return None
         claim.citation_ids = [self._rng.choice(others).id]
-        return self._oracle(
-            claim, Verdict.UNSUPPORTED, "injected wrong-source attribution"
+        return (
+            Verdict.UNSUPPORTED, "injected wrong-source attribution", claim,
         )
 
 
@@ -142,11 +158,11 @@ class DroppedCitation(_Base):
 
     fault = "dropped-citation"
 
-    def _corrupt(self, record: AnswerRecord, claim) -> Label | None:
+    def _corrupt(self, record: AnswerRecord, claim):
         if not claim.citation_ids:
             return None
         claim.citation_ids = []
-        return self._oracle(claim, Verdict.UNCITED, "injected dropped citation")
+        return (Verdict.UNCITED, "injected dropped citation", claim)
 
 
 class UnsupportedPadding(_Base):
@@ -165,7 +181,7 @@ class UnsupportedPadding(_Base):
         super().__init__(engine, rate=rate, seed=seed)
         self._done: set[str] = set()
 
-    def _corrupt(self, record: AnswerRecord, claim) -> Label | None:
+    def _corrupt(self, record: AnswerRecord, claim):
         # One padded claim per answer, appended rather than modifying a real one.
         if record.question_id in self._done or not record.citations:
             return None
@@ -180,8 +196,8 @@ class UnsupportedPadding(_Base):
         )
         record.claims.append(padded)
         record.answer_text = f"{record.answer_text} {self.PADDING} [1]."
-        return self._oracle(
-            padded, Verdict.UNSUPPORTED, "injected unsupported padding claim"
+        return (
+            Verdict.UNSUPPORTED, "injected unsupported padding claim", padded,
         )
 
 

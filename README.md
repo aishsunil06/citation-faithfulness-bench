@@ -55,18 +55,26 @@ python -m cfbench report --out runs/report.md     # now includes kappa
 
 The queue is ordered by expected information per label, not document order:
 
-- **Claims with an oracle label are dropped.** Their verdict is known by
-  construction, so a human read buys nothing. On the current run that removes
-  145 of 240 claims from the queue.
 - **Ambiguous claims come first.** A claim whose overlap sits near a judge's
   decision boundary is where judge and human are most likely to diverge, which
   is what calibration needs to measure. Overlap of 0.02 or 0.98 is a case every
   judge already gets right.
 - **Modes round-robin**, so a 50-label budget cannot land entirely on `numeric`
   and leave `contested` with nothing.
+- **A deliberate share of known-verdict claims is retained** (`--oracle-fraction`,
+  default 0.35) so the label set has variance. See the warning below.
 
 Pass `--no-priority` for raw document order, which is only useful for auditing
 coverage.
+
+> **Label variance is not optional.** An earlier version of this tool excluded
+> every known-verdict claim to save effort. Against a verbatim-quoting engine
+> those were the only claims that were not trivially supported, so the first
+> real labelling session produced 17 labels that were *all* `supported`. Cohen's
+> kappa came out **0.000** at 82% raw accuracy, because kappa corrects for
+> chance agreement and unanimous labels make chance agreement total. Two fixes
+> followed: retain some known-verdict claims, and add `LossyEngine` so the
+> engines under test can actually be wrong.
 
 With `OPENAI_API_KEY` set, the generative engine and LLM judge become available:
 
@@ -204,7 +212,7 @@ degradation rather than noise.
 Working: retrieval with chunk sweeps, extractive and generative engines, four
 fault injectors, claim decomposition, two judges, bootstrap confidence
 intervals, failure-mode decomposition, resumable human labelling with
-information-ordered queueing, dataset validation, report rendering. 65 tests,
+information-ordered queueing, dataset validation, report rendering. 81 tests,
 all offline.
 
 Honest limitations:
@@ -221,8 +229,12 @@ Honest limitations:
   narrow claims, and the confidence intervals say so out loud.
 - **The chunk sweep is uninformative for the extractive engine**, which quotes
   verbatim from the chunk it cites and so sits near the faithfulness ceiling by
-  construction. Chunk geometry should only matter for the generative engine.
-  Untested, because that needs an API key.
+  construction. Use `--engine lossy` for labelling and sweeps; `extractive`
+  remains useful only as the ceiling reference line.
+- **Answer quality is out of scope.** Only the citation is graded. An engine can
+  cite every sentence perfectly and still answer the wrong question, or answer
+  half of a two-part question, and score 100%. Measuring answer completeness
+  alongside faithfulness is the obvious next axis and is not implemented.
 - **Claim decomposition is sentence-level.** A sentence asserting two things
   under one citation is scored as one claim, which is generous to the engine.
 - **The bootstrap resamples claims, not questions.** Claims from the same
@@ -247,7 +259,8 @@ cfbench/
     extractive.py  retrieval-only; the faithfulness reference line
     openai_rag.py  retrieval + LLM that must cite inline
     faulty.py      fault injectors with known-correct verdicts
+    lossy.py       paraphrases lossily, for genuinely borderline claims
     mock.py        scripted engine for tests
 data/              seed corpus and question set
-tests/             65 offline tests
+tests/             81 offline tests
 ```

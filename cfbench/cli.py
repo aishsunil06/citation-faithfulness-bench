@@ -16,6 +16,7 @@ from dataclasses import asdict
 from pathlib import Path
 
 from .engines import ExtractiveEngine, OpenAIRAGEngine
+from .engines.lossy import LossyEngine
 from .engines.faulty import FAULTS, wrap
 from .judge import get_judge
 from .labeling import label_session, load_labels
@@ -67,6 +68,9 @@ def cmd_run(args: argparse.Namespace) -> int:
         if args.engine == "extractive":
             engine = ExtractiveEngine(index=index, top_k=args.top_k)
             engine.name = f"extractive-k{args.top_k}-c{chunk_words}"
+        elif args.engine == "lossy":
+            engine = LossyEngine(index=index, top_k=args.top_k, seed=args.seed)
+            engine.name = f"lossy-k{args.top_k}-c{chunk_words}"
         else:
             if not OpenAIRAGEngine.available():
                 sys.exit(
@@ -160,6 +164,7 @@ def cmd_label(args: argparse.Namespace) -> int:
         labeler,
         limit=args.limit,
         prioritized=not args.no_priority,
+        oracle_fraction=args.oracle_fraction,
     )
     return 0
 
@@ -257,7 +262,9 @@ def build_parser() -> argparse.ArgumentParser:
     sp.add_argument("--questions", type=Path, default=DEFAULT_QUESTIONS)
     sp.add_argument("--corpus", type=Path, default=DEFAULT_CORPUS)
     sp.add_argument("--out", type=Path, default=DEFAULT_ANSWERS)
-    sp.add_argument("--engine", choices=["extractive", "rag"], default="extractive")
+    sp.add_argument(
+        "--engine", choices=["extractive", "lossy", "rag"], default="extractive"
+    )
     sp.add_argument("--model", default="gpt-4o-mini")
     sp.add_argument("--top-k", type=int, default=3)
     sp.add_argument(
@@ -292,6 +299,12 @@ def build_parser() -> argparse.ArgumentParser:
         "--no-priority",
         action="store_true",
         help="label in raw document order instead of by information value",
+    )
+    sp.add_argument(
+        "--oracle-fraction",
+        type=float,
+        default=0.35,
+        help="share of the queue with known verdicts, for label variance",
     )
     sp.set_defaults(func=cmd_label)
 

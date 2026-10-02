@@ -64,6 +64,7 @@ def label_session(
     *,
     limit: int | None = None,
     prioritized: bool = True,
+    oracle_fraction: float = 0.35,
     input_fn: Callable[[str], str] = input,
     print_fn: Callable[..., None] = print,
 ) -> int:
@@ -79,7 +80,10 @@ def label_session(
     labels_path = Path(labels_path)
     existing = load_labels(labels_path)
     if prioritized:
-        queue = prioritize(questions, answers, existing, labeler)
+        queue = prioritize(
+            questions, answers, existing, labeler,
+            oracle_fraction=oracle_fraction,
+        )
     else:
         queue = pending_claims(answers, existing, labeler)
     if limit is not None:
@@ -155,9 +159,14 @@ def _flush(path: Path, existing: Sequence[Label], new: Sequence[Label]) -> None:
 # Human labelling is the scarce resource, so queue order matters more than
 # queue length. Three rules, in priority order:
 #
-# 1. Skip claims whose verdict is already known by construction. Injected
-#    faults carry an oracle label; asking a human to re-derive it buys nothing
-#    and, on the current run, would consume 60% of the budget.
+# 1. Keep a deliberate share of claims whose verdict is known by construction.
+#    An earlier version excluded every oracle-labelled claim to save effort,
+#    which was wrong: on a verbatim-quoting engine those were the only claims
+#    that were not trivially supported, so the human pressed "supported" 17
+#    times, the label set had zero variance, and Cohen's kappa collapsed to
+#    0.000 despite 82% raw accuracy. Kappa needs disagreement to measure.
+#    Oracle claims also audit the injectors: a human who disagrees with an
+#    injected fault has found a miscalibrated injector.
 # 2. Prefer ambiguous claims. A claim whose overlap sits near a judge's
 #    decision boundary is where judge and human are most likely to diverge,
 #    which is exactly what calibration needs to measure. Claims at overlap 0.02
@@ -196,20 +205,34 @@ def prioritize(
     existing: Sequence[Label],
     labeler: str,
     *,
-    exclude_oracle: bool = True,
+    oracle_fraction: float = 0.35,
 ) -> list[tuple[AnswerRecord, object]]:
-    """Order the pending queue by expected information per label."""
+    """Order the pending queue by expected information per label.
+
+    `oracle_fraction` is the share of the queue drawn from claims with a known
+    verdict. It is not zero on purpose: those claims supply the negative and
+    uncited examples that give the label set variance, without which kappa is
+    undefined. Set it to 0.0 only when the engines under test already produce a
+    healthy verdict mix on their own.
+    """
+    if not 0.0 <= oracle_fraction <= 1.0:
+        raise ValueError("oracle_fraction must be in [0, 1]")
+
     oracle_claims = {
         lb.claim_id for lb in existing if lb.labeler.startswith("oracle:")
     }
     q_by_id = {q.id: q for q in questions}
 
-    pending = pending_claims(answers, existing, labeler)
-    if exclude_oracle:
-        pending = [
-            (rec, claim) for rec, claim in pending
-            if claim.id not in oracle_claims
-        ]
+    all_pending = pending_claims(answers, existing, labeler)
+    known = [(r, c) for r, c in all_pending if c.id in oracle_claims]
+    unknown = [(r, c) for r, c in all_pending if c.id not in oracle_claims]
+
+    # Take only as many known-verdict claims as the target share needs, so the
+    # budget still goes mostly to cases nobody can predict.
+    if unknown and oracle_fraction < 1.0:
+        cap = int(len(unknown) * oracle_fraction / max(1e-9, 1 - oracle_fraction))
+        known = known[:cap]
+    pending = unknown + known
 
     # Bucket by failure mode, each bucket sorted by ambiguity descending.
     buckets: dict[str, list[tuple[float, AnswerRecord, object]]] = {}
