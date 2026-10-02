@@ -1,0 +1,22 @@
+{
+  "cl_a791a0d57dba": ["supported", "claim appears verbatim in the snippet (25 December 2021, Ariane 5, Kourou)"],
+  "cl_e68ac37922a8": ["supported", "snippet states adiabatic storage approaches 100% theoretically with 70% expected round trip, verbatim; irrelevance to the PSH question does not affect citation grading"],
+  "cl_8f9701748ed1": ["partial", "matches on 3 m to 2.4 m, but claim gives the precursor telescope as 1.5 m (4 ft 10 in) where the snippet says 4 ft 11 in"],
+  "cl_bea268a1e97d": ["contradicted", "snippet says HPR 'did not provide backup power'; claim inverts polarity to 'did provide'"],
+  "cl_2182583f1ee4": ["supported", "snippet states 598 booster landings as of October 2, 2026, verbatim"],
+  "cl_45853245ee1f": ["unsupported", "snippet covers mirror size, naming and wavelength range but is silent on Webb's four key science goals"],
+  "cl_8ef80ed7cecc": ["supported", "snippet states 89 airlines, 214 destinations, 84 countries, verbatim"],
+  "cl_4a2f25e543c0": ["supported", "snippet states 160 AU and about 61,000 km/h as of 2026, verbatim"],
+  "cl_27770437677f": ["unsupported", "snippet covers Maersk's January 2026 return to the Red Sea; it says nothing about Sisi's $800 million monthly losses or $9.4 billion canal revenue"],
+  "cl_a4b47e5a31ea": ["supported", "definitional sentence appears verbatim in the snippet"],
+  "cl_99ce05af43a4": ["supported", "both the 1913 Gatun Lake damming sentence and the max-size shipbuilding sentence appear verbatim"],
+  "cl_97663b8fdc0d": ["supported", "snippet states verbatim that Moss Landing was chosen as California's primary battery storage location"],
+  "cl_b430969f3076": ["supported", "sentence on wind power's inability to follow load and lower price appears verbatim"],
+  "cl_7f785843b03c": ["partial", "snippet supports the 25 December 2021 Ariane 5 launch from French Guiana but is silent on flight designation VA256, the 12:20 UTC time, and the under-speed trajectory to L2"],
+  "cl_2dc1b98b1d56": ["uncited", "cited_snippets is empty"],
+  "cl_b53d34e0a962": ["supported", "sentence on tenth-wavelength polishing and visible-through-ultraviolet diffraction-limited specification appears verbatim"],
+  "cl_c83f0f168882": ["unsupported", "snippet gives ASML's January 2026 market capitalization and founding history but says nothing about its 83% share of lithography machine sales"],
+  "cl_6f1cbc333e2f": ["supported", "snippet states verbatim that Emma Maersk was delivered in 2006 from Odense Steel Shipyard as the largest container ship to that date"],
+  "cl_938674a1f6af": ["unsupported", "snippet gives HPR power and energy ratings only; it is silent on the spot-price estimate caveat and the 55% FCAS share"],
+  "cl_19585aa82e28": ["contradicted", "snippet states a 3.4% increase over 2024 for the same 69,980,000 passenger figure; claim says 2.8%"]
+}
