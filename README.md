@@ -250,6 +250,45 @@ Injection is now restricted to magnitudes on point values, which cut the sample
 from 40 to 21 and is the right trade: 21 indisputable cases beat 40 arguable
 ones.
 
+**Judge calibration against human labels (n=24):**
+
+| Judge | n | accuracy | Cohen's kappa | reading |
+|---|---|---|---|---|
+| `judge:lexical` | 20 | 45.0% | +0.127 | poor |
+| `judge:claude-opus-5` | 24 | 87.5% | **+0.711** | substantial |
+
+This is the result the fault-injection work was a proxy for, and it confirms
+what fault injection predicted: the lexical baseline is barely better than
+chance against a human, and an LLM judge closes most of the gap. The lexical
+judge's failure is concentrated exactly where fault injection said it would be,
+over-calling `contradicted` on sources that merely cover a different period.
+
+Human-vs-model agreement was perfect on all 17 `unsupported` claims and 4 of 5
+`contradicted`. The three disagreements were:
+
+| human | model | case |
+|---|---|---|
+| `supported` | `partial` | "roughly 120 million" against a source saying 118 million |
+| `supported` | `contradicted` | a claim of 2.5 billion against a source saying 3.1 billion |
+| `partial` | `unsupported` | FY2024 revenue cited to a Q1 FY2025 source |
+
+The first and third are genuine borderline calls: whether a hedged rounding is
+faithful, and whether a right-company-wrong-period citation is weak or simply
+absent. Those are the cases a benchmark exists to surface.
+
+**Caveats on this number, which matter more than the number:**
+
+- **n=24 is small.** One label moves kappa by roughly 0.03, so treat 0.711 as
+  "substantial, probably" rather than a measurement.
+- **One annotator, so there is no inter-annotator agreement.** Without a second
+  human there is no way to know how much of the residual disagreement is the
+  judge being wrong versus the task being genuinely ambiguous.
+- **The model judge is not independent of the data.** The same system wrote the
+  corpus, the fault injectors, the lexical judge, and these labels, so shared
+  blind spots are likely and this comparison flatters the LLM judge. A judge
+  from a different provider, on a corpus it did not author, is the honest
+  version of this experiment.
+
 **Clean-engine baseline:** 95% confidence intervals are reported on every
 leaderboard score, and every fault-injected variant falls outside the clean
 engine's interval.
