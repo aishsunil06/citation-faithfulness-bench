@@ -1,24 +1,43 @@
-{"claim_id": "cl_d17482cc0fc8", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 412 -> 445"}
-{"claim_id": "cl_cd146de7e2d1", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 91 -> 75"}
-{"claim_id": "cl_e2e7fd424432", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 412 -> 363"}
-{"claim_id": "cl_1a17860f9d55", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 91 -> 105"}
-{"claim_id": "cl_996276733521", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 118 -> 104"}
-{"claim_id": "cl_defc941c9f07", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 240 -> 211"}
-{"claim_id": "cl_f3fdbf5811b2", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 240 -> 197"}
-{"claim_id": "cl_9467440d746f", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 3.1 -> 2.5"}
-{"claim_id": "cl_67674eca6ddc", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 1.8 -> 1.9"}
-{"claim_id": "cl_66db96be34db", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 240 -> 259"}
-{"claim_id": "cl_74560884ea54", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 412 -> 474"}
-{"claim_id": "cl_5be3094488cc", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 118 -> 136"}
-{"claim_id": "cl_0ff6d69c590b", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 91 -> 105"}
-{"claim_id": "cl_5c81c62cbf0c", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 118 -> 127"}
-{"claim_id": "cl_3f19c7590bbe", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 47 -> 39"}
-{"claim_id": "cl_217c854cc58b", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 91 -> 98"}
-{"claim_id": "cl_c9f2544d6444", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 412 -> 363"}
-{"claim_id": "cl_bee1cdfb7c31", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 1.8 -> 1.6"}
-{"claim_id": "cl_aeb1ae6f97aa", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 3.1 -> 3.6"}
-{"claim_id": "cl_831514414b00", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 1.8 -> 1.6"}
-{"claim_id": "cl_4ab74a4ba171", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 3.1 -> 3.6"}
+{"claim_id": "cl_01e236caedbf", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 2023 -> 2731"}
+{"claim_id": "cl_3ee62cca1550", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 91 -> 40"}
+{"claim_id": "cl_3e5a708f06e5", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 120 -> 54"}
+{"claim_id": "cl_84b729dd9135", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 12 -> 19"}
+{"claim_id": "cl_2b8fe6e1d457", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 91 -> 54"}
+{"claim_id": "cl_4b4339704f2e", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 50 -> 80"}
+{"claim_id": "cl_5a8dce7cff8b", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 240 -> 144"}
+{"claim_id": "cl_8e1d58f373aa", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 2025 -> 1215"}
+{"claim_id": "cl_ee0e252f528c", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 50 -> 22"}
+{"claim_id": "cl_9e8afd4bac37", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 2025 -> 2733"}
+{"claim_id": "cl_a5189e72756a", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 200 -> 270"}
+{"claim_id": "cl_9bdb503eed57", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 240 -> 324"}
+{"claim_id": "cl_a68a3f51fdfb", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 2030 -> 3248"}
+{"claim_id": "cl_1c52298323cc", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 1.8 -> 2.9"}
+{"claim_id": "cl_7371f0e46797", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 240 -> 108"}
+{"claim_id": "cl_b39a7527005b", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 2025 -> 911"}
+{"claim_id": "cl_3c924506a467", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 310 -> 418"}
+{"claim_id": "cl_9eaae5579d7b", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 200 -> 120"}
+{"claim_id": "cl_91ff90fbd940", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 2025 -> 1215"}
+{"claim_id": "cl_c7c7d79af995", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 12 -> 19"}
+{"claim_id": "cl_01de4a4fe3cf", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 50 -> 30"}
+{"claim_id": "cl_e659bd5e2e9d", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 91 -> 145"}
+{"claim_id": "cl_f153a7686bbd", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 2025 -> 2733"}
+{"claim_id": "cl_4991513ce7c2", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 50 -> 22"}
+{"claim_id": "cl_7b7a7be94814", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 2023 -> 1213"}
+{"claim_id": "cl_ca6da75f61ff", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 91 -> 145"}
+{"claim_id": "cl_606571139c26", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 2023 -> 910"}
+{"claim_id": "cl_cf05e21d3105", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 2025 -> 911"}
+{"claim_id": "cl_eed907aa8ca7", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 2030 -> 2740"}
+{"claim_id": "cl_46f58f6f2918", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 3.1 -> 1.4"}
+{"claim_id": "cl_04c4540f049c", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 2025 -> 3240"}
+{"claim_id": "cl_b98942483409", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 2025 -> 2733"}
+{"claim_id": "cl_bfb4e75aabe8", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 2025 -> 1215"}
+{"claim_id": "cl_91f16d56f98c", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 2025 -> 2733"}
+{"claim_id": "cl_637f4eea52b5", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 2025 -> 2733"}
+{"claim_id": "cl_79019e8360f6", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 2025 -> 2733"}
+{"claim_id": "cl_a4545d62c94f", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 50 -> 67"}
+{"claim_id": "cl_3834c1081aef", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 2030 -> 2740"}
+{"claim_id": "cl_23f456fd0909", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 3.1 -> 5.0"}
+{"claim_id": "cl_68e99bd384b2", "verdict": "contradicted", "labeler": "oracle:numeric-drift", "rationale": "injected numeric drift: 2025 -> 2733"}
 {"claim_id": "cl_dbeb5f153007", "verdict": "unsupported", "labeler": "oracle:wrong-source", "rationale": "injected wrong-source attribution"}
 {"claim_id": "cl_fda6c35e8d8c", "verdict": "unsupported", "labeler": "oracle:wrong-source", "rationale": "injected wrong-source attribution"}
 {"claim_id": "cl_a837d91de246", "verdict": "unsupported", "labeler": "oracle:wrong-source", "rationale": "injected wrong-source attribution"}
@@ -154,51 +173,51 @@
 {"claim_id": "cl_47e7f2ee06ac", "verdict": "supported", "labeler": "judge:lexical", "rationale": "content-token overlap 1.00"}
 {"claim_id": "cl_dd6650657744", "verdict": "supported", "labeler": "judge:lexical", "rationale": "content-token overlap 1.00"}
 {"claim_id": "cl_ca4cac14222e", "verdict": "supported", "labeler": "judge:lexical", "rationale": "content-token overlap 1.00"}
-{"claim_id": "cl_d17482cc0fc8", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['445'] in the claim appear in no cited snippet (overlap 0.92)"}
-{"claim_id": "cl_cd146de7e2d1", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['75'] in the claim appear in no cited snippet (overlap 0.91)"}
-{"claim_id": "cl_fc5408592045", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['120'] in the claim appear in no cited snippet (overlap 0.83)"}
-{"claim_id": "cl_e2e7fd424432", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['363'] in the claim appear in no cited snippet (overlap 0.92)"}
-{"claim_id": "cl_1a17860f9d55", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['105'] in the claim appear in no cited snippet (overlap 0.91)"}
-{"claim_id": "cl_996276733521", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['104'] in the claim appear in no cited snippet (overlap 0.95)"}
-{"claim_id": "cl_defc941c9f07", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['211'] in the claim appear in no cited snippet (overlap 0.89)"}
-{"claim_id": "cl_d398b2728f1b", "verdict": "partial", "labeler": "judge:lexical", "rationale": "negation polarity differs between claim and snippet (overlap 1.00)"}
-{"claim_id": "cl_ab7ef6af5f72", "verdict": "supported", "labeler": "judge:lexical", "rationale": "content-token overlap 1.00"}
-{"claim_id": "cl_11e99bba3b10", "verdict": "supported", "labeler": "judge:lexical", "rationale": "content-token overlap 1.00"}
-{"claim_id": "cl_c9c12d7ca0b7", "verdict": "supported", "labeler": "judge:lexical", "rationale": "content-token overlap 1.00"}
-{"claim_id": "cl_f3fdbf5811b2", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['197'] in the claim appear in no cited snippet (overlap 0.89)"}
-{"claim_id": "cl_9467440d746f", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['2.5'] in the claim appear in no cited snippet (overlap 0.86)"}
-{"claim_id": "cl_67674eca6ddc", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['1.9'] in the claim appear in no cited snippet (overlap 0.97)"}
+{"claim_id": "cl_01e236caedbf", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['2731'] in the claim appear in no cited snippet (overlap 0.92)"}
+{"claim_id": "cl_3ee62cca1550", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['40'] in the claim appear in no cited snippet (overlap 0.91)"}
+{"claim_id": "cl_3e5a708f06e5", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['54'] in the claim appear in no cited snippet (overlap 0.83)"}
+{"claim_id": "cl_84b729dd9135", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['19'] in the claim appear in no cited snippet (overlap 0.92)"}
+{"claim_id": "cl_2b8fe6e1d457", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['54'] in the claim appear in no cited snippet (overlap 0.91)"}
+{"claim_id": "cl_4b4339704f2e", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['80'] in the claim appear in no cited snippet (overlap 0.95)"}
+{"claim_id": "cl_5a8dce7cff8b", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['144'] in the claim appear in no cited snippet (overlap 0.89)"}
+{"claim_id": "cl_8e1d58f373aa", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['1215'] in the claim appear in no cited snippet (overlap 0.93)"}
+{"claim_id": "cl_ee0e252f528c", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['22'] in the claim appear in no cited snippet (overlap 0.90)"}
+{"claim_id": "cl_9e8afd4bac37", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['2733'] in the claim appear in no cited snippet (overlap 0.92)"}
+{"claim_id": "cl_a5189e72756a", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['270'] in the claim appear in no cited snippet (overlap 0.95)"}
+{"claim_id": "cl_9bdb503eed57", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['324'] in the claim appear in no cited snippet (overlap 0.89)"}
+{"claim_id": "cl_a68a3f51fdfb", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['3248'] in the claim appear in no cited snippet (overlap 0.93)"}
+{"claim_id": "cl_1c52298323cc", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['2.9'] in the claim appear in no cited snippet (overlap 0.94)"}
 {"claim_id": "cl_4a86d7f4dbd2", "verdict": "supported", "labeler": "judge:lexical", "rationale": "content-token overlap 1.00"}
-{"claim_id": "cl_66db96be34db", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['259'] in the claim appear in no cited snippet (overlap 0.96)"}
-{"claim_id": "cl_c3edbc907cb2", "verdict": "supported", "labeler": "judge:lexical", "rationale": "content-token overlap 1.00"}
-{"claim_id": "cl_b0015151c3a9", "verdict": "partial", "labeler": "judge:lexical", "rationale": "negation polarity differs between claim and snippet (overlap 1.00)"}
-{"claim_id": "cl_6a7cfcdad14e", "verdict": "supported", "labeler": "judge:lexical", "rationale": "content-token overlap 1.00"}
-{"claim_id": "cl_e3ff13c3018a", "verdict": "supported", "labeler": "judge:lexical", "rationale": "content-token overlap 1.00"}
+{"claim_id": "cl_7371f0e46797", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['108'] in the claim appear in no cited snippet (overlap 0.96)"}
+{"claim_id": "cl_b39a7527005b", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['911'] in the claim appear in no cited snippet (overlap 0.92)"}
+{"claim_id": "cl_3c924506a467", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['418'] in the claim appear in no cited snippet (overlap 0.93)"}
+{"claim_id": "cl_9eaae5579d7b", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['120'] in the claim appear in no cited snippet (overlap 0.95)"}
+{"claim_id": "cl_91ff90fbd940", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['1215'] in the claim appear in no cited snippet (overlap 0.92)"}
 {"claim_id": "cl_50de4566fef4", "verdict": "supported", "labeler": "judge:lexical", "rationale": "content-token overlap 1.00"}
-{"claim_id": "cl_74560884ea54", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['474'] in the claim appear in no cited snippet (overlap 0.92)"}
-{"claim_id": "cl_5be3094488cc", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['136'] in the claim appear in no cited snippet (overlap 0.95)"}
-{"claim_id": "cl_0ff6d69c590b", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['105'] in the claim appear in no cited snippet (overlap 0.95)"}
-{"claim_id": "cl_6cdd3fa6c6b7", "verdict": "partial", "labeler": "judge:lexical", "rationale": "negation polarity differs between claim and snippet (overlap 1.00)"}
-{"claim_id": "cl_5c81c62cbf0c", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['127'] in the claim appear in no cited snippet (overlap 0.95)"}
-{"claim_id": "cl_3f19c7590bbe", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['39'] in the claim appear in no cited snippet (overlap 0.96)"}
-{"claim_id": "cl_217c854cc58b", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['98'] in the claim appear in no cited snippet (overlap 0.95)"}
-{"claim_id": "cl_c9f2544d6444", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['363'] in the claim appear in no cited snippet (overlap 0.96)"}
-{"claim_id": "cl_f235bc6292af", "verdict": "partial", "labeler": "judge:lexical", "rationale": "negation polarity differs between claim and snippet (overlap 1.00)"}
-{"claim_id": "cl_bee1cdfb7c31", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['1.6'] in the claim appear in no cited snippet (overlap 0.95)"}
-{"claim_id": "cl_aeb1ae6f97aa", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['3.6'] in the claim appear in no cited snippet (overlap 0.93)"}
-{"claim_id": "cl_382c3baa7dbd", "verdict": "supported", "labeler": "judge:lexical", "rationale": "content-token overlap 1.00"}
-{"claim_id": "cl_08e55143ee27", "verdict": "partial", "labeler": "judge:lexical", "rationale": "negation polarity differs between claim and snippet (overlap 1.00)"}
+{"claim_id": "cl_c7c7d79af995", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['19'] in the claim appear in no cited snippet (overlap 0.92)"}
+{"claim_id": "cl_01de4a4fe3cf", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['30'] in the claim appear in no cited snippet (overlap 0.95)"}
+{"claim_id": "cl_e659bd5e2e9d", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['145'] in the claim appear in no cited snippet (overlap 0.95)"}
+{"claim_id": "cl_f153a7686bbd", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['2733'] in the claim appear in no cited snippet (overlap 0.96)"}
+{"claim_id": "cl_4991513ce7c2", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['22'] in the claim appear in no cited snippet (overlap 0.95)"}
+{"claim_id": "cl_7b7a7be94814", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['1213'] in the claim appear in no cited snippet (overlap 0.96)"}
+{"claim_id": "cl_ca6da75f61ff", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['145'] in the claim appear in no cited snippet (overlap 0.95)"}
+{"claim_id": "cl_606571139c26", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['910'] in the claim appear in no cited snippet (overlap 0.96)"}
+{"claim_id": "cl_cf05e21d3105", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['911'] in the claim appear in no cited snippet (overlap 0.93)"}
+{"claim_id": "cl_eed907aa8ca7", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['2740'] in the claim appear in no cited snippet (overlap 0.95)"}
+{"claim_id": "cl_46f58f6f2918", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['1.4'] in the claim appear in no cited snippet (overlap 0.93)"}
+{"claim_id": "cl_04c4540f049c", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['3240'] in the claim appear in no cited snippet (overlap 0.92)"}
+{"claim_id": "cl_b98942483409", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['2733'] in the claim appear in no cited snippet (overlap 0.93)"}
 {"claim_id": "cl_689cb4453da6", "verdict": "supported", "labeler": "judge:lexical", "rationale": "content-token overlap 1.00"}
-{"claim_id": "cl_065a28c6cbc8", "verdict": "supported", "labeler": "judge:lexical", "rationale": "content-token overlap 1.00"}
-{"claim_id": "cl_adf85da44f0e", "verdict": "partial", "labeler": "judge:lexical", "rationale": "negation polarity differs between claim and snippet (overlap 1.00)"}
-{"claim_id": "cl_0a9a70f9f373", "verdict": "supported", "labeler": "judge:lexical", "rationale": "content-token overlap 1.00"}
+{"claim_id": "cl_bfb4e75aabe8", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['1215'] in the claim appear in no cited snippet (overlap 0.92)"}
+{"claim_id": "cl_91f16d56f98c", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['2733'] in the claim appear in no cited snippet (overlap 0.93)"}
+{"claim_id": "cl_637f4eea52b5", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['2733'] in the claim appear in no cited snippet (overlap 0.92)"}
 {"claim_id": "cl_19552318205a", "verdict": "supported", "labeler": "judge:lexical", "rationale": "content-token overlap 1.00"}
 {"claim_id": "cl_a2492c7754ad", "verdict": "supported", "labeler": "judge:lexical", "rationale": "content-token overlap 1.00"}
-{"claim_id": "cl_8557e6775eac", "verdict": "supported", "labeler": "judge:lexical", "rationale": "content-token overlap 1.00"}
-{"claim_id": "cl_5f3154fe9c54", "verdict": "supported", "labeler": "judge:lexical", "rationale": "content-token overlap 1.00"}
-{"claim_id": "cl_831514414b00", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['1.6'] in the claim appear in no cited snippet (overlap 0.97)"}
-{"claim_id": "cl_4ab74a4ba171", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['3.6'] in the claim appear in no cited snippet (overlap 0.93)"}
-{"claim_id": "cl_07d2b226e0bf", "verdict": "supported", "labeler": "judge:lexical", "rationale": "content-token overlap 1.00"}
+{"claim_id": "cl_79019e8360f6", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['2733'] in the claim appear in no cited snippet (overlap 0.92)"}
+{"claim_id": "cl_a4545d62c94f", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['67'] in the claim appear in no cited snippet (overlap 0.90)"}
+{"claim_id": "cl_3834c1081aef", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['2740'] in the claim appear in no cited snippet (overlap 0.97)"}
+{"claim_id": "cl_23f456fd0909", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['5'] in the claim appear in no cited snippet (overlap 0.86)"}
+{"claim_id": "cl_68e99bd384b2", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['2733'] in the claim appear in no cited snippet (overlap 0.92)"}
 {"claim_id": "cl_dbeb5f153007", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['12', '2023', '368', '412'] in the claim appear in no cited snippet (overlap 0.69)"}
 {"claim_id": "cl_fda6c35e8d8c", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['91'] in the claim appear in no cited snippet (overlap 0.55)"}
 {"claim_id": "cl_a837d91de246", "verdict": "contradicted", "labeler": "judge:lexical", "rationale": "numbers ['120', '2025'] in the claim appear in no cited snippet (overlap 0.50)"}
@@ -289,3 +308,52 @@
 {"claim_id": "cl_7506cdc5df4b", "verdict": "uncited", "labeler": "judge:lexical", "rationale": "claim carried no resolvable citation"}
 {"claim_id": "cl_661d192a3126", "verdict": "uncited", "labeler": "judge:lexical", "rationale": "claim carried no resolvable citation"}
 {"claim_id": "cl_7074c840c59d", "verdict": "uncited", "labeler": "judge:lexical", "rationale": "claim carried no resolvable citation"}
+{"claim_id": "cl_32703166f448", "verdict": "supported", "labeler": "human:aishwarya", "rationale": ""}
+{"claim_id": "cl_5a8dce7cff8b", "verdict": "contradicted", "labeler": "human:aishwarya", "rationale": ""}
+{"claim_id": "cl_d998b183e294", "verdict": "unsupported", "labeler": "human:aishwarya", "rationale": ""}
+{"claim_id": "cl_24c91a1bcc02", "verdict": "unsupported", "labeler": "human:aishwarya", "rationale": ""}
+{"claim_id": "cl_5c3603849583", "verdict": "unsupported", "labeler": "human:aishwarya", "rationale": ""}
+{"claim_id": "cl_eb21332bd6b8", "verdict": "unsupported", "labeler": "human:aishwarya", "rationale": ""}
+{"claim_id": "cl_cc6476978b11", "verdict": "unsupported", "labeler": "human:aishwarya", "rationale": ""}
+{"claim_id": "cl_8491d135d743", "verdict": "unsupported", "labeler": "human:aishwarya", "rationale": ""}
+{"claim_id": "cl_cdbdcc70019e", "verdict": "unsupported", "labeler": "human:aishwarya", "rationale": ""}
+{"claim_id": "cl_9467440d746f", "verdict": "supported", "labeler": "human:aishwarya", "rationale": ""}
+{"claim_id": "cl_f3fdbf5811b2", "verdict": "contradicted", "labeler": "human:aishwarya", "rationale": ""}
+{"claim_id": "cl_02fe3b6f8868", "verdict": "unsupported", "labeler": "human:aishwarya", "rationale": ""}
+{"claim_id": "cl_fd58a07f32ee", "verdict": "unsupported", "labeler": "human:aishwarya", "rationale": ""}
+{"claim_id": "cl_6a2b964f87c2", "verdict": "unsupported", "labeler": "human:aishwarya", "rationale": ""}
+{"claim_id": "cl_1e7e63919eba", "verdict": "unsupported", "labeler": "human:aishwarya", "rationale": ""}
+{"claim_id": "cl_41263ad95333", "verdict": "unsupported", "labeler": "human:aishwarya", "rationale": ""}
+{"claim_id": "cl_053866e41af3", "verdict": "unsupported", "labeler": "human:aishwarya", "rationale": ""}
+{"claim_id": "cl_ba3f404c07e4", "verdict": "partial", "labeler": "human:aishwarya", "rationale": ""}
+{"claim_id": "cl_99800eb3f465", "verdict": "unsupported", "labeler": "human:aishwarya", "rationale": ""}
+{"claim_id": "cl_aeb1ae6f97aa", "verdict": "contradicted", "labeler": "human:aishwarya", "rationale": ""}
+{"claim_id": "cl_87c8904f034a", "verdict": "unsupported", "labeler": "human:aishwarya", "rationale": ""}
+{"claim_id": "cl_d611d1fff6b1", "verdict": "unsupported", "labeler": "human:aishwarya", "rationale": ""}
+{"claim_id": "cl_cd6e5fc46188", "verdict": "unsupported", "labeler": "human:aishwarya", "rationale": ""}
+{"claim_id": "cl_defc941c9f07", "verdict": "contradicted", "labeler": "human:aishwarya", "rationale": ""}
+{"claim_id": "cl_4ab74a4ba171", "verdict": "contradicted", "labeler": "human:aishwarya", "rationale": ""}
+{"claim_id": "cl_32703166f448", "verdict": "partial", "labeler": "judge:claude-opus-5", "rationale": "'roughly 120 million' is a fair rounding of the cited 118 million, but the figure differs"}
+{"claim_id": "cl_d998b183e294", "verdict": "unsupported", "labeler": "judge:claude-opus-5", "rationale": "cited FY2024 annual report says nothing about a Helion supply agreement"}
+{"claim_id": "cl_24c91a1bcc02", "verdict": "unsupported", "labeler": "judge:claude-opus-5", "rationale": "cited company overview does not mention the safety review or its findings"}
+{"claim_id": "cl_5c3603849583", "verdict": "unsupported", "labeler": "judge:claude-opus-5", "rationale": "cited Varro document does not report Teller's forecast or its refusal to endorse"}
+{"claim_id": "cl_eb21332bd6b8", "verdict": "unsupported", "labeler": "judge:claude-opus-5", "rationale": "cited company overview does not mention the Mesa County permitting rule"}
+{"claim_id": "cl_cc6476978b11", "verdict": "unsupported", "labeler": "judge:claude-opus-5", "rationale": "cited source covers FY2024; claim covers Q1 FY2025, so both can be true"}
+{"claim_id": "cl_8491d135d743", "verdict": "unsupported", "labeler": "judge:claude-opus-5", "rationale": "cited company overview does not mention the safety review"}
+{"claim_id": "cl_cdbdcc70019e", "verdict": "unsupported", "labeler": "judge:claude-opus-5", "rationale": "cited company overview does not mention the safety review"}
+{"claim_id": "cl_9467440d746f", "verdict": "contradicted", "labeler": "judge:claude-opus-5", "rationale": "source states Varro's figure as 3.1 billion, claim says 2.5 billion"}
+{"claim_id": "cl_f3fdbf5811b2", "verdict": "contradicted", "labeler": "judge:claude-opus-5", "rationale": "source states 240 megawatt-hours, claim says 197"}
+{"claim_id": "cl_02fe3b6f8868", "verdict": "unsupported", "labeler": "judge:claude-opus-5", "rationale": "cited Q1 FY2025 source is silent on FY2024 revenue"}
+{"claim_id": "cl_fd58a07f32ee", "verdict": "unsupported", "labeler": "judge:claude-opus-5", "rationale": "cited source is about Northwind Aviation, a different company"}
+{"claim_id": "cl_6a2b964f87c2", "verdict": "unsupported", "labeler": "judge:claude-opus-5", "rationale": "cited quarterly results do not mention the Helion agreement"}
+{"claim_id": "cl_1e7e63919eba", "verdict": "unsupported", "labeler": "judge:claude-opus-5", "rationale": "cited market forecast does not describe Helion Grid's business"}
+{"claim_id": "cl_41263ad95333", "verdict": "unsupported", "labeler": "judge:claude-opus-5", "rationale": "cited rule requires safety reviews but reports no findings"}
+{"claim_id": "cl_053866e41af3", "verdict": "unsupported", "labeler": "judge:claude-opus-5", "rationale": "cited Northwind Logistics report does not mention Northwind Aviation"}
+{"claim_id": "cl_ba3f404c07e4", "verdict": "unsupported", "labeler": "judge:claude-opus-5", "rationale": "cited Q1 FY2025 source is silent on FY2024 revenue and centre count"}
+{"claim_id": "cl_99800eb3f465", "verdict": "unsupported", "labeler": "judge:claude-opus-5", "rationale": "source mentions offtake agreements generally, not this ten-year Northwind deal"}
+{"claim_id": "cl_aeb1ae6f97aa", "verdict": "contradicted", "labeler": "judge:claude-opus-5", "rationale": "source states 3.1 billion, claim says 3.6 billion"}
+{"claim_id": "cl_87c8904f034a", "verdict": "unsupported", "labeler": "judge:claude-opus-5", "rationale": "cited safety review does not state the site's capacity"}
+{"claim_id": "cl_d611d1fff6b1", "verdict": "unsupported", "labeler": "judge:claude-opus-5", "rationale": "cited supply agreement does not state revenue or centre count"}
+{"claim_id": "cl_cd6e5fc46188", "verdict": "unsupported", "labeler": "judge:claude-opus-5", "rationale": "cited FY2024 source is silent on Q1 FY2025 figures"}
+{"claim_id": "cl_defc941c9f07", "verdict": "contradicted", "labeler": "judge:claude-opus-5", "rationale": "source states 240 megawatt-hours, claim says 211"}
+{"claim_id": "cl_4ab74a4ba171", "verdict": "contradicted", "labeler": "judge:claude-opus-5", "rationale": "source states 3.1 billion, claim says 3.6 billion"}
