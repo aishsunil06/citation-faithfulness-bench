@@ -1,0 +1,5 @@
+# Core (retrieval, scoring, lexical judge, CLI) is pure standard library.
+pytest>=8.0
+
+# Optional: only needed for --engine rag and --judge llm:*
+# openai>=1.40

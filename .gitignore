@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+.env
+
+# Run outputs are regenerable; labels are NOT (see note below).
+runs/answers.jsonl
+runs/report.md
+
+# Human labels are the expensive, irreplaceable artifact of this project.
+# They are committed on purpose. Judge labels are cheap to regenerate but live
+# in the same file, which is the tradeoff for keeping them comparable.
+!runs/labels.jsonl
