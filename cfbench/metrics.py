@@ -198,3 +198,125 @@ def split_labels(labels: Iterable[Label]) -> tuple[list[Label], dict[str, list[L
         else:
             judges[lb.labeler].append(lb)
     return humans, dict(judges)
+
+
+# --------------------------------------------------------------------------
+# Uncertainty
+# --------------------------------------------------------------------------
+
+
+def bootstrap_ci(
+    labels: Sequence[Label],
+    statistic: str = "strict",
+    n_boot: int = 2000,
+    confidence: float = 0.95,
+    seed: int = 0,
+) -> tuple[float, float]:
+    """Percentile bootstrap interval for a faithfulness statistic.
+
+    Reported on every score because this benchmark runs on tens to low
+    hundreds of claims, where a 6-point gap between two engines is routinely
+    noise. An interval is the difference between "engine A is better" and
+    "engine A scored higher this run".
+
+    Resampling is over claims, which slightly understates uncertainty: claims
+    from the same question are correlated, so a question-level cluster
+    bootstrap would be wider. Noted rather than hidden.
+    """
+    import random
+
+    pool = list(labels)
+    if not pool:
+        return (0.0, 0.0)
+
+    rng = random.Random(seed)
+    n = len(pool)
+    stats: list[float] = []
+    for _ in range(n_boot):
+        sample = [pool[rng.randrange(n)] for _ in range(n)]
+        stats.append(getattr(score(sample), statistic))
+
+    stats.sort()
+    alpha = (1.0 - confidence) / 2.0
+    lo = stats[int(alpha * n_boot)]
+    hi = stats[min(int((1.0 - alpha) * n_boot), n_boot - 1)]
+    return (lo, hi)
+
+
+@dataclass
+class DetectionRate:
+    """How often a judge returned the oracle's verdict on injected faults."""
+
+    fault: str
+    n: int
+    n_detected: int
+    confusions: dict[Verdict, int] = field(default_factory=dict)
+
+    @property
+    def rate(self) -> float:
+        return self.n_detected / self.n if self.n else 0.0
+
+    def as_dict(self) -> dict:
+        return {
+            "fault": self.fault,
+            "n": self.n,
+            "detected": self.n_detected,
+            "rate": round(self.rate, 4),
+            "judge_said": {v.value: c for v, c in sorted(
+                self.confusions.items(), key=lambda kv: kv[0].value
+            )},
+        }
+
+
+def detection_rates(
+    oracle: Iterable[Label],
+    judge: Iterable[Label],
+) -> dict[str, DetectionRate]:
+    """Per-fault detection rate for one judge.
+
+    Oracle labelers are named `oracle:<fault>`, so the fault type is recovered
+    from the labeler string and each injection family is scored separately. A
+    judge can be excellent at numeric drift and blind to wrong-source
+    attribution, and an aggregate number would hide that.
+    """
+    judge_by_claim = {lb.claim_id: lb.verdict for lb in judge}
+
+    grouped: dict[str, list[Label]] = defaultdict(list)
+    for lb in oracle:
+        fault = lb.labeler.split(":", 1)[1] if ":" in lb.labeler else lb.labeler
+        grouped[fault].append(lb)
+
+    out: dict[str, DetectionRate] = {}
+    for fault, truth in grouped.items():
+        n = 0
+        hit = 0
+        confusions: Counter[Verdict] = Counter()
+        for lb in truth:
+            got = judge_by_claim.get(lb.claim_id)
+            if got is None:
+                continue
+            n += 1
+            confusions[got] += 1
+            if got is lb.verdict:
+                hit += 1
+        out[fault] = DetectionRate(
+            fault=fault, n=n, n_detected=hit, confusions=dict(confusions)
+        )
+    return out
+
+
+def labels_needed(
+    target_half_width: float = 0.05,
+    p_estimate: float = 0.5,
+    confidence_z: float = 1.96,
+) -> int:
+    """How many labels to reach a target confidence-interval half-width.
+
+    Answers the practical question "how many pairs do I have to label?" using
+    the normal approximation to a proportion. `p_estimate=0.5` is the
+    worst case and therefore the safe default.
+    """
+    if not 0 < target_half_width < 1:
+        raise ValueError("target_half_width must be in (0, 1)")
+    n = (confidence_z ** 2) * p_estimate * (1 - p_estimate) / (target_half_width ** 2)
+    return int(n) + 1
